@@ -4,21 +4,23 @@ Curso::Curso()
     :_idCurso(0),
      _grado(Grado::NONE),
      _div(Division::NONE),
-     _estado(true)
+     _eliminado(false)
 {
 }
 
-Curso::Curso(int id, Grado grado, Division div)
+Curso::Curso(int id,
+             Grado grado,
+             Division div)
 {
     setIdCurso(id);
     setGrado(grado);
     setDivision(div);
-    setEstado(true);
+    setEliminado(false);
 }
 
 void Curso::setIdCurso(int idCurso)
 {
-    _idCurso=idCurso;
+    _idCurso = idCurso;
 }
 
 void Curso::setGrado(Grado grado)
@@ -28,30 +30,30 @@ void Curso::setGrado(Grado grado)
 
 void Curso::setDivision(Division div)
 {
-    _div=div;
+    _div = div;
 }
 
-void Curso::setEstado(bool estado)
+void Curso::setEliminado(bool eliminado)
 {
-    _estado=estado;
+    _eliminado = eliminado;
 }
 
-int Curso::getIdCurso()
+int Curso::getIdCurso()const
 {
     return _idCurso;
 }
 
-Grado Curso::getGrado()
+Grado Curso::getGrado()const
 {
     return _grado;
 }
 
-Division Curso::getDivision()
+Division Curso::getDivision()const
 {
     return _div;
 }
 
-bool Curso::getEstado()
+bool Curso::getEliminado()const
 {
-    return _estado;
+    return _eliminado;
 }

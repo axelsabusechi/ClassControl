@@ -6,17 +6,19 @@
 class AlumnoArchivo
 {
 public:
-    AlumnoArchivo(std::string fileName="Alumnos.dat");
-    ArchivoError guardar(Alumno reg);
-    ArchivoError guardar(int index, Alumno reg);
+    AlumnoArchivo(const std::string &fileName="Alumnos.dat");
+    ArchivoError guardar(const Alumno &reg);
+    ArchivoError guardar(int index, const Alumno &reg);
     ArchivoError leerTodos(Alumno reg[], int cant);
     Alumno leer(int index);
-    int getCantReg();
-    int getNewID();
+    int getCantReg()const;
+    int getNewLegajo()const;
     int buscarByLegajo(int legajo);
-    std::string getLastError();
+    std::string getLastError()const;
+    bool existeDni(const std::string &dni, int legajoIgnorar=-1);
+
 private:
-    Alumno _alumno;
+    //Alumno _alumno;
     std::string _fileName;
     std::string _errorMessage;
 };

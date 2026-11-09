@@ -3,36 +3,38 @@
 Docente::Docente()
     :Persona(),
      _idDocente(0),
-     _eliminado(true)
+     _eliminado(false)
 {
 }
 
-Docente::Docente(std::string nombre,
-                 std::string apellido,
-                 std::string dni,
+Docente::Docente(const std::string &nombre,
+                 const std::string &apellido,
+                 const std::string &dni,
                  int idDocente)
-    :Persona(nombre,apellido,dni)
+    :Persona(nombre,
+             apellido,
+             dni)
 {
     setIdDocente(idDocente);
-    setEliminado(true);
+    setEliminado(false);
 }
 
 void Docente::setIdDocente(int idDocente)
 {
-    _idDocente=idDocente;
+    _idDocente = idDocente;
 }
 
 void Docente::setEliminado(bool eliminado)
 {
-    _eliminado=eliminado;
+    _eliminado = eliminado;
 }
 
-int Docente::getIdDocente()
+int Docente::getIdDocente()const
 {
     return _idDocente;
 }
 
-bool Docente::getEliminado()
+bool Docente::getEliminado()const
 {
     return _eliminado;
 }

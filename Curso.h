@@ -13,16 +13,16 @@ public:
     void setIdCurso(int idCurso);
     void setGrado(Grado grado);
     void setDivision(Division division);
-    void setEstado(bool estado);
+    void setEliminado(bool eliminado);
 
-    int getIdCurso();
-    Grado getGrado();
-    Division getDivision();
-    bool getEstado();
+    int getIdCurso()const;
+    Grado getGrado()const;
+    Division getDivision()const;
+    bool getEliminado()const;
 
 private:
     int _idCurso;
     Grado _grado;
     Division _div;
-    bool _estado;
+    bool _eliminado;
 };

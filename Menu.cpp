@@ -5,38 +5,35 @@
 
 Menu::Menu(int cantOpciones)
 {
-    _vOpciones=new std::string[cantOpciones];
+    _vOpciones = new std::string[cantOpciones];
 
-    if(_vOpciones==nullptr)
+    if(_vOpciones == nullptr)
     {
         std::cout << "No se pudo asignar memoria..." << std::endl;
         exit(-100);
     }
-    _cantOpciones=cantOpciones;
+    _cantOpciones = cantOpciones;
 }
 
-void Menu::setOpciones(int opcion, std::string texto)
+void Menu::setOpciones(int opcion, const std::string &texto)
 {
-    if(opcion>0 && opcion<=_cantOpciones)
+    if(opcion > 0 && opcion <= _cantOpciones)
     {
-        for(int i=0; i<_cantOpciones; i++)
-        {
-            _vOpciones[opcion-1]=texto;
-        }
+            _vOpciones[opcion - 1] = texto;
     }
 }
 
-void Menu::setTituloMenu(std::string tituloMenu)
+void Menu::setTituloMenu(const std::string &tituloMenu)
 {
-    _tituloMenu=tituloMenu;
+    _tituloMenu = tituloMenu;
 }
 
-void Menu::setOpCero(std::string opCero)
+void Menu::setOpCero(const std::string &opCero)
 {
-    _opCero=opCero;
+    _opCero = opCero;
 }
 
-int Menu::runMenu()
+int Menu::runMenu()const
 {
     int y = 0;
 

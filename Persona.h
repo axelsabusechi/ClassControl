@@ -6,20 +6,20 @@ class Persona
 public:
     Persona();
     Persona(//int id,
-            std::string nombre,
-            std::string apellido,
-            std::string dni);
+            const std::string &nombre,
+            const std::string &apellido,
+            const std::string &dni);
 
     //void setID(int id);
-    void setNombre(std::string nombre);
-    void setApellido(std::string apellido);
-    void setDni(std::string dni);
+    void setNombre(const std::string &nombre);
+    void setApellido(const std::string &apellido);
+    void setDni(const std::string &dni);
     //void setEliminado(bool eliminado);
 
     //int getID();
-    std::string getNombre();
-    std::string getApellido();
-    std::string getDni();
+    std::string getNombre()const;
+    std::string getApellido()const;
+    std::string getDni()const;
     //bool getEliminado();
 
 private:

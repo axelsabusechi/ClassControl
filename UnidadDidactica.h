@@ -7,18 +7,20 @@ public:
     UnidadDidactica();
     UnidadDidactica(int idUnidad,
                     int idCurso,
-                    std::string nombre,
+                    const std::string &nombre,
                     int orden);
 
     void setIdUnidad(int idUnidad);
     void setIdCurso(int idCurso);
-    void setNombre(std::string nombre);
+    void setNombre(const std::string &nombre);
     void setOrden(int orden);
+    void setEliminado(bool eliminado);
 
-    int getIdUnidad();
-    int getIdCurso();
-    std::string getNombre();
-    int getOrden();
+    int getIdUnidad()const;
+    int getIdCurso()const;
+    std::string getNombre()const;
+    int getOrden()const;
+    bool getEliminado()const;
 
 private:
     int _idUnidad;

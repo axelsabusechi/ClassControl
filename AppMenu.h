@@ -31,5 +31,4 @@ private:
     ListadosMenu _listadosMenu;
     ConsultasMenu _consultasMenu;
     InformesMenu _informesMenu;
-
 };

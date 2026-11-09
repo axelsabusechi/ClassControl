@@ -7,7 +7,7 @@ ClaseDada::ClaseDada()
      _idTema(0),
      _fecha(0,0,0),
      _claseDada(true),
-     _eliminado(true)
+     _eliminado(false)
 {
     strcpy(_observaciones,"");
 }
@@ -15,8 +15,8 @@ ClaseDada::ClaseDada()
 ClaseDada::ClaseDada(int idClase,
                      int idCurso,
                      int idTema,
-                     Fecha fecha,
-                     std::string observaciones,
+                     const Fecha &fecha,
+                     const std::string &observaciones,
                      bool claseDada)
 {
     setIdClase(idClase);
@@ -25,30 +25,30 @@ ClaseDada::ClaseDada(int idClase,
     setFecha(fecha);
     setObservaciones(observaciones);
     setClaseDada(claseDada);
-    setEliminado(true);
+    setEliminado(false);
 }
 
 void ClaseDada::setIdClase(int idClase)
 {
-    _idClase=idClase;
+    _idClase = idClase;
 }
 
 void ClaseDada::setIdCurso(int idCurso)
 {
-    _idCurso=idCurso;
+    _idCurso = idCurso;
 }
 
 void ClaseDada::setIdTema(int idTema)
 {
-    _idTema=idTema;
+    _idTema = idTema;
 }
 
-void ClaseDada::setFecha(Fecha fecha)
+void ClaseDada::setFecha(const Fecha &fecha)
 {
-    _fecha=fecha;
+    _fecha = fecha;
 }
 
-void ClaseDada::setObservaciones(std::string observaciones)
+void ClaseDada::setObservaciones(const std::string &observaciones)
 {
     if(observaciones.size() <= 199)
     {
@@ -62,45 +62,45 @@ void ClaseDada::setObservaciones(std::string observaciones)
 
 void ClaseDada::setClaseDada(bool claseDada)
 {
-    _claseDada=claseDada;
+    _claseDada = claseDada;
 }
 
 void ClaseDada::setEliminado(bool eliminado)
 {
-    _eliminado=eliminado;
+    _eliminado = eliminado;
 }
 
-int ClaseDada::getIdClase()
+int ClaseDada::getIdClase()const
 {
     return _idClase;
 }
 
-int ClaseDada::getIdCurso()
+int ClaseDada::getIdCurso()const
 {
     return _idCurso;
 }
 
-int ClaseDada::getIdTema()
+int ClaseDada::getIdTema()const
 {
     return _idTema;
 }
 
-Fecha ClaseDada::getFecha()
+Fecha ClaseDada::getFecha()const
 {
     return _fecha;
 }
 
-std::string ClaseDada::getObservaciones()
+std::string ClaseDada::getObservaciones()const
 {
     return std::string(_observaciones);
 }
 
-bool ClaseDada::getClaseDada()
+bool ClaseDada::getClaseDada()const
 {
     return _claseDada;
 }
 
-bool ClaseDada::getEliminado()
+bool ClaseDada::getEliminado()const
 {
     return _eliminado;
 }

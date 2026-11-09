@@ -7,20 +7,20 @@ public:
     Tema();
     Tema(int idTema,
          int idUnidad,
-         std::string nombre,
+         const std::string &nombre,
          int orden);
 
     void setIdTema(int idTema);
     void setIdUnidad(int idUnidad);
-    void setNombre(std::string nombre);
+    void setNombre(const std::string &nombre);
     void setOrden(int orden);
     void setEliminado(bool eliminado);
 
-    int getIdTema();
-    int getIdUnidad();
-    std::string getNombre();
-    int getOrden();
-    int getEliminado();
+    int getIdTema()const;
+    int getIdUnidad()const;
+    std::string getNombre()const;
+    int getOrden()const;
+    int getEliminado()const;
 
 private:
     int _idTema;

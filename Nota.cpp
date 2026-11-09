@@ -5,24 +5,25 @@ Nota::Nota()
      _legajo(0),
      _periodo(Periodo::NONE),
      _fechaCarga(0,0,0),
-     _eliminado(true)
+     _eliminado(false)
 {
 }
 
 Nota::Nota(int idNota,
            int legajo,
            Periodo periodo,
-           Fecha fechaCarga)
+           const Fecha &fechaCarga)
 {
     setIdNota(idNota);
     setLegajo(legajo);
     setPeriodo(periodo);
     setFechaCarga(fechaCarga);
+    setEliminado(false);
 }
 
 void Nota::setIdNota(int idNota)
 {
-    _idNota=idNota;
+    _idNota = idNota;
 }
 
 void Nota::setLegajo(int legajo)
@@ -32,40 +33,40 @@ void Nota::setLegajo(int legajo)
 
 void Nota::setPeriodo(Periodo periodo)
 {
-    _periodo=periodo;
+    _periodo = periodo;
 }
 
-void Nota::setFechaCarga(Fecha fechaCarga)
+void Nota::setFechaCarga(const Fecha &fechaCarga)
 {
-    _fechaCarga=fechaCarga;
+    _fechaCarga = fechaCarga;
 }
 
 void Nota::setEliminado(bool eliminado)
 {
-    _eliminado=eliminado;
+    _eliminado = eliminado;
 }
 
-int Nota::getIdNota()
+int Nota::getIdNota()const
 {
     return _idNota;
 }
 
-int Nota::getLegajo()
+int Nota::getLegajo()const
 {
     return _legajo;
 }
 
-Periodo Nota::getPeriodo()
+Periodo Nota::getPeriodo()const
 {
     return _periodo;
 }
 
-Fecha Nota::getFechaCarga()
+Fecha Nota::getFechaCarga()const
 {
     return _fechaCarga;
 }
 
-bool Nota::getEliminado()
+bool Nota::getEliminado()const
 {
     return _eliminado;
 }

@@ -5,10 +5,10 @@ class Menu
 {
 public:
     Menu(int cantOpciones);
-    void setOpciones(int opcion, std::string texto);
-    void setTituloMenu(std::string tituloMenu);
-    void setOpCero(std::string opCero);
-    int runMenu();
+    void setOpciones(int opcion, const std::string &texto);
+    void setTituloMenu(const std::string &tituloMenu);
+    void setOpCero(const std::string &opCero);
+    int runMenu()const;
     ~Menu();
 
 

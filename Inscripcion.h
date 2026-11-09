@@ -8,25 +8,25 @@ public:
     Inscripcion(int idInscripcion,
                 int legajo,
                 int idCurso,
-                Fecha fechaAlta,
-                Fecha fechaBaja,
+                const Fecha &fechaAlta,
+                const Fecha &fechaBaja,
                 bool activo);
 
     void setIdInscripcion(int idInscripcion);
     void setLegajo(int legajo);
     void setIdCurso(int idICurso);
-    void setFechaAlta(Fecha fechaAlta);
-    void setFechaBaja(Fecha fechaBaja);
+    void setFechaAlta(const Fecha &fechaAlta);
+    void setFechaBaja(const Fecha &fechaBaja);
     void setActivo(bool activo);
     void setEliminado(bool eliminado);
 
-    int getIdInscripcion();
-    int getlegajo();
-    int getIdCurso();
-    Fecha getFechaAlta();
-    Fecha getFechaBaja();
-    bool getActivo();
-    bool getEliminado();
+    int getIdInscripcion()const;
+    int getlegajo()const;
+    int getIdCurso()const;
+    Fecha getFechaAlta()const;
+    Fecha getFechaBaja()const;
+    bool getActivo()const;
+    bool getEliminado()const;
 
 private:
     int _idInscripcion;

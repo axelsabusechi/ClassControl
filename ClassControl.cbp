@@ -36,6 +36,8 @@
 		<Unit filename="Alumno.h" />
 		<Unit filename="AlumnoArchivo.cpp" />
 		<Unit filename="AlumnoArchivo.h" />
+		<Unit filename="AlumnoManager.cpp" />
+		<Unit filename="AlumnoManager.h" />
 		<Unit filename="AlumnoMenu.cpp" />
 		<Unit filename="AlumnoMenu.h" />
 		<Unit filename="AppMenu.cpp" />
@@ -85,6 +87,8 @@
 		<Unit filename="Menu.h" />
 		<Unit filename="Nota.cpp" />
 		<Unit filename="Nota.h" />
+		<Unit filename="NotaArchivo.cpp" />
+		<Unit filename="NotaArchivo.h" />
 		<Unit filename="NotaMenu.cpp" />
 		<Unit filename="NotaMenu.h" />
 		<Unit filename="Periodo.h" />
@@ -92,10 +96,14 @@
 		<Unit filename="Persona.h" />
 		<Unit filename="Tema.cpp" />
 		<Unit filename="Tema.h" />
+		<Unit filename="TemaArchivo.cpp" />
+		<Unit filename="TemaArchivo.h" />
 		<Unit filename="TemaMenu.cpp" />
 		<Unit filename="TemaMenu.h" />
 		<Unit filename="UnidadDidactica.cpp" />
 		<Unit filename="UnidadDidactica.h" />
+		<Unit filename="UnidadDidacticaArchivo.cpp" />
+		<Unit filename="UnidadDidacticaArchivo.h" />
 		<Unit filename="UnidadDidacticaMenu.cpp" />
 		<Unit filename="UnidadDidacticaMenu.h" />
 		<Unit filename="main.cpp" />

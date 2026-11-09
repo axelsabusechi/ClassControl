@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "ClaseDada.h"
 #include "ArchivoError.h"
 

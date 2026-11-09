@@ -1,18 +1,23 @@
 #pragma once
 #include "Curso.h"
 #include "CursoArchivo.h"
+#include "Division.h"
+#include "Grado.h"
 
 class CursoManager
 {
 public:
     CursoManager();
-    Curso crearCurso();
+
     void registrarCurso();
     void listarCursos();
     void modificarCurso();
     void eliminarCurso();
 
 private:
-    Curso _crearCurso();
+    Curso crearCurso();
+    void cargarCurso(int &gr, int &div);
+    void mostrarCurso(Curso &reg);
+
     CursoArchivo _cursoArchivo;
 };

@@ -5,27 +5,27 @@ Alumno::Alumno()
     :Persona(),
      _legajo(0),
      _fechaNacimiento(0,0,0),
-     _eliminado(true)
+     _eliminado(false)
 {
     strcpy(_email,"");
     strcpy(_adaptacion,"");
 }
 
 Alumno::Alumno(//int id,
-    std::string nombre,
-    std::string apellido,
-    std::string dni,
+    const std::string &nombre,
+    const std::string &apellido,
+    const std::string &dni,
     int legajo,
-    Fecha fechaNacimiento,
-    std::string email,
-    std::string adaptacion)
+    const Fecha &fechaNacimiento,
+    const std::string &email,
+    const std::string &adaptacion)
     :Persona(/*id,*/ nombre, apellido, dni)
 {
     setLegajo(legajo);
     setFechaNacimiento(fechaNacimiento);
     setEmail(email);
     setAdaptacion(adaptacion);
-    setEliminado(true);
+    setEliminado(false);
 }
 
 void Alumno::setLegajo(int legajo)
@@ -33,12 +33,12 @@ void Alumno::setLegajo(int legajo)
     _legajo=legajo;
 }
 
-void Alumno::setFechaNacimiento(Fecha fechaNacimiento)
+void Alumno::setFechaNacimiento(const Fecha &fechaNacimiento)
 {
-    _fechaNacimiento=fechaNacimiento;
+    _fechaNacimiento = fechaNacimiento;
 }
 
-void Alumno::setEmail(std::string email)
+void Alumno::setEmail(const std::string &email)
 {
     if(email.size() <= 49)
     {
@@ -50,7 +50,7 @@ void Alumno::setEmail(std::string email)
     }
 }
 
-void Alumno::setAdaptacion(std::string adaptacion)
+void Alumno::setAdaptacion(const std::string &adaptacion)
 {
     if(adaptacion.size() <= 49)
     {
@@ -64,30 +64,30 @@ void Alumno::setAdaptacion(std::string adaptacion)
 
 void Alumno::setEliminado(bool eliminado)
 {
-    _eliminado=eliminado;
+    _eliminado = eliminado;
 }
 
-int Alumno::getLegajo()
+int Alumno::getLegajo()const
 {
     return _legajo;
 }
 
-Fecha Alumno::getFechaNacimiento()
+Fecha Alumno::getFechaNacimiento()const
 {
     return _fechaNacimiento;
 }
 
-std::string Alumno::getEmail()
+std::string Alumno::getEmail()const
 {
     return std::string(_email);
 }
 
-std::string Alumno::getAdaptacion()
+std::string Alumno::getAdaptacion()const
 {
     return std::string(_adaptacion);
 }
 
-bool Alumno::getEliminado()
+bool Alumno::getEliminado()const
 {
     return _eliminado;
 }

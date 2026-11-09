@@ -9,25 +9,25 @@ public:
     ClaseDada(int idClase,
               int idCurso,
               int idTema,
-              Fecha fecha,
-              std::string observaciones,
+              const Fecha &fecha,
+              const std::string &observaciones,
               bool claseDada);
 
     void setIdClase(int idClase);
     void setIdCurso(int idCurso);
     void setIdTema(int idTema);
-    void setFecha(Fecha fecha);
-    void setObservaciones(std::string observaciones);
+    void setFecha(const Fecha &fecha);
+    void setObservaciones(const std::string &observaciones);
     void setClaseDada(bool claseDada);
     void setEliminado(bool eliminado);
 
-    int getIdClase();
-    int getIdCurso();
-    int getIdTema();
-    Fecha getFecha();
-    std::string getObservaciones();
-    bool getClaseDada();
-    bool getEliminado();
+    int getIdClase()const;
+    int getIdCurso()const;
+    int getIdTema()const;
+    Fecha getFecha()const;
+    std::string getObservaciones()const;
+    bool getClaseDada()const;
+    bool getEliminado()const;
 
 private:
     int _idClase;

@@ -4,34 +4,35 @@
 Tema::Tema()
     :_idTema(0),
      _idUnidad(0),
-     _orden(0)
+     _orden(0),
+     _eliminado(false)
 {
     strcpy(_nombre,"");
 }
 
 Tema::Tema(int idTema,
            int idUnidad,
-           std::string nombre,
+           const std::string &nombre,
            int orden)
 {
     setIdTema(idTema);
     setIdUnidad(idUnidad);
     setNombre(nombre);
     setOrden(orden);
-    setEliminado(true);
+    setEliminado(false);
 }
 
 void Tema::setIdTema(int idTema)
 {
-    _idTema=idTema;
+    _idTema = idTema;
 }
 
 void Tema::setIdUnidad(int idUnidad)
 {
-    _idUnidad=idUnidad;
+    _idUnidad = idUnidad;
 }
 
-void Tema::setNombre(std::string nombre)
+void Tema::setNombre(const std::string &nombre)
 {
     if(nombre.size() <= 79)
     {
@@ -45,35 +46,35 @@ void Tema::setNombre(std::string nombre)
 
 void Tema::setOrden(int orden)
 {
-    _orden=orden;
+    _orden = orden;
 }
 
 void Tema::setEliminado(bool eliminado)
 {
-    _eliminado=eliminado;
+    _eliminado = eliminado;
 }
 
-int Tema::getIdTema()
+int Tema::getIdTema()const
 {
     return _idTema;
 }
 
-int Tema::getIdUnidad()
+int Tema::getIdUnidad()const
 {
     return _idUnidad;
 }
 
-std::string Tema::getNombre()
+std::string Tema::getNombre()const
 {
     return std::string(_nombre);
 }
 
-int Tema::getOrden()
+int Tema::getOrden()const
 {
     return _orden;
 }
 
-int Tema::getEliminado()
+int Tema::getEliminado()const
 {
     return _eliminado;
 }

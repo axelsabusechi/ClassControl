@@ -1,6 +1,5 @@
 #include <iostream>
 #include "CursoManager.h"
-#include "CursoArchivo.h"
 #include "utils.h"
 #include "rlutil.h"
 
@@ -10,7 +9,7 @@ CursoManager::CursoManager()
 
 Curso CursoManager::crearCurso()
 {
-    int idCurso,cc,gr,div,ds;
+    int idCurso,gr,div;
     Grado grado;
     Division division;
 
@@ -22,7 +21,6 @@ Curso CursoManager::crearCurso()
     cargarCurso(gr, div);
 
     return Curso(idCurso,intToGrado(gr),intToDivision(div));
-
 }
 
 void CursoManager::registrarCurso()
@@ -37,7 +35,6 @@ void CursoManager::registrarCurso()
     }
     system("pause");
     rlutil::cls();
-
 }
 
 void CursoManager::listarCursos()
@@ -59,7 +56,7 @@ void CursoManager::listarCursos()
 
         for(int i=0; i<cantReg; i++)
         {
-            if(vCursos[i].getEstado())
+            if(vCursos[i].getEliminado())
             {
                 std::cout << "Id: "<< vCursos[i].getIdCurso() << std::endl;
                 std::cout << "Grado: " << gradoToString(vCursos[i].getGrado()) << std::endl;
@@ -118,7 +115,6 @@ void CursoManager::modificarCurso()
     }
 
     system("pause");
-
 }
 
 void CursoManager::eliminarCurso()
@@ -155,7 +151,7 @@ void CursoManager::eliminarCurso()
 
     if(eliminar)
     {
-        reg.setEstado(false);
+        reg.setEliminado(false);
         if(_cursoArchivo.guardar(index,reg)==ArchivoError::OK)
         {
             std::cout << "Curso con ID " << id << " eliminado con exito!" << std::endl;
@@ -169,6 +165,26 @@ void CursoManager::eliminarCurso()
 
     system("pause");
 }
+
+void CursoManager::cargarCurso(int &gr, int &div)
+{
+    std::cout << "Grado " << std::endl;
+    std::cout << "(1)Primero - (2)Segundo - (3)Tercero - (4)Cuarto - (5)Quinto - (6)Sexto" << std::endl;
+    std::cout << "Seleccion: ";
+    std::cin >> gr;
+    std::cout << "Divison " << std::endl;
+    std::cout << "(1)A - (2)B - (3)C" << std::endl;
+    std::cout << "Seleccion: ";
+    std::cin >> div;
+}
+
+void CursoManager::mostrarCurso(Curso &reg)
+{
+    std::cout << "ID: " << reg.getIdCurso() << std::endl;
+    std::cout << "Grado: " << gradoToString(reg.getGrado()) << std::endl;
+    std::cout << "Division: " << divisionToString(reg.getDivision()) << std::endl << std::endl;
+}
+
 
 
 

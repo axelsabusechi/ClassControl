@@ -7,15 +7,15 @@ Inscripcion::Inscripcion()
      _fechaAlta(0,0,0),
      _fechaBaja(0,0,0),
      _activo(true),
-     _eliminado(true)
+     _eliminado(false)
 {
 }
 
 Inscripcion::Inscripcion(int idInscripcion,
                          int legajo,
                          int idCurso,
-                         Fecha fechaAlta,
-                         Fecha fechaBaja,
+                         const Fecha &fechaAlta,
+                         const Fecha &fechaBaja,
                          bool activo)
 {
     setIdInscripcion(idInscripcion);
@@ -24,75 +24,75 @@ Inscripcion::Inscripcion(int idInscripcion,
     setFechaAlta(fechaAlta);
     setFechaBaja(fechaBaja);
     setActivo(activo);
-    setEliminado(true);
+    setEliminado(false);
 }
 
 void Inscripcion::setIdInscripcion(int idInscripcion)
 {
-    _idInscripcion=idInscripcion;
+    _idInscripcion = idInscripcion;
 }
 
 void Inscripcion::setLegajo(int legajo)
 {
-    _legajo=legajo;
+    _legajo = legajo;
 }
 
 void Inscripcion::setIdCurso(int idCurso)
 {
-    _idCurso=idCurso;
+    _idCurso = idCurso;
 }
 
-void Inscripcion::setFechaAlta(Fecha fechaAlta)
+void Inscripcion::setFechaAlta(const Fecha &fechaAlta)
 {
-    _fechaAlta=fechaAlta;
+    _fechaAlta = fechaAlta;
 }
 
-void Inscripcion::setFechaBaja(Fecha fechaBaja)
+void Inscripcion::setFechaBaja(const Fecha &fechaBaja)
 {
-    _fechaBaja=fechaBaja;
+    _fechaBaja = fechaBaja;
 }
 
 void Inscripcion::setActivo(bool activo)
 {
-    _activo=activo;
+    _activo = activo;
 }
 
 void Inscripcion::setEliminado(bool eliminado)
 {
-    _eliminado=eliminado;
+    _eliminado = eliminado;
 }
 
-int Inscripcion::getIdInscripcion()
+int Inscripcion::getIdInscripcion()const
 {
     return _idInscripcion;
 }
 
-int Inscripcion::getlegajo()
+int Inscripcion::getlegajo()const
 {
     return _legajo;
 }
 
-int Inscripcion::getIdCurso()
+int Inscripcion::getIdCurso()const
 {
     return _idCurso;
 }
 
-Fecha Inscripcion::getFechaAlta()
+Fecha Inscripcion::getFechaAlta()const
 {
     return _fechaAlta;
 }
 
-Fecha Inscripcion::getFechaBaja()
+Fecha Inscripcion::getFechaBaja()const
 {
     return _fechaBaja;
 }
 
-bool Inscripcion::getActivo()
+bool Inscripcion::getActivo()const
 {
     return _activo;
 }
 
-bool Inscripcion::getEliminado()
+bool Inscripcion::getEliminado()const
 {
     return _eliminado;
 }

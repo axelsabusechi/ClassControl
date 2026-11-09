@@ -9,19 +9,19 @@ public:
     Nota(int idNota,
          int legajo,
          Periodo periodo,
-         Fecha fechaCarga);
+         const Fecha &fechaCarga);
 
     void setIdNota(int idNota);
     void setLegajo(int legajo);
     void setPeriodo(Periodo periodo);
-    void setFechaCarga(Fecha fechaCarga);
+    void setFechaCarga(const Fecha &fechaCarga);
     void setEliminado(bool eliminado);
 
-    int getIdNota();
-    int getLegajo();
-    Periodo getPeriodo();
-    Fecha getFechaCarga();
-    bool getEliminado();
+    int getIdNota()const;
+    int getLegajo()const;
+    Periodo getPeriodo()const;
+    Fecha getFechaCarga()const;
+    bool getEliminado()const;
 
 private:
     int _idNota;

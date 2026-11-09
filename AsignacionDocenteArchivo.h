@@ -6,7 +6,7 @@
 class AsignacionDocenteArchivo
 {
 public:
-    AsignacionDocenteArchivo(std::string fileName="AsignacionDocente.dat");
+    AsignacionDocenteArchivo(std::string fileName="AsignacionesDocentes.dat");
     ArchivoError guardar(AsignacionDocente reg);
     ArchivoError guardar(int index, AsignacionDocente reg);
     ArchivoError leerTodos(AsignacionDocente reg[], int cant);

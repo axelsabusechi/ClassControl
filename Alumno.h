@@ -8,25 +8,25 @@ class Alumno:public Persona
 public:
     Alumno();
     Alumno(//int id,
-            std::string nombre,
-            std::string apellido,
-            std::string dni,
+            const std::string &nombre,
+            const std::string &apellido,
+            const std::string &dni,
             int legajo,
-            Fecha fechaNacimiento,
-            std::string email,
-            std::string adaptacion);
+            const Fecha &fechaNacimiento,
+            const std::string &email,
+            const std::string &adaptacion);
 
     void setLegajo(int legajo);
-    void setFechaNacimiento(Fecha fechaNacimiento);
-    void setEmail(std::string email);
-    void setAdaptacion(std::string adaptacion);
+    void setFechaNacimiento(const Fecha &fechaNacimiento);
+    void setEmail(const std::string &email);
+    void setAdaptacion(const std::string &adaptacion);
     void setEliminado(bool eliminado);
 
-    int getLegajo();
-    Fecha getFechaNacimiento();
-    std::string getEmail();
-    std::string getAdaptacion();
-    bool getEliminado();
+    int getLegajo()const;
+    Fecha getFechaNacimiento()const;
+    std::string getEmail()const;
+    std::string getAdaptacion()const;
+    bool getEliminado()const;
 
 private:
     int _legajo;

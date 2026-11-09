@@ -3,7 +3,7 @@
 
 Persona::Persona()
     //: //_id(0),
-      //_eliminado(true)
+      //_eliminado(false)
 {
     strcpy(_nombre,"");
     strcpy(_apellido,"");
@@ -11,9 +11,9 @@ Persona::Persona()
 }
 
 Persona::Persona(//int id,
-    std::string nombre,
-    std::string apellido,
-    std::string dni)
+    const std::string &nombre,
+    const std::string &apellido,
+    const std::string &dni)
 {
     //setID(id);
     setNombre(nombre);
@@ -27,7 +27,7 @@ void Persona::setID(int id)
     _id=id;
 }*/
 
-void Persona::setNombre(std::string nombre)
+void Persona::setNombre(const std::string &nombre)
 {
     if(nombre.size() <= 49)
     {
@@ -39,7 +39,7 @@ void Persona::setNombre(std::string nombre)
     }
 }
 
-void Persona::setApellido(std::string apellido)
+void Persona::setApellido(const std::string &apellido)
 {
     if(apellido.size() <= 49)
     {
@@ -51,7 +51,7 @@ void Persona::setApellido(std::string apellido)
     }
 }
 
-void Persona::setDni(std::string dni)
+void Persona::setDni(const std::string &dni)
 {
     if(dni.size() <= 49)
     {
@@ -73,17 +73,17 @@ int Persona::getID()
     return _id;
 }*/
 
-std::string Persona::getNombre()
+std::string Persona::getNombre()const
 {
     return std::string(_nombre);
 }
 
-std::string Persona::getApellido()
+std::string Persona::getApellido()const
 {
     return std::string(_apellido);
 }
 
-std::string Persona::getDni()
+std::string Persona::getDni()const
 {
     return std::string(_dni);
 }

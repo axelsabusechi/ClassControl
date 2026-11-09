@@ -5,19 +5,18 @@ class Docente:public Persona
 {
 public:
     Docente();
-    Docente(std::string nombre,
-            std::string apellido,
-            std::string dni,
+    Docente(const std::string &nombre,
+            const std::string &apellido,
+            const std::string &dni,
             int idDocente);
 
     void setIdDocente(int idDocente);
     void setEliminado(bool eliminado);
 
-    int getIdDocente();
-    bool getEliminado();
+    int getIdDocente()const;
+    bool getEliminado()const;
 
 private:
     int _idDocente;
     bool _eliminado;
-
 };
