@@ -1,3 +1,4 @@
+#include <ctime>
 #include "Fecha.h"
 
 Fecha::Fecha()
@@ -48,9 +49,26 @@ int Fecha::getAnio()const
 
 std::string Fecha::toString()const
 {
+    if(_dia == 0 && _mes == 0 && _anio == 0)
+    {
+        return "Sin fecha";
+    }
+
     return std::to_string(_dia) + "/" +
            std::to_string(_mes) + "/" +
            std::to_string(_anio);
 }
+
+void Fecha::cargarFechaActual()
+{
+    time_t ahora = time(nullptr);
+
+    tm *info = localtime(&ahora);
+
+    _dia = info->tm_mday;
+    _mes = info->tm_mon + 1;
+    _anio = info->tm_year + 1900;
+}
+
 
 

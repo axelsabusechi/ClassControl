@@ -6,11 +6,11 @@ class AsignacionDocente
 public:
     AsignacionDocente();
     AsignacionDocente(int idAsignacion,
-                int idDocente,
-                int idCurso,
-                const Fecha &fechaAlta,
-                const Fecha &fechaBaja,
-                bool activo);
+                      int idDocente,
+                      int idCurso,
+                      const Fecha &fechaAlta,
+                      const Fecha &fechaBaja,
+                      bool activo);
 
     void setIdAsignacion(int idAsignacion);
     void setIdDocente(int idDocente);

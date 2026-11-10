@@ -18,6 +18,7 @@ public:
     int getMes()const;
     int getAnio()const;
 
+    void cargarFechaActual();
     std::string toString()const;
 
 private:

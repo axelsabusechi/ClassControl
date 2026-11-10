@@ -6,17 +6,20 @@
 class DocenteArchivo
 {
 public:
-    DocenteArchivo(std::string fileName="Docentes.dat");
-    ArchivoError guardar(Docente reg);
-    ArchivoError guardar(int index, Docente reg);
+    DocenteArchivo(const std::string &fileName = "Docentes.dat");
+    ArchivoError guardar(const Docente &reg);
+    ArchivoError guardar(int index, const Docente &reg);
     ArchivoError leerTodos(Docente reg[], int cant);
     Docente leer(int index);
     int getCantReg();
     int getNewID();
     int buscarByID(int id);
-    std::string getLastError();
+    bool existeDocente(int id);
+    int getCantRegActivos();
+    bool existeDni(const std::string &dni, int iDIgnorar = -1);
+    std::string getLastError()const;
+
 private:
-    Docente _docente;
     std::string _fileName;
     std::string _errorMessage;
 };

@@ -23,4 +23,4 @@ std::string pedirDni(const std::string &mensaje);
 std::string pedirEmail(const std::string &mensaje);
 std::string pedirAdaptacion(const std::string &mensaje);
 Fecha pedirFecha(const std::string &mensaje);
-
+bool mostrarErrorArchivo(const std::string &mensaje);

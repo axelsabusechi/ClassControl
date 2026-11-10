@@ -7,6 +7,222 @@ AlumnoManager::AlumnoManager()
 {
 }
 
+void AlumnoManager::registrarAlumno()
+{
+    if(_alumnoArchivo.guardar(crearAlumno()) == ArchivoError::OK)
+    {
+        std::cout << "Alumno registrado..." << std::endl;
+    }
+    else
+    {
+        mostrarErrorArchivo(_alumnoArchivo.getLastError());
+    }
+    system("pause");
+    rlutil::cls();
+}
+
+void AlumnoManager::modificarAlumno()
+{
+    rlutil::cls();
+    int index, legajo,cantReg;
+    Alumno reg;
+
+    cantReg = _alumnoArchivo.getCantRegActivos();
+
+    if(!cantReg)
+    {
+        if(mostrarErrorArchivo(_alumnoArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+
+        std::cout << "No hay Alumnos registrados para modificar..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    mostrarAlumnosActivos();
+
+    legajo = pedirEntero("Legajo del alumno a modificar: ");
+
+    index = _alumnoArchivo.buscarByLegajo(legajo);
+
+    if(index == -1)
+    {
+        if(mostrarErrorArchivo(_alumnoArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+
+        std::cout << "El Alumno con legajo " << legajo << " no se encuentra en el sistema..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    reg = _alumnoArchivo.leer(index);
+
+    if(reg.getLegajo() == -1)
+    {
+        mostrarErrorArchivo(_alumnoArchivo.getLastError());
+        system("pause");
+        return;
+    }
+
+    if(reg.getEliminado())
+    {
+        std::cout << "El alumno esta dado de baja..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    mostrarAlumno(reg);
+
+    if(!menuModificarAlumno(reg))
+    {
+        std::cout << "Operacion cancelada..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    if(_alumnoArchivo.guardar(index,reg) == ArchivoError::OK)
+    {
+        std::cout << "El alumno se modifico exitosamente!" << std::endl;
+    }
+    else
+    {
+        mostrarErrorArchivo(_alumnoArchivo.getLastError());
+    }
+
+    system("pause");
+}
+
+void AlumnoManager::eliminarAlumno()
+{
+    rlutil::cls();
+    int index, legajo, cantReg;
+    Alumno reg;
+
+    cantReg = _alumnoArchivo.getCantRegActivos();
+
+    if(cantReg == 0)
+    {
+        if(mostrarErrorArchivo(_alumnoArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+
+        std::cout << "No hay Alumnos registrados para dar de baja..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    mostrarAlumnosActivos();
+
+    legajo = pedirEntero("Legajo del alumno a dar de baja: ");
+
+    index = _alumnoArchivo.buscarByLegajo(legajo);
+
+    if(index == -1)
+    {
+        if(mostrarErrorArchivo(_alumnoArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+        std::cout << "El Alumno con legajo " << legajo << " no se encuentra en el sistema..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    reg = _alumnoArchivo.leer(index);
+
+    if(reg.getLegajo() == -1)
+    {
+        mostrarErrorArchivo(_alumnoArchivo.getLastError());
+        system("pause");
+        return;
+    }
+
+    if(reg.getEliminado())
+    {
+        std::cout << "El alumno esta dado de baja." << std::endl;
+        system("pause");
+        return;
+    }
+
+    mostrarAlumno(reg);
+    bool eliminar = false;
+
+    do
+    {
+        int opcion = pedirEntero("Ingrese 1 para dar de baja, 0 para cancelar: ");
+
+        if(opcion == 0 || opcion == 1)
+        {
+            eliminar = opcion;
+            break;
+        }
+
+        std::cout << "ERROR. Ingrese 0 o 1." << std::endl;
+    }
+    while(true);
+
+
+    if(eliminar)
+    {
+        reg.setEliminado(true);
+
+        if(_alumnoArchivo.guardar(index,reg) == ArchivoError::OK)
+        {
+            std::cout << "El alumno con legajo " << legajo << " se dio de baja con exito!" << std::endl;
+        }
+        else
+        {
+            mostrarErrorArchivo(_alumnoArchivo.getLastError());
+        }
+    }
+    else
+    {
+        std::cout << "Operacion cancelada..." << std::endl;
+    }
+
+    system("pause");
+}
+
+void AlumnoManager::listarAlumno()
+{
+    rlutil::cls();
+    int cantReg;
+
+    std::cout << "-------------LISTADO DE ALUMNOS--------------" << std::endl;
+    cantReg = _alumnoArchivo.getCantReg();
+
+    if(!cantReg)
+    {
+        std::cout << "No hay Alumnos registrados..." << std::endl;
+    }
+    else
+    {
+        Alumno *vAlumnos = new Alumno[cantReg];
+        _alumnoArchivo.leerTodos(vAlumnos,cantReg);
+
+        for(int i=0; i<cantReg; i++)
+        {
+            if(!vAlumnos[i].getEliminado())
+            {
+                mostrarAlumno(vAlumnos[i]);
+                std::cout << "--------------------------------------------" << std::endl;
+            }
+        }
+        delete []vAlumnos;
+    }
+    system("pause");
+    rlutil::cls();
+}
+
 Alumno AlumnoManager::crearAlumno()
 {
     int legajo;
@@ -34,185 +250,6 @@ Alumno AlumnoManager::crearAlumno()
                   fechaNacimiento,
                   email,
                   adaptacion);
-}
-
-void AlumnoManager::registrarAlumno()
-{
-    if(_alumnoArchivo.guardar(crearAlumno()) == ArchivoError::OK)
-    {
-        std::cout << "Alumno registrado..." << std::endl;
-    }
-    else
-    {
-        std::cout << "Error: " << _alumnoArchivo.getLastError() << std::endl;
-    }
-    system("pause");
-    rlutil::cls();
-}
-
-void AlumnoManager::listarAlumno()
-{
-    rlutil::cls();
-    int cantReg;
-
-    std::cout << "-------------Listado de Alumnos--------------" << std::endl;
-    cantReg = _alumnoArchivo.getCantReg();
-
-    if(!cantReg)
-    {
-        std::cout << "No hay Alumnos registrados..." << std::endl;
-    }
-    else
-    {
-        Alumno *vAlumnos = new Alumno[cantReg];
-        _alumnoArchivo.leerTodos(vAlumnos,cantReg);
-
-        for(int i=0; i<cantReg; i++)
-        {
-            if(!vAlumnos[i].getEliminado())
-            {
-                mostrarAlumno(vAlumnos[i]);
-                std::cout << "--------------------------------------------" << std::endl;
-            }
-        }
-        delete []vAlumnos;
-    }
-    system("pause");
-    rlutil::cls();
-}
-
-void AlumnoManager::modificarAlumno()
-{
-    rlutil::cls();
-    int index, legajo,cantReg;
-    Alumno reg;
-
-    cantReg = _alumnoArchivo.getCantReg();
-
-    if(!cantReg)
-    {
-        std::cout << "No hay Alumnos registrados para modificar..." << std::endl;
-        system("pause");
-        return;
-    }
-
-    legajo = pedirEntero("Legajo del alumno a modificar: ");
-
-    index = _alumnoArchivo.buscarByLegajo(legajo);
-
-    if(index == -1)
-    {
-        std::cout << "El Alumno con legajo " << legajo << " no se encuentra en el sistema..." << std::endl;
-        system("pause");
-        return;
-    }
-
-    reg = _alumnoArchivo.leer(index);
-
-    if(reg.getEliminado())
-    {
-        std::cout << "El alumno esta dado de baja." << std::endl;
-        system("pause");
-        return;
-    }
-
-    mostrarAlumno(reg);
-
-    if(!menuModificarAlumno(reg))
-    {
-        std::cout << "Operacion cancelada..." << std::endl;
-        system("pause");
-        return;
-    }
-
-    if(_alumnoArchivo.guardar(index,reg) == ArchivoError::OK)
-    {
-        std::cout << "Se modifico exitosamente!" << std::endl;
-    }
-    else
-    {
-        std::cout << "Ocurrio un error al guardar el Alumno: " << _alumnoArchivo.getLastError() << std::endl;
-    }
-
-    system("pause");
-}
-
-void AlumnoManager::eliminarAlumno()
-{
-    rlutil::cls();
-    int index, legajo, cantReg;
-    Alumno reg;
-
-    cantReg = _alumnoArchivo.getCantReg();
-
-    if(!cantReg)
-    {
-        std::cout << "No hay Alumnos registrados para dar de baja..." << std::endl;
-        system("pause");
-        return;
-    }
-
-    legajo = pedirEntero("Legajo del alumno a dar de baja: ");
-
-    index = _alumnoArchivo.buscarByLegajo(legajo);
-
-    if(index == -1)
-    {
-        std::cout << "El Alumno con ID " << legajo << " no se encuentra en el sistema..." << std::endl;
-        system("pause");
-        return;
-    }
-
-    reg = _alumnoArchivo.leer(index);
-
-    if(reg.getEliminado())
-    {
-        std::cout << "El alumno esta dado de baja." << std::endl;
-        system("pause");
-        return;
-    }
-
-    if(reg.getLegajo() == -1)
-    {
-        std::cout << "Error Alumno no encontrado por ID";
-        system("pause");
-        return;
-    }
-
-    mostrarAlumno(reg);
-
-    bool eliminar = false;
-
-    do
-    {
-        int opcion = pedirEntero("Ingrese 1 para dar de baja, 0 para cancelar: ");
-
-        if(opcion == 0 || opcion == 1)
-        {
-            eliminar = opcion;
-            break;
-        }
-
-        std::cout << "ERROR. Ingrese 0 o 1." << std::endl;
-    }
-    while(true);
-
-
-    if(eliminar)
-    {
-        reg.setEliminado(true);
-
-        if(_alumnoArchivo.guardar(index,reg) == ArchivoError::OK)
-        {
-            std::cout << "Alumno con legajo " << legajo << " se dio de baja con exito!" << std::endl;
-        }
-    }
-    else
-    {
-        std::cout << "Operacion cancelada..." << std::endl;
-    }
-
-    system("pause");
 }
 
 void AlumnoManager::cargarAlumno(std::string &nombre,
@@ -373,4 +410,36 @@ void AlumnoManager::modificarTodos(Alumno &reg)
     modificarEmail(reg);
     modificarAdaptacion(reg);
 }
+
+void AlumnoManager::mostrarAlumnosActivos()
+{
+    Alumno reg;
+    int cantReg;
+
+    cantReg = _alumnoArchivo.getCantReg();
+
+    std::cout << "----- ALUMNOS ACTIVOS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
+    {
+        reg = _alumnoArchivo.leer(i);
+
+        if(reg.getLegajo() == -1)
+        {
+            mostrarErrorArchivo(_alumnoArchivo.getLastError());
+            system("pause");
+            return;
+        }
+
+        if(!reg.getEliminado())
+        {
+            mostrarAlumno(reg);
+            std::cout << "----------------------------------" << std::endl;
+        }
+    }
+}
+
+
+
+
 

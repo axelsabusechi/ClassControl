@@ -372,6 +372,20 @@ Fecha pedirFecha(const std::string &mensaje)
     return Fecha(dia,mes,anio);
 }
 
+bool mostrarErrorArchivo(const std::string &mensaje)
+{
+    if(mensaje.empty())
+    {
+        return false;
+    }
+
+    rlutil::setColor(rlutil::RED);
+    std::cout << "ERROR: " << mensaje << std::endl;
+    rlutil::setColor(rlutil::WHITE);
+
+    return false;
+}
+
 
 
 

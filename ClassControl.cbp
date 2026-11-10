@@ -47,6 +47,8 @@
 		<Unit filename="AsignacionDocente.h" />
 		<Unit filename="AsignacionDocenteArchivo.cpp" />
 		<Unit filename="AsignacionDocenteArchivo.h" />
+		<Unit filename="AsignacionDocenteManager.h" />
+		<Unit filename="AsignacionDocenteMangaer.cpp" />
 		<Unit filename="AsignacionDocenteMenu.cpp" />
 		<Unit filename="AsignacionDocenteMenu.h" />
 		<Unit filename="CaseDadaArchivo.cpp" />
@@ -70,6 +72,8 @@
 		<Unit filename="Docente.h" />
 		<Unit filename="DocenteArchivo.cpp" />
 		<Unit filename="DocenteArchivo.h" />
+		<Unit filename="DocenteManager.cpp" />
+		<Unit filename="DocenteManager.h" />
 		<Unit filename="DocenteMenu.cpp" />
 		<Unit filename="DocenteMenu.h" />
 		<Unit filename="Fecha.cpp" />

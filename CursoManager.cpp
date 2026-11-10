@@ -13,7 +13,7 @@ Curso CursoManager::crearCurso()
     Grado grado;
     Division division;
 
-    idCurso=_cursoArchivo.getNewID();
+    idCurso = _cursoArchivo.getNewID();
 
     rlutil::cls();
     std::cout << "-----CARGAR CURSO-------" << std::endl;
@@ -25,13 +25,13 @@ Curso CursoManager::crearCurso()
 
 void CursoManager::registrarCurso()
 {
-    if(_cursoArchivo.guardar(crearCurso())==ArchivoError::OK)
+    if(_cursoArchivo.guardar(crearCurso()) == ArchivoError::OK)
     {
         std::cout << "Curso registrado..." << std::endl;
     }
     else
     {
-        std::cout << "Error: " << _cursoArchivo.getLastError() << std::endl;
+        mostrarErrorArchivo(_cursoArchivo.getLastError());
     }
     system("pause");
     rlutil::cls();
@@ -43,7 +43,7 @@ void CursoManager::listarCursos()
     int cantReg;
 
     std::cout << "-------------Listado de Cursos--------------" << std::endl;
-    cantReg=_cursoArchivo.getCantReg();
+    cantReg = _cursoArchivo.getCantReg();
 
     if(!cantReg)
     {
@@ -51,12 +51,12 @@ void CursoManager::listarCursos()
     }
     else
     {
-        Curso *vCursos=new Curso[cantReg];
+        Curso *vCursos = new Curso[cantReg];
         _cursoArchivo.leerTodos(vCursos,cantReg);
 
         for(int i=0; i<cantReg; i++)
         {
-            if(vCursos[i].getEliminado())
+            if(!vCursos[i].getEliminado())
             {
                 std::cout << "Id: "<< vCursos[i].getIdCurso() << std::endl;
                 std::cout << "Grado: " << gradoToString(vCursos[i].getGrado()) << std::endl;
@@ -80,15 +80,15 @@ void CursoManager::modificarCurso()
     std::cout << "ID del Curso a modificar: ";
     std::cin >> id;
 
-    index=_cursoArchivo.buscarByID(id);
+    index = _cursoArchivo.buscarByID(id);
 
-    if(index==-1)
+    if(index == -1)
     {
         std::cout << "El curso con ID " << id << " no se encuentra en el sistema..." << std::endl;
         return;
     }
 
-    reg=_cursoArchivo.leer(index);
+    reg = _cursoArchivo.leer(index);
 
     mostrarCurso(reg);
 
@@ -99,13 +99,13 @@ void CursoManager::modificarCurso()
     std::cout << "Ingrese nuevamente los campos " << std::endl;
     cargarCurso(gr, div);
 
-    grado=intToGrado(gr);
-    division=intToDivision(div);
+    grado = intToGrado(gr);
+    division = intToDivision(div);
 
     reg.setGrado(grado);
     reg.setDivision(division);
 
-    if(_cursoArchivo.guardar(index, reg)==ArchivoError::OK)
+    if(_cursoArchivo.guardar(index, reg )== ArchivoError::OK)
     {
         std::cout << "Se modifico exitosamente!" << std::endl;
     }
@@ -126,17 +126,17 @@ void CursoManager::eliminarCurso()
     std::cout << "ID del Curso a eliminar: ";
     std::cin >> id;
 
-    index=_cursoArchivo.buscarByID(id);
+    index = _cursoArchivo.buscarByID(id);
 
-    if(index==-1)
+    if(index == -1)
     {
         std::cout << "El curso con ID " << id << " no se encuentra en el sistema..." << std::endl;
         return;
     }
 
-    reg=_cursoArchivo.leer(index);
+    reg = _cursoArchivo.leer(index);
 
-    if(reg.getIdCurso()==-1)
+    if(reg.getIdCurso() == -1)
     {
         std::cout << "Error curso no encontrado por ID";
         return;
@@ -152,7 +152,7 @@ void CursoManager::eliminarCurso()
     if(eliminar)
     {
         reg.setEliminado(false);
-        if(_cursoArchivo.guardar(index,reg)==ArchivoError::OK)
+        if(_cursoArchivo.guardar(index,reg) == ArchivoError::OK)
         {
             std::cout << "Curso con ID " << id << " eliminado con exito!" << std::endl;
         }
@@ -178,7 +178,7 @@ void CursoManager::cargarCurso(int &gr, int &div)
     std::cin >> div;
 }
 
-void CursoManager::mostrarCurso(Curso &reg)
+void CursoManager::mostrarCurso(const Curso &reg)
 {
     std::cout << "ID: " << reg.getIdCurso() << std::endl;
     std::cout << "Grado: " << gradoToString(reg.getGrado()) << std::endl;

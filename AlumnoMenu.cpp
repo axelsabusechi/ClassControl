@@ -13,18 +13,18 @@ AlumnoMenu::AlumnoMenu()
 
 void AlumnoMenu::runAlumno()
 {
-    bool salir=false;
+    bool salir = false;
 
     do
     {
-        int opcion=runMenu();
+        int opcion = runMenu();
         switch(opcion)
         {
         case 0: _alumnoManager.registrarAlumno(); break;
         case 1: _alumnoManager.modificarAlumno(); break;
         case 2: _alumnoManager.eliminarAlumno(); break;
         case 3: _alumnoManager.listarAlumno(); break;
-        case 4: salir=true;
+        case 4: salir = true;
         }
     }
     while(!salir);

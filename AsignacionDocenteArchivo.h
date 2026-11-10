@@ -6,18 +6,19 @@
 class AsignacionDocenteArchivo
 {
 public:
-    AsignacionDocenteArchivo(std::string fileName="AsignacionesDocentes.dat");
-    ArchivoError guardar(AsignacionDocente reg);
-    ArchivoError guardar(int index, AsignacionDocente reg);
+    AsignacionDocenteArchivo(const std::string &fileName = "AsignacionesDocentes.dat");
+    ArchivoError guardar(const AsignacionDocente &reg);
+    ArchivoError guardar(int index, const AsignacionDocente &reg);
     ArchivoError leerTodos(AsignacionDocente reg[], int cant);
     AsignacionDocente leer(int index);
     int getCantReg();
     int getNewID();
     int buscarByID(int id);
-    std::string getLastError();
+    bool existeAsignacion(int idDocente, int idCurso);
+    int getCantRegActivos();
+    std::string getLastError()const;
 
 private:
-    AsignacionDocente _asignacionDocente;
     std::string _fileName;
     std::string _errorMessage;
 };

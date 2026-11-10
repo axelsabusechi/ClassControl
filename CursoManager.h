@@ -17,7 +17,7 @@ public:
 private:
     Curso crearCurso();
     void cargarCurso(int &gr, int &div);
-    void mostrarCurso(Curso &reg);
+    void mostrarCurso(const Curso &reg);
 
     CursoArchivo _cursoArchivo;
 };

@@ -115,7 +115,7 @@ Alumno AlumnoArchivo::leer(int index)
     return reg;
 }
 
-int AlumnoArchivo::getCantReg()const
+int AlumnoArchivo::getCantReg()
 {
     FILE *pFile;
     int cant;
@@ -124,6 +124,7 @@ int AlumnoArchivo::getCantReg()const
 
     if(pFile == nullptr)
     {
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
         return 0;
     }
 
@@ -133,7 +134,7 @@ int AlumnoArchivo::getCantReg()const
     return cant;
 }
 
-int AlumnoArchivo::getNewLegajo()const
+int AlumnoArchivo::getNewLegajo()
 {
     return getCantReg()+1;
 }
@@ -148,6 +149,7 @@ int AlumnoArchivo::buscarByLegajo(int legajo)
 
     if(pFile == nullptr)
     {
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
         return -1;
     }
 
@@ -166,11 +168,6 @@ int AlumnoArchivo::buscarByLegajo(int legajo)
     return -1;
 }
 
-std::string AlumnoArchivo::getLastError()const
-{
-    return _errorMessage;
-}
-
 bool AlumnoArchivo::existeDni(const std::string &dni, int legajoIgnorar)
 {
     FILE *pFile;
@@ -186,7 +183,9 @@ bool AlumnoArchivo::existeDni(const std::string &dni, int legajoIgnorar)
 
     while(fread(&reg,sizeof(Alumno),1,pFile))
     {
-        if(!reg.getEliminado() && reg.getDni() == dni && reg.getLegajo() != legajoIgnorar)
+        if(!reg.getEliminado() &&
+                reg.getDni() == dni &&
+                reg.getLegajo() != legajoIgnorar)
         {
             fclose(pFile);
             return true;
@@ -197,5 +196,39 @@ bool AlumnoArchivo::existeDni(const std::string &dni, int legajoIgnorar)
     _errorMessage = "";
     return false;
 }
+
+int AlumnoArchivo::getCantRegActivos()
+{
+    FILE *pFile;
+    Alumno reg;
+    int cantidad = 0;
+
+    pFile = fopen(_fileName.c_str(), "rb");
+
+    if(pFile == nullptr)
+    {
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
+        return 0;
+    }
+
+    while(fread(&reg, sizeof(Alumno), 1, pFile))
+    {
+        if(!reg.getEliminado())
+        {
+            cantidad++;
+        }
+    }
+
+    fclose(pFile);
+    _errorMessage = "";
+    return cantidad;
+}
+
+std::string AlumnoArchivo::getLastError()const
+{
+    return _errorMessage;
+}
+
+
 
 

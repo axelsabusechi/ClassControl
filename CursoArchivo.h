@@ -6,18 +6,19 @@
 class CursoArchivo
 {
 public:
-    CursoArchivo(std::string fileName="Cursos.dat");
-    ArchivoError guardar(Curso reg);
-    ArchivoError guardar(int index, Curso reg);
+    CursoArchivo(const std::string &fileName = "Cursos.dat");
+    ArchivoError guardar(const Curso &reg);
+    ArchivoError guardar(int index, const Curso &reg);
     ArchivoError leerTodos(Curso reg[], int cant);
     Curso leer(int index);
     int getCantReg();
     int getNewID();
     int buscarByID(int id);
+    bool existeCurso(int id);
+    int getCantRegActivos();
     std::string getLastError();
 
 private:
-    Curso _curso;
     std::string _fileName;
     std::string _errorMessage;
 };
