@@ -278,23 +278,32 @@ void AlumnoManager::mostrarAlumno(const Alumno &reg)
     std::cout << "Adaptacion " << reg.getAdaptacion() << std::endl;
 }
 
-std::string AlumnoManager::pedirDniUnico(const std::string &mensaje, int legajoIgnorar)
+void AlumnoManager::mostrarAlumnosActivos()
 {
-    std::string dni;
-    bool existe = false;
+    Alumno reg;
+    int cantReg;
 
-    do
+    cantReg = _alumnoArchivo.getCantReg();
+
+    std::cout << "----- ALUMNOS ACTIVOS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
     {
-        dni = pedirDni(mensaje);
-        existe = _alumnoArchivo.existeDni(dni,legajoIgnorar);
+        reg = _alumnoArchivo.leer(i);
 
-        if(existe)
+        if(reg.getLegajo() == -1)
         {
-            std::cout << "ERROR: Ya existe un alumno con ese DNI..." << std::endl;
+            mostrarErrorArchivo(_alumnoArchivo.getLastError());
+            system("pause");
+            return;
+        }
+
+        if(!reg.getEliminado())
+        {
+            mostrarAlumno(reg);
+            std::cout << "----------------------------------" << std::endl;
         }
     }
-    while(existe);
-    return dni;
 }
 
 bool AlumnoManager::menuModificarAlumno(Alumno &reg)
@@ -411,33 +420,26 @@ void AlumnoManager::modificarTodos(Alumno &reg)
     modificarAdaptacion(reg);
 }
 
-void AlumnoManager::mostrarAlumnosActivos()
+std::string AlumnoManager::pedirDniUnico(const std::string &mensaje, int legajoIgnorar)
 {
-    Alumno reg;
-    int cantReg;
+    std::string dni;
+    bool existe = false;
 
-    cantReg = _alumnoArchivo.getCantReg();
-
-    std::cout << "----- ALUMNOS ACTIVOS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
+    do
     {
-        reg = _alumnoArchivo.leer(i);
+        dni = pedirDni(mensaje);
+        existe = _alumnoArchivo.existeDni(dni,legajoIgnorar);
 
-        if(reg.getLegajo() == -1)
+        if(existe)
         {
-            mostrarErrorArchivo(_alumnoArchivo.getLastError());
-            system("pause");
-            return;
-        }
-
-        if(!reg.getEliminado())
-        {
-            mostrarAlumno(reg);
-            std::cout << "----------------------------------" << std::endl;
+            std::cout << "ERROR: Ya existe un alumno con ese DNI..." << std::endl;
         }
     }
+    while(existe);
+    return dni;
 }
+
+
 
 
 

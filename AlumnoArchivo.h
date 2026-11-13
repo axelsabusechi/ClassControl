@@ -15,6 +15,7 @@ public:
     int getNewLegajo();
     int buscarByLegajo(int legajo);
     int getCantRegActivos();
+    bool existeAlumno(int legajo);
     bool existeDni(const std::string &dni, int legajoIgnorar = -1);
     std::string getLastError()const;
 

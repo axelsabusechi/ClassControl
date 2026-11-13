@@ -23,7 +23,6 @@ private:
                       std::string &adaptacion);
     void mostrarAlumno(const Alumno &reg);
     void mostrarAlumnosActivos();
-    std::string pedirDniUnico(const std::string &mensaje, int legajoIgnorar=-1);
     bool menuModificarAlumno(Alumno &reg);
     void modificarNombre(Alumno &reg);
     void modificarApellido(Alumno &reg);
@@ -32,6 +31,7 @@ private:
     void modificarEmail(Alumno &reg);
     void modificarAdaptacion(Alumno &reg);
     void modificarTodos(Alumno &reg);
+    std::string pedirDniUnico(const std::string &mensaje, int legajoIgnorar = -1);
 
     AlumnoArchivo _alumnoArchivo;
 };

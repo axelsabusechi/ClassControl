@@ -2,14 +2,19 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="rlutil.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ClaseDada.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="993" topLine="0" />
+			<Cursor1 position="1637" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="CaseDadaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="utils.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3534" topLine="0" />
+			<Cursor1 position="2575" topLine="167" />
+		</Cursor>
+	</File>
+	<File name="ListadosMenu.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="317" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Fecha.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
@@ -17,64 +22,54 @@
 			<Cursor1 position="331" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="CursoManager.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="AsignacionDocenteArchivo.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="377" topLine="0" />
+			<Cursor1 position="442" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="AsignacionDocenteMenu.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="InscripcionArchivo.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="822" topLine="0" />
+			<Cursor1 position="101" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="CursoManager.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="rlutil.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="740" topLine="0" />
+			<Cursor1 position="993" topLine="4" />
 		</Cursor>
 	</File>
-	<File name="UnidadDidacticaMenu.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="Alumno.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="412" topLine="0" />
+			<Cursor1 position="565" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="CursoArchivo.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="NotaMenu.cpp" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="422" topLine="0" />
+			<Cursor1 position="301" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="CursoMenu.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="CursoArchivo.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="119" topLine="0" />
+			<Cursor1 position="545" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="CursoArchivo.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="Nota.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3768" topLine="175" />
+			<Cursor1 position="548" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="InformesMenu.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="TemaMenu.cpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="212" topLine="0" />
+			<Cursor1 position="303" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Periodo.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="ConsultasMenu.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="92" topLine="0" />
+			<Cursor1 position="416" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Curso.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="Docente.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="447" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="NotaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3407" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="UnidadDidactica.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1431" topLine="0" />
+			<Cursor1 position="483" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="AsigancionDocente.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
@@ -82,7 +77,282 @@
 			<Cursor1 position="1928" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="InscripcionMenu.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="829" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Alumno.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1360" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="Tema.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="514" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="AsignacionDocenteMenu.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="264" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Fecha.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="87" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Persona.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="385" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="AsignacionDocenteMangaer.cpp" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="444" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Menu.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="503" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="AsignacionDocente.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="429" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="DocenteManager.cpp" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7353" topLine="357" />
+		</Cursor>
+	</File>
+	<File name="ClaseDadaMenu.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="158" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="InformesMenu.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="212" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="InscripcionManager.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7075" topLine="345" />
+		</Cursor>
+	</File>
+	<File name="CursoManager.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6214" topLine="242" />
+		</Cursor>
+	</File>
+	<File name="DocenteArchivo.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4291" topLine="183" />
+		</Cursor>
+	</File>
+	<File name="AppMenu.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="509" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CursoArchivo.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4267" topLine="191" />
+		</Cursor>
+	</File>
+	<File name="UnidadDidacticaMenu.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="412" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Inscripcion.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="498" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="AlumnoMenu.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="827" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ClaseDadaMenu.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="19" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="UnidadDidacticaMenu.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="248" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="DocenteManager.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="501" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="AlumnoArchivo.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="557" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Curso.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="447" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="UnidadDidactica.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="585" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="UnidadDidacticaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="85" topLine="141" />
+		</Cursor>
+	</File>
+	<File name="Inscripcion.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1384" topLine="63" />
+		</Cursor>
+	</File>
+	<File name="UnidadDidactica.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1431" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Periodo.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="92" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CaseDadaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3534" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="utils.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1061" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="NotaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3407" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Curso.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="319" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="InformesMenu.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="489" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="NotaArchivo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="460" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="AsignacionDocenteMenu.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="822" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Nota.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1057" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="TemaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2847" topLine="118" />
+		</Cursor>
+	</File>
+	<File name="CursoMenu.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="484" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Docente.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="441" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Tema.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="108" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ClaseDada.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="802" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Menu.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="420" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Persona.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="218" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="AsignacionDocenteManager.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="504" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Grado.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="74" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CursoMenu.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="119" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="InscripcionMenu.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="220" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="AppMenu.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1220" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CursoManager.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="423" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="DocenteMenu.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="801" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="AlumnoManager.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="561" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ClaseDadaArchivo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="31" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="DocenteArchivo.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="514" topLine="0" />
 		</Cursor>
@@ -92,134 +362,19 @@
 			<Cursor1 position="196" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="InformesMenu.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="DocenteMenu.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="489" topLine="0" />
+			<Cursor1 position="165" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Persona.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="AlumnoManager.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="385" topLine="0" />
+			<Cursor1 position="6194" topLine="235" />
 		</Cursor>
 	</File>
-	<File name="UnidadDidactica.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="AsignacionDocenteArchivo.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="585" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Curso.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="319" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Alumno.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1360" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="DocenteArchivo.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3810" topLine="158" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ClaseDadaMenu.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="158" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="AlumnoArchivo.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="598" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ListadosMenu.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="317" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Persona.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="218" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ClaseDada.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="802" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="AlumnoMenu.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="853" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="UnidadDidacticaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="85" topLine="141" />
-		</Cursor>
-	</File>
-	<File name="AlumnoManager.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="489" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Inscripcion.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="794" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Inscripcion.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1766" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="AppMenu.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1220" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Alumno.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="565" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Docente.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="441" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="AsignacionDocenteMangaer.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9631" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Fecha.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="87" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="utils.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6944" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ClaseDadaMenu.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="19" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Menu.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="420" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="AsignacionDocenteManager.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="193" topLine="0" />
+			<Cursor1 position="4815" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Division.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
@@ -227,144 +382,9 @@
 			<Cursor1 position="49" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="AsignacionDocenteMenu.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="AlumnoArchivo.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="264" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="InscripcionMenu.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="314" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Nota.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="548" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="utils.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1011" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="AppMenu.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="509" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="CursoMenu.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="484" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="NotaArchivo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="460" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="TemaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2847" topLine="118" />
-		</Cursor>
-	</File>
-	<File name="UnidadDidacticaMenu.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="248" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ClaseDada.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1637" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="DocenteMenu.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="167" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Tema.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="108" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="AsignacionDocente.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="429" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="DocenteMenu.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="303" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="NotaMenu.cpp" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="301" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ConsultasMenu.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="416" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Menu.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="503" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Nota.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1057" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ClaseDadaArchivo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="31" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="DocenteManager.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7115" topLine="278" />
-		</Cursor>
-	</File>
-	<File name="AsignacionDocenteArchivo.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="615" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Docente.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="483" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="TemaMenu.cpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="303" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="AlumnoManager.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="483" topLine="261" />
-		</Cursor>
-	</File>
-	<File name="DocenteArchivo.h" open="1" top="1" tabpos="10" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="559" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="AsignacionDocenteArchivo.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2684" topLine="82" />
-		</Cursor>
-	</File>
-	<File name="AlumnoArchivo.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4195" topLine="163" />
-		</Cursor>
-	</File>
-	<File name="Grado.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="74" topLine="0" />
+			<Cursor1 position="3718" topLine="149" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

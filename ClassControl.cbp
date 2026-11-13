@@ -83,6 +83,10 @@
 		<Unit filename="InformesMenu.h" />
 		<Unit filename="Inscripcion.cpp" />
 		<Unit filename="Inscripcion.h" />
+		<Unit filename="InscripcionArchivo.cpp" />
+		<Unit filename="InscripcionArchivo.h" />
+		<Unit filename="InscripcionManager.cpp" />
+		<Unit filename="InscripcionManager.h" />
 		<Unit filename="InscripcionMenu.cpp" />
 		<Unit filename="InscripcionMenu.h" />
 		<Unit filename="ListadosMenu.cpp" />

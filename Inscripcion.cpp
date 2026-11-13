@@ -67,7 +67,7 @@ int Inscripcion::getIdInscripcion()const
     return _idInscripcion;
 }
 
-int Inscripcion::getlegajo()const
+int Inscripcion::getLegajo()const
 {
     return _legajo;
 }

@@ -21,7 +21,7 @@ public:
     void setEliminado(bool eliminado);
 
     int getIdInscripcion()const;
-    int getlegajo()const;
+    int getLegajo()const;
     int getIdCurso()const;
     Fecha getFechaAlta()const;
     Fecha getFechaBaja()const;

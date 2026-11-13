@@ -168,6 +168,11 @@ int AlumnoArchivo::buscarByLegajo(int legajo)
     return -1;
 }
 
+bool AlumnoArchivo::existeAlumno(int legajo)
+{
+    return buscarByLegajo(legajo) != -1;
+}
+
 bool AlumnoArchivo::existeDni(const std::string &dni, int legajoIgnorar)
 {
     FILE *pFile;

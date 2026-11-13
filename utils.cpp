@@ -386,6 +386,62 @@ bool mostrarErrorArchivo(const std::string &mensaje)
     return false;
 }
 
+Grado pedirGrado()
+{
+    int opcion;
+    std::cout << std::endl;
+    std::cout << "----- GRADO -----" << std::endl;
+    std::cout << "1 - Primero" << std::endl;
+    std::cout << "2 - Segundo" << std::endl;
+    std::cout << "3 - Tercero" << std::endl;
+    std::cout << "4 - Cuarto" << std::endl;
+    std::cout << "5 - Quinto" << std::endl;
+    std::cout << "6 - Sexto" << std::endl;
+    std::cout << std::endl;
+
+    do
+    {
+
+        opcion = pedirEntero("Seleccion: ");
+
+        if(opcion < 1 || opcion > 6)
+        {
+            std::cout << "ERROR. Ingrese una opcion valida." << std::endl;
+        }
+
+    }
+    while(opcion < 1 || opcion > 6);
+
+    return intToGrado(opcion);
+
+}
+
+Division pedirDivision()
+{
+    int opcion;
+
+    std::cout << std::endl;
+    std::cout << "----- DIVISION -----" << std::endl;
+    std::cout << "1 - A" << std::endl;
+    std::cout << "2 - B" << std::endl;
+    std::cout << "3 - C" << std::endl;
+    std::cout << std::endl;
+
+    do
+    {
+        opcion = pedirEntero("Seleccion: ");
+
+        if(opcion < 1 || opcion > 3)
+        {
+            std::cout << "ERROR. Ingrese una opcion valida." << std::endl;
+        }
+
+    }
+    while(opcion < 1 || opcion > 3);
+
+    return intToDivision(opcion);
+}
+
 
 
 

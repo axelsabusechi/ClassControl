@@ -45,10 +45,10 @@
 
 1791968497 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\cursocodigo.h
 
-1794310676 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\cursoarchivo.cpp
+1794494324 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\cursoarchivo.cpp
 	"CursoArchivo.h"
 
-1794310666 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\cursoarchivo.h
+1794494324 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\cursoarchivo.h
 	<string>
 	"Curso.h"
 	"ArchivoError.h"
@@ -60,13 +60,13 @@
 	"Menu.h"
 	"CursoManager.h"
 
-1794315607 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\cursomanager.cpp
+1794501524 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\cursomanager.cpp
 	<iostream>
 	"CursoManager.h"
 	"utils.h"
 	"rlutil.h"
 
-1794315608 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\cursomanager.h
+1794494324 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\cursomanager.h
 	"Curso.h"
 	"CursoArchivo.h"
 	"Division.h"
@@ -81,14 +81,14 @@
 1794228085 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\fecha.h
 	<string>
 
-1794311393 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\utils.cpp
+1794500965 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\utils.cpp
 	<iostream>
 	<cctype>
 	"rlutil.h"
 	"utils.h"
 	"CursoArchivo.h"
 
-1794311325 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\utils.h
+1794489154 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\utils.h
 	<string>
 	"Grado.h"
 	"Division.h"
@@ -113,13 +113,13 @@
 	"ConsultasMenu.h"
 	"InformesMenu.h"
 
-1794324571 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnomanager.cpp
+1794488660 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnomanager.cpp
 	<iostream>
 	"AlumnoManager.h"
 	"utils.h"
 	"rlutil.h"
 
-1794320264 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnomanager.h
+1794488660 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnomanager.h
 	"Alumno.h"
 	"AlumnoArchivo.h"
 	"Fecha.h"
@@ -140,10 +140,10 @@
 	<cstring>
 	"Alumno.h"
 
-1794323612 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnoarchivo.cpp
+1794528985 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnoarchivo.cpp
 	"AlumnoArchivo.h"
 
-1794324914 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnoarchivo.h
+1794528985 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnoarchivo.h
 	<string>
 	"Alumno.h"
 	"ArchivoError.h"
@@ -183,14 +183,15 @@
 1792508005 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\consultasalumnomenu.cpp
 	"ConsultasAlumnoMenu.h"
 
-1792951827 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcionmenu.h
+1794533158 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcionmenu.h
 	"Menu.h"
+	"InscripcionManager.h"
 
 1794262605 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\asignaciondocentemenu.h
 	"Menu.h"
 	"AsignacionDocenteManager.h"
 
-1793101643 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcionmenu.cpp
+1794533142 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcionmenu.cpp
 	"InscripcionMenu.h"
 
 1792976675 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\clasesdadasmenu.h
@@ -283,10 +284,10 @@
 
 1793449850 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\periodo.h
 
-1794181247 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcion.cpp
+1794530424 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcion.cpp
 	"Inscripcion.h"
 
-1794181247 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcion.h
+1794530424 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcion.h
 	"Fecha.h"
 
 1794179130 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\asiganciondocente.cpp
@@ -302,7 +303,7 @@
 1794181848 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\tema.h
 	<string>
 
-1794323130 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\asignaciondocentearchivo.cpp
+1794530424 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\asignaciondocentearchivo.cpp
 	"AsignacionDocenteArchivo.h"
 
 1794310065 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\asignaciondocentearchivo.h
@@ -324,10 +325,10 @@
 	"ClaseDada.h"
 	"ArchivoError.h"
 
-1794329654 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\docentearchivo.cpp
+1794530777 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\docentearchivo.cpp
 	"DocenteArchivo.h"
 
-1794328666 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\docentearchivo.h
+1794530777 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\docentearchivo.h
 	<string>
 	"Docente.h"
 	"ArchivoError.h"
@@ -356,7 +357,7 @@
 	"UnidadDidactica.h"
 	"ArchivoError.h"
 
-1794324571 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\asignaciondocentemangaer.cpp
+1794533258 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\asignaciondocentemangaer.cpp
 	<iostream>
 	"AsignacionDocenteManager.h"
 	"utils.h"
@@ -369,13 +370,34 @@
 	"CursoArchivo.h"
 	"ArchivoError.h"
 
-1794347423 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\docentemanager.cpp
+1794530777 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\docentemanager.cpp
 	<iostream>
 	"DocenteManager.h"
 	"utils.h"
 	"rlutil.h"
 
-1794347094 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\docentemanager.h
+1794530777 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\docentemanager.h
 	"Docente.h"
 	"DocenteArchivo.h"
+
+1794530517 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcionarchivo.cpp
+	"InscripcionArchivo.h"
+
+1794529887 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcionarchivo.h
+	<string>
+	"Inscripcion.h"
+	"ArchivoError.h"
+
+1794530817 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcionmanager.cpp
+	<iostream>
+	"InscripcionManager.h"
+	"utils.h"
+	"rlutil.h"
+
+1794528398 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\inscripcionmanager.h
+	"Inscripcion.h"
+	"InscripcionArchivo.h"
+	"AlumnoArchivo.h"
+	"CursoArchivo.h"
+	"ArchivoError.h"
 

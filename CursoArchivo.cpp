@@ -69,7 +69,7 @@ ArchivoError CursoArchivo::leerTodos(Curso reg[], int cant)
 
     if(pFile == nullptr)
     {
-        _errorMessage = "No s epudo abrir el archivo..." + _fileName;
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
         return ArchivoError::ABRIR;
     }
 
@@ -175,6 +175,31 @@ int CursoArchivo::buscarByID(int id)
 bool CursoArchivo::existeCurso(int id)
 {
     return buscarByID(id) != -1;
+}
+
+bool CursoArchivo::existeCurso(Grado grado, Division division)
+{
+    FILE *pFile;
+    Curso reg;
+
+    pFile = fopen(_fileName.c_str(), "rb");
+
+    if(pFile == nullptr)
+    {
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
+        return false;
+    }
+
+    while(fread(&reg, sizeof(Curso), 1, pFile))
+    {
+        if(!reg.getEliminado() &&
+                reg.getGrado() == grado &&
+                reg.getDivision() == division)
+        {
+            fclose(pFile);
+            return true;
+        }
+    }
 }
 
 int CursoArchivo::getCantRegActivos()

@@ -19,7 +19,7 @@ ArchivoError AsignacionDocenteArchivo::guardar(const AsignacionDocente &reg)
         return ArchivoError::ABRIR;
     }
 
-    escritura = fwrite(&reg,sizeof(AsignacionDocente),CANT_REG,pFile);
+    escritura = fwrite(&reg, sizeof(AsignacionDocente), CANT_REG, pFile);
     fclose(pFile);
 
     if(escritura != CANT_REG)
@@ -46,8 +46,8 @@ ArchivoError AsignacionDocenteArchivo::guardar(int index, const AsignacionDocent
         return ArchivoError::ABRIR;
     }
 
-    fseek(PFile,index*sizeof(AsignacionDocente),SEEK_SET);
-    escritura=fwrite(&reg,sizeof(AsignacionDocente),CANT_REGISTROS,PFile);
+    fseek(PFile, index*sizeof(AsignacionDocente), SEEK_SET);
+    escritura = fwrite(&reg, sizeof(AsignacionDocente), CANT_REGISTROS,PFile);
     fclose(PFile);
 
     if(escritura != CANT_REGISTROS)
@@ -73,7 +73,7 @@ ArchivoError AsignacionDocenteArchivo::leerTodos(AsignacionDocente reg[], int ca
         return ArchivoError::ABRIR;
     }
 
-    lectura = fread(reg,sizeof(AsignacionDocente),cant,pFile);
+    lectura = fread(reg, sizeof(AsignacionDocente), cant, pFile);
     fclose(pFile);
 
     if(lectura != cant)
@@ -102,8 +102,8 @@ AsignacionDocente AsignacionDocenteArchivo::leer(int index)
         return reg;
     }
 
-    fseek(pFile,index*sizeof(AsignacionDocente),SEEK_SET);
-    lectura = fread(&reg,sizeof(AsignacionDocente),CANT_REG,pFile);
+    fseek(pFile, index*sizeof(AsignacionDocente), SEEK_SET);
+    lectura = fread(&reg, sizeof(AsignacionDocente), CANT_REG, pFile);
     fclose(pFile);
 
     if(lectura != CANT_REG)
@@ -133,6 +133,7 @@ int AsignacionDocenteArchivo::getCantReg()
     cant = ftell(pFile)/sizeof(AsignacionDocente);
     fclose(pFile);
     _errorMessage = "";
+
     return cant;
 }
 
@@ -155,7 +156,7 @@ int AsignacionDocenteArchivo::buscarByID(int id)
         return -1;
     }
 
-    while(fread(&reg,sizeof(AsignacionDocente), 1,pFile))
+    while(fread(&reg, sizeof(AsignacionDocente), 1, pFile))
     {
         if(reg.getIdAsignacion() == id)
         {
@@ -184,7 +185,7 @@ bool AsignacionDocenteArchivo::existeAsignacion(int idDocente, int idCurso)
     }
 
 
-    while(fread(&reg,sizeof(AsignacionDocente),1,pFile))
+    while(fread(&reg, sizeof(AsignacionDocente), 1, pFile))
     {
         if(!reg.getEliminado() &&
                 reg.getIdDocente() == idDocente &&

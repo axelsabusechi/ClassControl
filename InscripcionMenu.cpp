@@ -6,23 +6,25 @@ InscripcionMenu::InscripcionMenu()
     setOpciones(1, "               Inscribir alumno             ");
     setOpciones(2, "              Modificar inscripcion         ");
     setOpciones(3, "             Dar de baja inscripcion        ");
+    //setOpciones(4, "               Listar inscripciones         ");
     setTituloMenu("   Inscripciones   ");
     setOpCero("           Volver al menu principal         ");
 }
 
 void InscripcionMenu::runInscripcion()
 {
-    bool salir=false;
+    bool salir = false;
 
     do
     {
-        int opcion=runMenu();
+        int opcion = runMenu();
         switch(opcion)
         {
-            //case 0: _inscripcionManageer.registrarInscripcion(); break;
-            //case 1: _inscripcionManageer.registrarInscripcion(); break;
-            //case 2: _inscripcionManageer.registrarInscripcion(); break;
-            case 3: salir=true;
+            case 0: _inscripcionManager.registrarInscripcion(); break;
+            case 1: _inscripcionManager.eliminarInscripcion(); break;
+            case 2: _inscripcionManager.listarInscripcion(); break;
+            //case 3: _inscripcionManager.registrarInscripcion(); break;
+            case 3: salir = true;
         }
     }while(!salir);
 }

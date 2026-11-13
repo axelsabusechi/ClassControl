@@ -1,6 +1,6 @@
 #pragma once
 #include "Menu.h"
-//#include "InscripcionManager"
+#include "InscripcionManager.h"
 
 class InscripcionMenu:public Menu
 {
@@ -8,6 +8,5 @@ public:
     InscripcionMenu();
     void runInscripcion();
 private:
-//    InscripcionManager _inscripcionManager;
-
+    InscripcionManager _inscripcionManager;
 };

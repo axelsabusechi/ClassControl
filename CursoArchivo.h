@@ -15,6 +15,7 @@ public:
     int getNewID();
     int buscarByID(int id);
     bool existeCurso(int id);
+    bool existeCurso(Grado grado, Division division);
     int getCantRegActivos();
     std::string getLastError();
 

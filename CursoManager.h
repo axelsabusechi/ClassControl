@@ -10,14 +10,20 @@ public:
     CursoManager();
 
     void registrarCurso();
-    void listarCursos();
     void modificarCurso();
     void eliminarCurso();
+    void listarCursos();
 
 private:
     Curso crearCurso();
-    void cargarCurso(int &gr, int &div);
     void mostrarCurso(const Curso &reg);
+    void mostrarCursosActivos();
+    bool menuModificarCurso(Curso &reg);
+    void modificarGrado(Curso &reg);
+    void modificarDivision(Curso &reg);
+    void modificarTodos(Curso &reg);
+    void pedirCursoUnico(Grado &grado, Division &division);
+
 
     CursoArchivo _cursoArchivo;
 };
