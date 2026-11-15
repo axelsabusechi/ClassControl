@@ -5,7 +5,7 @@
 
 class UnidadDidacticaArchivo
 {
-private:
+public:
     UnidadDidacticaArchivo(std::string fileName="UnidadesDidacticas.dat");
     ArchivoError guardar(UnidadDidactica reg);
     ArchivoError guardar(int index, UnidadDidactica reg);
@@ -16,8 +16,7 @@ private:
     int buscarByID(int id);
     std::string getLastError();
 
-public:
-    UnidadDidactica _unidadDidactica;
+private:
     std::string _fileName;
     std::string _errorMessage;
 };

@@ -51,12 +51,14 @@
 		<Unit filename="AsignacionDocenteMangaer.cpp" />
 		<Unit filename="AsignacionDocenteMenu.cpp" />
 		<Unit filename="AsignacionDocenteMenu.h" />
-		<Unit filename="CaseDadaArchivo.cpp" />
 		<Unit filename="ClaseDada.cpp" />
 		<Unit filename="ClaseDada.h" />
+		<Unit filename="ClaseDadaArchivo.cpp" />
 		<Unit filename="ClaseDadaArchivo.h" />
 		<Unit filename="ClaseDadaMenu.cpp" />
 		<Unit filename="ClaseDadaMenu.h" />
+		<Unit filename="ConsultasManager.cpp" />
+		<Unit filename="ConsultasManager.h" />
 		<Unit filename="ConsultasMenu.cpp" />
 		<Unit filename="ConsultasMenu.h" />
 		<Unit filename="Curso.cpp" />
@@ -79,6 +81,8 @@
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
 		<Unit filename="Grado.h" />
+		<Unit filename="InformesManager.cpp" />
+		<Unit filename="InformesManager.h" />
 		<Unit filename="InformesMenu.cpp" />
 		<Unit filename="InformesMenu.h" />
 		<Unit filename="Inscripcion.cpp" />
@@ -89,6 +93,8 @@
 		<Unit filename="InscripcionManager.h" />
 		<Unit filename="InscripcionMenu.cpp" />
 		<Unit filename="InscripcionMenu.h" />
+		<Unit filename="ListadosManager.cpp" />
+		<Unit filename="ListadosManager.h" />
 		<Unit filename="ListadosMenu.cpp" />
 		<Unit filename="ListadosMenu.h" />
 		<Unit filename="Menu.cpp" />
@@ -97,6 +103,8 @@
 		<Unit filename="Nota.h" />
 		<Unit filename="NotaArchivo.cpp" />
 		<Unit filename="NotaArchivo.h" />
+		<Unit filename="NotaManager.cpp" />
+		<Unit filename="NotaManager.h" />
 		<Unit filename="NotaMenu.cpp" />
 		<Unit filename="NotaMenu.h" />
 		<Unit filename="Periodo.h" />

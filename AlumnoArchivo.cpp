@@ -112,6 +112,7 @@ Alumno AlumnoArchivo::leer(int index)
         return reg;
     }
     _errorMessage = "";
+
     return reg;
 }
 
@@ -131,6 +132,7 @@ int AlumnoArchivo::getCantReg()
     fseek(pFile,0,SEEK_END);
     cant = ftell(pFile)/sizeof(Alumno);
     fclose(pFile);
+
     return cant;
 }
 
@@ -165,6 +167,7 @@ int AlumnoArchivo::buscarByLegajo(int legajo)
 
     fclose(pFile);
     _errorMessage = "";
+
     return -1;
 }
 

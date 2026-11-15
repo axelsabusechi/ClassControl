@@ -18,7 +18,7 @@ private:
                       std::string &dni);
     void mostrarDocente(const Docente &reg);
     void mostrarDocentesActivos();
-    std::string pedirDniUnico(const std::string &mensaje, int idIgnorar = -1);
+    std::string cargarDniUnico(const std::string &mensaje, int idIgnorar = -1);
     bool menuModificarDocente(Docente &reg);
     void modificarNombre(Docente &reg);
     void modificarApellido(Docente &reg);

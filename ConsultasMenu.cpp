@@ -14,19 +14,19 @@ ConsultasMenu::ConsultasMenu()
 
 void ConsultasMenu::runConsultas()
 {
-    bool salir=false;
+    bool salir = false;
 
     do
     {
-        int opcion=runMenu();
+        int opcion = runMenu();
         switch(opcion)
         {
-        //case 0: _consultasManager.(); break;
-        //case 1: _consultasManager.(); break;
-        //case 2: _consultasManager.(); break;
-        //case 3: _consultasManager.(); break;
-        //case 4: _consultasManager.(); break;
-        case 5: salir=true;
+        case 0: _consultasManager.consultarAlumnoPorLegajo(); break;
+        case 1: _consultasManager.consultarDocentePorDni(); break;
+        case 2: _consultasManager.consultarNotasPorAlumno(); break;
+        case 3: _consultasManager.consultarCurricularPorDocente(); break;
+        case 4: _consultasManager.consultarDesempenioAcademicoPorAlumno(); break;
+        case 5: salir = true;
         }
 
     }while(!salir);

@@ -11,13 +11,15 @@ public:
     InscripcionManager();
 
     void registrarInscripcion();
+    void modificarInscripcion();
     void eliminarInscripcion();
     void listarInscripcion();
 private:
     Inscripcion crearInscripcion();
     void mostrarInscripcion(const Inscripcion &reg);
     void mostrarInscripcionesActivas();
-    void pedirInscripcionUnica(int &legajo, int &idCurso);
+    bool menuModificarInscripcion(Inscripcion &reg);
+    void cargarInscripcionUnica(int &legajo, int &idCurso);
     void listarAlumnos();
     void listarCursos();
     int seleccionarAlumno();

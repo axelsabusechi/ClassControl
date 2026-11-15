@@ -171,7 +171,7 @@ int InscripcionArchivo::buscarByID(int id)
     return -1;
 }
 
-bool InscripcionArchivo::existeInscripcion(int legajo, int idCurso)
+bool InscripcionArchivo::tieneInscripcionActiva(int legajo)
 {
     FILE *pFile;
     Inscripcion reg;
@@ -188,8 +188,7 @@ bool InscripcionArchivo::existeInscripcion(int legajo, int idCurso)
     while(fread(&reg, sizeof(Inscripcion), 1, pFile))
     {
         if(!reg.getEliminado() &&
-                reg.getLegajo() == legajo &&
-                reg.getIdCurso() == idCurso)
+                reg.getLegajo() == legajo)
         {
             fclose(pFile);
             return true;

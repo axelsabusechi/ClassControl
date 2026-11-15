@@ -3,12 +3,15 @@
 #include "Grado.h"
 #include "Division.h"
 #include "Curso.h"
+#include "Periodo.h"
 #include "Fecha.h"
 
 Grado intToGrado(int grado);
-Division intToDivision(int div);
+Division intToDivision(int division);
+Periodo intToPeriodo(int periodo);
 std::string gradoToString(Grado grado);
-std::string divisionToString(Division div);
+std::string divisionToString(Division division);
+std::string periodoToString(Periodo periodo);
 void showItem(const std::string &text, int posx, int posy, bool selected);
 std::string cargarCadena();
 bool nombreApellidoValido(const std::string &nombreApellido);
@@ -21,9 +24,10 @@ int pedirEntero(const std::string &mensaje);
 std::string pedirNombreApellido(const std::string &mensaje);
 std::string pedirDni(const std::string &mensaje);
 std::string pedirEmail(const std::string &mensaje);
-std::string pedirAdaptacion(const std::string &mensaje);
+std::string pedirTexto(const std::string &mensaje);
 Fecha pedirFecha(const std::string &mensaje);
 bool mostrarErrorArchivo(const std::string &mensaje);
 Grado pedirGrado();
 Division pedirDivision();
-
+Periodo pedirPeriodo();
+int pedirNota();

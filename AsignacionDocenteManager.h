@@ -11,6 +11,7 @@ public:
     AsignacionDocenteManager();
 
     void registrarAsignacionDocente();
+    void modificarAsignacionDocente();
     void eliminarAsignacionDocente();
     void listarAsignacionesDocentes();
 
@@ -18,7 +19,8 @@ private:
     AsignacionDocente crearAsignacionDocente();
     void mostrarAsignacionDocente(const AsignacionDocente &reg);
     void mostrarAsignacionesActivas();
-    void pedirAsignacionUnica(int &idDocente, int &idCurso);
+    bool menuModificarAsignacion(AsignacionDocente &reg);
+    void cargarAsignacionUnica(int &idDocente, int &idCurso);
     void listarDocentes();
     void listarCursos();
     int seleccionarDocente();

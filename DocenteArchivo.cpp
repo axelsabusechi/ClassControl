@@ -102,7 +102,7 @@ Docente DocenteArchivo::leer(int index)
         return reg;
     }
 
-    fseek(pFile,index*sizeof(Docente),SEEK_SET);
+    fseek(pFile, index*sizeof(Docente),SEEK_SET);
     lectura = fread(&reg,sizeof(Docente),CANT_REG,pFile);
     fclose(pFile);
 

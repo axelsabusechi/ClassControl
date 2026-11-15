@@ -25,9 +25,9 @@ Grado intToGrado(int grado)
     }
 }
 
-Division intToDivision(int div)
+Division intToDivision(int division)
 {
-    switch(div)
+    switch(division)
     {
     case 1:
         return Division::A;
@@ -37,6 +37,21 @@ Division intToDivision(int div)
         return Division::C;
     default:
         return Division::NONE;
+    }
+}
+
+Periodo intToPeriodo(int periodo)
+{
+    switch(periodo)
+    {
+    case 1:
+        return Periodo::PRIMER_T;
+    case 2:
+        return Periodo::SEGUNDO_T;
+    case 3:
+        return Periodo::TERCER_T;
+    default:
+        return Periodo::NONE;
     }
 }
 
@@ -61,9 +76,9 @@ std::string gradoToString(Grado grado)
     }
 }
 
-std::string divisionToString(Division div)
+std::string divisionToString(Division division)
 {
-    switch(div)
+    switch(division)
     {
     case Division::A:
         return "A";
@@ -71,6 +86,21 @@ std::string divisionToString(Division div)
         return "B";
     case Division::C:
         return "C";
+    default:
+        return "Desconocido";
+    }
+}
+
+std::string periodoToString(Periodo periodo)
+{
+    switch(periodo)
+    {
+    case Periodo::PRIMER_T:
+        return "Primer Trimestre";
+    case Periodo::SEGUNDO_T:
+        return "Segundo Trimestre";
+    case Periodo::TERCER_T:
+        return "Tercer Trimestre";
     default:
         return "Desconocido";
     }
@@ -325,26 +355,26 @@ std::string pedirEmail(const std::string &mensaje)
     return email;
 }
 
-std::string pedirAdaptacion(const std::string &mensaje)
+std::string pedirTexto(const std::string &mensaje)
 {
-    std::string adaptacion;
+    std::string texto;
     bool valido = false;
 
     do
     {
         std::cout << mensaje;
-        adaptacion = cargarCadena();
+        texto = cargarCadena();
 
-        valido = textoVacio(adaptacion);
+        valido = textoVacio(texto);
 
         if(!valido)
         {
-            std::cout << "ERROR: Adaptacion invalida..." << std::endl;
+            std::cout << "ERROR: Ingreso invalido..." << std::endl;
         }
     }
     while(!valido);
 
-    return adaptacion;
+    return texto;
 }
 
 Fecha pedirFecha(const std::string &mensaje)
@@ -442,7 +472,50 @@ Division pedirDivision()
     return intToDivision(opcion);
 }
 
+Periodo pedirPeriodo()
+{
+    int opcion;
 
+    std::cout << std::endl;
+    std::cout << "------- PERIODO -------" << std::endl;
+    std::cout << "1 - PRIMER TRIMESTRE" << std::endl;
+    std::cout << "2 - SEGUNDO TRIMESTRE" << std::endl;
+    std::cout << "3 - TERCER TRIMESTRE" << std::endl;
+    std::cout << std::endl;
+
+    do
+    {
+        opcion = pedirEntero("Seleccion: ");
+
+        if(opcion < 1 || opcion > 3)
+        {
+            std::cout << "ERROR. Ingrese una opcion valida." << std::endl;
+        }
+
+    }
+    while(opcion < 1 || opcion > 3);
+
+    return intToPeriodo(opcion);
+}
+
+int pedirNota()
+{
+    int nota;
+
+    do
+    {
+        nota = pedirEntero("Nota: ");
+
+        if(nota < 1 || nota > 10)
+        {
+            std::cout << "ERROR. La nota debe estar entre 1 y 10." << std::endl;
+        }
+
+    }
+    while(nota < 1 || nota > 10);
+
+    return nota;
+}
 
 
 

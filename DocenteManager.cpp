@@ -24,10 +24,8 @@ void DocenteManager::registrarDocente()
 void DocenteManager::modificarDocente()
 {
     rlutil::cls();
-    int index, idDocente, cantReg;
-    Docente reg;
 
-    cantReg = _docenteArchivo.getCantRegActivos();
+    int cantReg = _docenteArchivo.getCantRegActivos();
 
     if(!cantReg)
     {
@@ -44,9 +42,8 @@ void DocenteManager::modificarDocente()
 
     mostrarDocentesActivos();
 
-    idDocente = pedirEntero("ID del Docente a modificar: ");
-
-    index = _docenteArchivo.buscarByID(idDocente);
+    int idDocente = pedirEntero("ID del Docente a modificar: ");
+    int index = _docenteArchivo.buscarByID(idDocente);
 
     if(index == -1)
     {
@@ -61,7 +58,7 @@ void DocenteManager::modificarDocente()
         return;
     }
 
-    reg = _docenteArchivo.leer(index);
+    Docente reg = _docenteArchivo.leer(index);
 
     if(reg.getIdDocente() == -1)
     {
@@ -101,10 +98,8 @@ void DocenteManager::modificarDocente()
 void DocenteManager::eliminarDocente()
 {
     rlutil::cls();
-    int index, idDocente, cantReg;
-    Docente reg;
 
-    cantReg = _docenteArchivo.getCantRegActivos();
+    int cantReg = _docenteArchivo.getCantRegActivos();
 
     if(cantReg == 0)
     {
@@ -121,9 +116,8 @@ void DocenteManager::eliminarDocente()
 
     mostrarDocentesActivos();
 
-    idDocente = pedirEntero("ID del Docente a dar de baja: ");
-
-    index = _docenteArchivo.buscarByID(idDocente);
+    int idDocente = pedirEntero("ID del Docente a dar de baja: ");
+    int index = _docenteArchivo.buscarByID(idDocente);
 
     if(index == -1)
     {
@@ -137,7 +131,7 @@ void DocenteManager::eliminarDocente()
         return;
     }
 
-    reg = _docenteArchivo.leer(index);
+    Docente reg = _docenteArchivo.leer(index);
 
     if(reg.getIdDocente() == -1)
     {
@@ -251,7 +245,7 @@ void DocenteManager::cargarDocente(std::string &nombre,
 {
     nombre = pedirNombreApellido("Nombre: ");
     apellido = pedirNombreApellido("Apellido: ");
-    dni = pedirDniUnico("DNI: ");
+    dni = cargarDniUnico("DNI: ");
 }
 
 void DocenteManager::mostrarDocente(const Docente &reg)
@@ -290,7 +284,7 @@ void DocenteManager::mostrarDocentesActivos()
     }
 }
 
-std::string DocenteManager::pedirDniUnico(const std::string &mensaje, int idIgnorar)
+std::string DocenteManager::cargarDniUnico(const std::string &mensaje, int idIgnorar)
 {
     std::string dni;
     bool existe = false;
@@ -381,7 +375,7 @@ void DocenteManager::modificarApellido(Docente &reg)
 
 void DocenteManager::modificarDni(Docente &reg)
 {
-    reg.setDni(pedirDniUnico(("Nuevo DNI: "),reg.getIdDocente()));
+    reg.setDni(cargarDniUnico(("Nuevo DNI: "),reg.getIdDocente()));
 }
 
 void DocenteManager::modificarTodos(Docente &reg)

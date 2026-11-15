@@ -24,10 +24,8 @@ void AlumnoManager::registrarAlumno()
 void AlumnoManager::modificarAlumno()
 {
     rlutil::cls();
-    int index, legajo,cantReg;
-    Alumno reg;
 
-    cantReg = _alumnoArchivo.getCantRegActivos();
+    int cantReg = _alumnoArchivo.getCantRegActivos();
 
     if(!cantReg)
     {
@@ -44,9 +42,8 @@ void AlumnoManager::modificarAlumno()
 
     mostrarAlumnosActivos();
 
-    legajo = pedirEntero("Legajo del alumno a modificar: ");
-
-    index = _alumnoArchivo.buscarByLegajo(legajo);
+    int legajo = pedirEntero("Legajo del alumno a modificar: ");
+    int index = _alumnoArchivo.buscarByLegajo(legajo);
 
     if(index == -1)
     {
@@ -61,7 +58,7 @@ void AlumnoManager::modificarAlumno()
         return;
     }
 
-    reg = _alumnoArchivo.leer(index);
+    Alumno reg = _alumnoArchivo.leer(index);
 
     if(reg.getLegajo() == -1)
     {
@@ -101,10 +98,8 @@ void AlumnoManager::modificarAlumno()
 void AlumnoManager::eliminarAlumno()
 {
     rlutil::cls();
-    int index, legajo, cantReg;
-    Alumno reg;
 
-    cantReg = _alumnoArchivo.getCantRegActivos();
+    int cantReg = _alumnoArchivo.getCantRegActivos();
 
     if(cantReg == 0)
     {
@@ -121,9 +116,8 @@ void AlumnoManager::eliminarAlumno()
 
     mostrarAlumnosActivos();
 
-    legajo = pedirEntero("Legajo del alumno a dar de baja: ");
-
-    index = _alumnoArchivo.buscarByLegajo(legajo);
+    int legajo = pedirEntero("Legajo del alumno a dar de baja: ");
+    int index = _alumnoArchivo.buscarByLegajo(legajo);
 
     if(index == -1)
     {
@@ -137,7 +131,7 @@ void AlumnoManager::eliminarAlumno()
         return;
     }
 
-    reg = _alumnoArchivo.leer(index);
+    Alumno reg = _alumnoArchivo.leer(index);
 
     if(reg.getLegajo() == -1)
     {
@@ -261,10 +255,10 @@ void AlumnoManager::cargarAlumno(std::string &nombre,
 {
     nombre = pedirNombreApellido("Nombre: ");
     apellido = pedirNombreApellido("Apellido: ");
-    dni = pedirDniUnico("DNI: ");
+    dni = cargarDniUnico("DNI: ");
     email = pedirEmail("E-mail: ");
     fechaNacimiento = pedirFecha("Fecha de nacimiento: ");
-    adaptacion = pedirAdaptacion("Adaptacion: ");
+    adaptacion = pedirTexto("Adaptacion: ");
 }
 
 void AlumnoManager::mostrarAlumno(const Alumno &reg)
@@ -393,7 +387,7 @@ void AlumnoManager::modificarApellido(Alumno &reg)
 
 void AlumnoManager::modificarDni(Alumno &reg)
 {
-    reg.setDni(pedirDniUnico(("Nuevo DNI: "),reg.getLegajo()));
+    reg.setDni(cargarDniUnico(("Nuevo DNI: "),reg.getLegajo()));
 }
 void AlumnoManager::modificarFechaNacimiento(Alumno &reg)
 {
@@ -407,7 +401,7 @@ void AlumnoManager::modificarEmail(Alumno &reg)
 
 void AlumnoManager::modificarAdaptacion(Alumno &reg)
 {
-    reg.setAdaptacion(pedirAdaptacion("Nueva adaptacion: "));
+    reg.setAdaptacion(pedirTexto("Nueva adaptacion: "));
 }
 
 void AlumnoManager::modificarTodos(Alumno &reg)
@@ -420,7 +414,7 @@ void AlumnoManager::modificarTodos(Alumno &reg)
     modificarAdaptacion(reg);
 }
 
-std::string AlumnoManager::pedirDniUnico(const std::string &mensaje, int legajoIgnorar)
+std::string AlumnoManager::cargarDniUnico(const std::string &mensaje, int legajoIgnorar)
 {
     std::string dni;
     bool existe = false;

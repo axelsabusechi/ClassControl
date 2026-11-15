@@ -39,7 +39,7 @@ void AsignacionDocenteManager::registrarAsignacionDocente()
 
     if(_asignacionDocenteArchivo.guardar(crearAsignacionDocente()) == ArchivoError::OK)
     {
-        std::cout << "Asignacion docente registrada..." << std::endl;
+        std::cout << "Asignacion del docente registrada..." << std::endl;
     }
     else
     {
@@ -49,13 +49,159 @@ void AsignacionDocenteManager::registrarAsignacionDocente()
     rlutil::cls();
 }
 
+void AsignacionDocenteManager::modificarAsignacionDocente()
+{
+    rlutil::cls();
+
+    int cantRegAsignacion = _asignacionDocenteArchivo.getCantRegActivos();
+
+    if(cantRegAsignacion == 0)
+    {
+        if(mostrarErrorArchivo(_asignacionDocenteArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+
+        std::cout << "No hay asignaciones docentes para modificar..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    mostrarAsignacionesActivas();
+
+    int idAsignacion = pedirEntero("ID de la asignacion del docente a modificar: ");
+    int indexAsignacion = _asignacionDocenteArchivo.buscarByID(idAsignacion);
+
+    if(indexAsignacion == -1)
+    {
+        if(mostrarErrorArchivo(_asignacionDocenteArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+
+        std::cout << "La asignacion del docente no se encuentra en el sistema..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    AsignacionDocente regAsignacion = _asignacionDocenteArchivo.leer(indexAsignacion);
+
+    if(regAsignacion.getIdAsignacion() == -1)
+    {
+        mostrarErrorArchivo(_asignacionDocenteArchivo.getLastError());
+        system("pause");
+        return;
+    }
+
+    if(regAsignacion.getEliminado() || !regAsignacion.getActivo())
+    {
+        std::cout << "La asignacion no se encuentra activa..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    int indexDocente = _docenteArchivo.buscarByID(regAsignacion.getIdDocente());
+
+    if(indexDocente == -1)
+    {
+        if(mostrarErrorArchivo(_docenteArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+
+        std::cout << "El Docente con Id " << regAsignacion.getIdDocente() << " no se encuentra en el sistema..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    Docente regDocente = _docenteArchivo.leer(indexDocente);
+
+    if(regDocente.getIdDocente() == -1)
+    {
+        mostrarErrorArchivo(_docenteArchivo.getLastError());
+        system("pause");
+        return;
+    }
+
+    if(regDocente.getEliminado())
+    {
+        std::cout << "El docente esta dado de baja..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    mostrarAsignacionDocente(regAsignacion);
+
+    if(!menuModificarAsignacion(regAsignacion))
+    {
+        std::cout << "Operacion cancelada..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    rlutil::cls();
+
+    int idNuevoCurso = seleccionarCurso();
+
+    if(idNuevoCurso == regAsignacion.getIdCurso())
+    {
+        std::cout << "Debe seleccionar un curso distinto al actualmente asignado..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    if(_asignacionDocenteArchivo.existeAsignacion(regAsignacion.getIdDocente(),idNuevoCurso))
+    {
+        std::cout << "El docente ya tiene una asignacion activa para el curso seleccionado..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    int nuevoIdAsignacion = _asignacionDocenteArchivo.getNewID();
+    Fecha fechaAlta;
+
+    fechaAlta.cargarFechaActual();
+
+    AsignacionDocente nuevaAsignacion(nuevoIdAsignacion,
+                                      regAsignacion.getIdDocente(),
+                                      idNuevoCurso,
+                                      fechaAlta,
+                                      Fecha(),
+                                      true);
+
+    if(_asignacionDocenteArchivo.guardar(nuevaAsignacion) != ArchivoError::OK)
+    {
+        mostrarErrorArchivo(_asignacionDocenteArchivo.getLastError());
+        system("pause");
+        return;
+    }
+
+    Fecha fechaBaja;
+    fechaBaja.cargarFechaActual();
+    regAsignacion.setFechaBaja(fechaBaja);
+    regAsignacion.setActivo(false);
+    regAsignacion.setEliminado(true);
+
+    if(_asignacionDocenteArchivo.guardar(indexAsignacion, regAsignacion) != ArchivoError::OK)
+    {
+        mostrarErrorArchivo(_asignacionDocenteArchivo.getLastError());
+        system("pause");
+        return;
+    }
+
+    std::cout << "La asignacion docente al nuevo curso se actualizo con exito!" << std::endl;
+    system("pause");
+}
+
+
 void AsignacionDocenteManager::eliminarAsignacionDocente()
 {
     rlutil::cls();
-    int index, id, cantReg;
-    AsignacionDocente reg;
 
-    cantReg = _asignacionDocenteArchivo.getCantRegActivos();
+    int cantReg = _asignacionDocenteArchivo.getCantRegActivos();
 
     if(cantReg == 0)
     {
@@ -72,9 +218,8 @@ void AsignacionDocenteManager::eliminarAsignacionDocente()
 
     mostrarAsignacionesActivas();
 
-    id = pedirEntero("Id de la asignacion docente a dar de baja: ");
-
-    index = _asignacionDocenteArchivo.buscarByID(id);
+    int id = pedirEntero("Id de la asignacion docente a dar de baja: ");
+    int index = _asignacionDocenteArchivo.buscarByID(id);
 
     if(index == -1)
     {
@@ -89,7 +234,7 @@ void AsignacionDocenteManager::eliminarAsignacionDocente()
         return;
     }
 
-    reg = _asignacionDocenteArchivo.leer(index);
+    AsignacionDocente reg = _asignacionDocenteArchivo.leer(index);
 
     if(reg.getIdAsignacion() == -1)
     {
@@ -188,7 +333,7 @@ AsignacionDocente AsignacionDocenteManager::crearAsignacionDocente()
     Fecha fechaAlta, fechaBaja;
 
     idAsignacion = _asignacionDocenteArchivo.getNewID();
-    pedirAsignacionUnica(idDocente, idCurso);
+    cargarAsignacionUnica(idDocente, idCurso);
     fechaAlta.cargarFechaActual();
     fechaBaja = Fecha();
 
@@ -242,7 +387,7 @@ void AsignacionDocenteManager::mostrarAsignacionesActivas()
             return;
         }
 
-        if(!reg.getEliminado())
+        if(!reg.getEliminado() && reg.getActivo())
         {
             mostrarAsignacionDocente(reg);
             std::cout << "----------------------------------" << std::endl;
@@ -250,7 +395,44 @@ void AsignacionDocenteManager::mostrarAsignacionesActivas()
     }
 }
 
-void AsignacionDocenteManager::pedirAsignacionUnica(int &idDocente, int &idCurso)
+bool AsignacionDocenteManager::menuModificarAsignacion(AsignacionDocente &reg)
+{
+    int opcion;
+
+    do
+    {
+        rlutil::cls();
+
+        std::cout << "----- DATOS ACTUALES DE LA ASIGNACION DOCENTE -----" << std::endl;
+
+        mostrarAsignacionDocente(reg);
+        std::cout << "---------------------------------------------------" << std::endl;
+        std::cout << "1 - Modificar el curso asignado al docente" << std::endl;
+        std::cout << "0 - Cancelar y salir" << std::endl;
+
+
+        opcion = pedirEntero("Opcion: ");
+
+        switch(opcion)
+        {
+        case 1:
+            return true;
+
+        case 0:
+            return false;
+
+        default:
+            std::cout << "ERROR. Opcion invalida." << std::endl;
+            system("pause");
+        }
+
+    }
+    while(true);
+
+    return false;
+}
+
+void AsignacionDocenteManager::cargarAsignacionUnica(int &idDocente, int &idCurso)
 {
     bool existe = false;
 
@@ -298,6 +480,7 @@ void AsignacionDocenteManager::listarDocentes()
             std::cout << "Nombre: "<< vDocentes[i].getNombre() << std::endl;
             std::cout << "Apellido: " << vDocentes[i].getApellido() << std::endl;
             std::cout << "DNI: " << vDocentes[i].getDni() << std::endl;
+            std::cout << "---------------------------------------" << std::endl;
         }
     }
 
@@ -322,6 +505,7 @@ void AsignacionDocenteManager::listarCursos()
 
     _cursoArchivo.leerTodos(vCursos, cantReg);
 
+    std::cout << std::endl;
     std::cout << "------------- CURSOS -------------" << std::endl;
 
     for(int i = 0; i < cantReg; i++)
@@ -331,6 +515,7 @@ void AsignacionDocenteManager::listarCursos()
             std::cout << "Id: "<< vCursos[i].getIdCurso() << std::endl;
             std::cout << "Grado: " << gradoToString(vCursos[i].getGrado()) << std::endl;
             std::cout << "Division: " << divisionToString(vCursos[i].getDivision()) << std::endl;
+            std::cout << "-----------------------------------------" << std::endl;
         }
     }
 
@@ -346,6 +531,7 @@ int AsignacionDocenteManager::seleccionarDocente()
 
     do
     {
+        std::cout << std::endl;
         idDocente = pedirEntero("Id docente: ");
         existe = _docenteArchivo.existeDocente(idDocente);
 
@@ -368,6 +554,7 @@ int AsignacionDocenteManager::seleccionarCurso()
 
     do
     {
+        std::cout << std::endl;
         idCurso = pedirEntero("Id curso: ");
         existe = _cursoArchivo.existeCurso(idCurso);
 

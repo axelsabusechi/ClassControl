@@ -22,8 +22,7 @@ private:
     void modificarGrado(Curso &reg);
     void modificarDivision(Curso &reg);
     void modificarTodos(Curso &reg);
-    void pedirCursoUnico(Grado &grado, Division &division);
-
+    void cargarCursoUnico(Grado &grado, Division &division);
 
     CursoArchivo _cursoArchivo;
 };

@@ -6,18 +6,18 @@
 class NotaArchivo
 {
 public:
-    NotaArchivo(std::string fileName="Notas.dat");
-    ArchivoError guardar(Nota reg);
-    ArchivoError guardar(int index, Nota reg);
+    NotaArchivo(const std::string &fileName = "Notas.dat");
+    ArchivoError guardar(const Nota &reg);
+    ArchivoError guardar(int index, const Nota &reg);
     ArchivoError leerTodos(Nota reg[], int cant);
     Nota leer(int index);
     int getCantReg();
-    int getNewID();
+    int getNewId();
     int buscarById(int id);
+    int getCantRegActivos();
     std::string getLastError();
 
 private:
-    Nota _nota;
     std::string _fileName;
     std::string _errorMessage;
 };

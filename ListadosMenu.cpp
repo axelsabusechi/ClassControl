@@ -16,13 +16,13 @@ void ListadosMenu::runListados()
 
     do
     {
-        int opcion=runMenu();
+        int opcion = runMenu();
         switch(opcion)
         {
-        //case 0: _ListadosManager.(); break;
-        //case 1: _ListadosManager.(); break;
-        //case 2: _ListadosManager.(); break;
-        case 3: salir=true;
+        case 0: _listadosManager.listarAlumnosPorCurso(); break;
+        case 1: _listadosManager.listarDocentesPorCurso(); break;
+        case 2: _listadosManager.listarTemasPorEstado(); break;
+        case 3: salir = true;
         }
 
     }while(!salir);

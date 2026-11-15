@@ -14,7 +14,7 @@ public:
     int getCantReg();
     int getNewID();
     int buscarByID(int id);
-    bool existeInscripcion(int legajo, int idCurso);
+    bool tieneInscripcionActiva(int legajo);
     int getCantRegActivos();
     std::string getLastError()const;
 

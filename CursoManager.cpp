@@ -25,10 +25,8 @@ void CursoManager::registrarCurso()
 void CursoManager::modificarCurso()
 {
     rlutil::cls();
-    int index, id, cantReg;
-    Curso reg;
 
-    cantReg = _cursoArchivo.getCantRegActivos();
+    int cantReg = _cursoArchivo.getCantRegActivos();
 
     if(!cantReg)
     {
@@ -46,9 +44,8 @@ void CursoManager::modificarCurso()
 
     mostrarCursosActivos();
 
-    id = pedirEntero("ID del curso a modificar: ");
-
-    index = _cursoArchivo.buscarByID(id);
+    int id = pedirEntero("ID del curso a modificar: ");
+    int index = _cursoArchivo.buscarByID(id);
 
     if(index == -1)
     {
@@ -58,15 +55,13 @@ void CursoManager::modificarCurso()
             return;
         }
 
-        std::cout << "El curso " << gradoToString(reg.getGrado())
-                  << " " << divisionToString(reg.getDivision())
-                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "El curso con Id " << id  << " no se encuentra en el sistema..." << std::endl;
         std::cout << std::endl;
         system("pause");
         return;
     }
 
-    reg = _cursoArchivo.leer(index);
+    Curso reg = _cursoArchivo.leer(index);
 
     if(reg.getIdCurso() == -1)
     {
@@ -109,10 +104,8 @@ void CursoManager::modificarCurso()
 void CursoManager::eliminarCurso()
 {
     rlutil::cls();
-    int index, id, cantReg;
-    Curso reg;
 
-    cantReg = _cursoArchivo.getCantRegActivos();
+    int cantReg = _cursoArchivo.getCantRegActivos();
 
     if(cantReg == 0)
     {
@@ -130,9 +123,8 @@ void CursoManager::eliminarCurso()
 
     mostrarCursosActivos();
 
-    id = pedirEntero("ID del curso a dar de baja: ");
-
-    index = _cursoArchivo.buscarByID(id);
+    int id = pedirEntero("ID del curso a dar de baja: ");
+    int index = _cursoArchivo.buscarByID(id);
 
     if(index == -1)
     {
@@ -141,15 +133,13 @@ void CursoManager::eliminarCurso()
             system("pause");
             return;
         }
-        std::cout << "El curso " << gradoToString(reg.getGrado())
-                  << " " << divisionToString(reg.getDivision())
-                  << " no se encuentra en el sistema..." << std::endl;
-        std::cout << std::endl;
+
+        std::cout << "El curso con Id " << id  << " no se encuentra en el sistema..." << std::endl;
         system("pause");
         return;
     }
 
-    reg = _cursoArchivo.leer(index);
+    Curso reg = _cursoArchivo.leer(index);
 
     if(reg.getIdCurso() == -1)
     {
@@ -254,10 +244,11 @@ Curso CursoManager::crearCurso()
     idCurso = _cursoArchivo.getNewID();
 
     rlutil::cls();
+
     std::cout << "-----CARGAR CURSO-------" << std::endl;
     std::cout << "ID " << idCurso << std::endl;
 
-    pedirCursoUnico(grado, division);
+    cargarCursoUnico(grado, division);
 
     return Curso(idCurso, grado, division);
 }
@@ -272,9 +263,8 @@ void CursoManager::mostrarCurso(const Curso &reg)
 void CursoManager::mostrarCursosActivos()
 {
     Curso reg;
-    int cantReg;
 
-    cantReg = _cursoArchivo.getCantReg();
+    int cantReg = _cursoArchivo.getCantReg();
 
     std::cout << "----- CURSOS ACTIVOS -----" << std::endl;
 
@@ -373,7 +363,7 @@ void CursoManager::modificarTodos(Curso &reg)
     modificarDivision(reg);
 }
 
-void CursoManager::pedirCursoUnico(Grado &grado, Division &division)
+void CursoManager::cargarCursoUnico(Grado &grado, Division &division)
 {
     bool existe;
 
