@@ -1,6 +1,6 @@
 #pragma once
 #include "Menu.h"
-//#include "ClasesDadasManager.h"
+#include "ClaseDadaManager.h"
 
 class ClaseDadaMenu:public Menu
 {
@@ -8,5 +8,5 @@ public:
     ClaseDadaMenu();
     void runClaseDada();
 private:
-    //ClasesDadasManager _clasesDadasManager;
+    ClaseDadaManager _claseDadaManager;
 };

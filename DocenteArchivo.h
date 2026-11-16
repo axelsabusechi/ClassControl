@@ -14,6 +14,7 @@ public:
     int getCantReg();
     int getNewID();
     int buscarByID(int id);
+    int buscarByDni(const std::string &dni);
     bool existeDocente(int id);
     int getCantRegActivos();
     bool existeDni(const std::string &dni, int iDIgnorar = -1);

@@ -14,7 +14,28 @@ public:
     void consultarNotasPorAlumno();
     void consultarCurricularPorDocente();
     void consultarDesempenioAcademicoPorAlumno();
+
 private:
+    int seleccionarAlumno();
+    void mostrarAlumno(const Alumno &reg)const;
+    void mostrarAlumnoResumido(const Alumno &reg)const;
+    void listarAlumnos();
+    std::string seleccionarDocente();
+    void mostrarDocente(const Docente &reg)const;
+    void listarDocentes();
+    bool mostrarNotasAlumno(int legajo);
+    void mostrarNota(const Nota &reg)const;
+    void mostrarDesempenioAcademico(int cantNotas,
+                                    int aprobadas,
+                                    int desaprobadas,
+                                    int aplazos,
+                                    float promedio)const;
+    float calcularDesempenioAcademico(int legajo,
+                                      int &cantNotas,
+                                      int &aprobadas,
+                                      int &desaprobadas,
+                                      int &aplazos);
+
     AlumnoArchivo _alumnoArchivo;
     DocenteArchivo _docenteArchivo;
     CursoArchivo _cursoArchivo;

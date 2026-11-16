@@ -15,6 +15,14 @@ public:
     void listarTemasPorEstado();
 
 private:
+    int seleccionarCurso();
+    void listarCursos();
+    void mostrarEncabezadoCurso(const Curso &reg, const std::string &titulo)const;
+    bool mostrarAlumnosCurso(int idCurso);
+    void mostrarAlumno(const Alumno &reg)const;
+    bool mostrarDocentesCurso(int idCurso);
+    void mostrarDocente(const Docente &reg)const;
+
     AlumnoArchivo _alumnoArchivo;
     CursoArchivo _cursoArchivo;
     InscripcionArchivo _inscripcionArchivo;

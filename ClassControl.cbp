@@ -55,6 +55,8 @@
 		<Unit filename="ClaseDada.h" />
 		<Unit filename="ClaseDadaArchivo.cpp" />
 		<Unit filename="ClaseDadaArchivo.h" />
+		<Unit filename="ClaseDadaManager.cpp" />
+		<Unit filename="ClaseDadaManager.h" />
 		<Unit filename="ClaseDadaMenu.cpp" />
 		<Unit filename="ClaseDadaMenu.h" />
 		<Unit filename="ConsultasManager.cpp" />

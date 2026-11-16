@@ -1,62 +1,63 @@
 #include "TemaArchivo.h"
 
-TemaArchivo::TemaArchivo(std::string fileName)
+TemaArchivo::TemaArchivo(const std::string &fileName)
     :_fileName(fileName)
 {
 }
 
-ArchivoError TemaArchivo::guardar(Tema reg)
+ArchivoError TemaArchivo::guardar(const Tema &reg)
 {
     FILE *pFile;
     size_t escritura;
     const int CANT_REG=1;
 
-    pFile=fopen(_fileName.c_str(),"ab");
+    pFile = fopen(_fileName.c_str(),"ab");
 
-    if (pFile==nullptr)
+    if (pFile == nullptr)
     {
-        _errorMessage="No se pudo abrir el archivo..." + _fileName;
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
         return ArchivoError::ABRIR;
     }
 
-    escritura=fwrite(&reg,sizeof(Tema),CANT_REG,pFile);
+    escritura = fwrite(&reg, sizeof(Tema), CANT_REG, pFile);
     fclose(pFile);
 
-    if(escritura!=CANT_REG)
+    if(escritura != CANT_REG)
     {
-        _errorMessage="No se pudo escribir en el registro...";
+        _errorMessage = "No se pudo escribir en el registro...";
         return ArchivoError::ESCRIBIR;
     }
 
-    _errorMessage="";
+    _errorMessage = "";
     return ArchivoError::OK;
 }
 
-ArchivoError TemaArchivo::guardar(int index, Tema reg)
+ArchivoError TemaArchivo::guardar(int index, const Tema &reg)
 {
     FILE *PFile;
     size_t escritura;
     const int CANT_REGISTROS=1;
 
-    PFile=fopen(_fileName.c_str(),"rb+");
+    PFile = fopen(_fileName.c_str(),"rb+");
 
-    if(PFile==nullptr)
+    if(PFile == nullptr)
     {
-        _errorMessage="No se pudo abrir el archivo..." + _fileName;
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
         return ArchivoError::ABRIR;
     }
 
-    fseek(PFile,index*sizeof(Tema),SEEK_SET);
-    escritura=fwrite(&reg,sizeof(Tema),CANT_REGISTROS,PFile);
+    fseek(PFile, index*sizeof(Tema), SEEK_SET);
+    escritura = fwrite(&reg, sizeof(Tema), CANT_REGISTROS, PFile);
     fclose(PFile);
 
-    if(escritura!=CANT_REGISTROS)
+    if(escritura != CANT_REGISTROS)
     {
-        _errorMessage="No se pudo actualizar el registro...";
+        _errorMessage = "No se pudo actualizar el registro...";
         return ArchivoError::ESCRIBIR;
     }
 
-    _errorMessage="";
+    _errorMessage = "";
+
     return ArchivoError::OK;
 }
 
@@ -65,24 +66,25 @@ ArchivoError TemaArchivo::leerTodos(Tema reg[], int cant)
     FILE *pFile;
     size_t lectura;
 
-    pFile=fopen(_fileName.c_str(),"rb");
+    pFile = fopen(_fileName.c_str(),"rb");
 
-    if(pFile==nullptr)
+    if(pFile == nullptr)
     {
-        _errorMessage="No s epudo abrir el archivo..." + _fileName;
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
         return ArchivoError::ABRIR;
     }
 
-    lectura=fread(reg,sizeof(Tema),cant,pFile);
+    lectura = fread(reg, sizeof(Tema), cant, pFile);
     fclose(pFile);
 
-    if(lectura!=cant)
+    if(lectura != cant)
     {
-        _errorMessage="No se pudieron leer los registros";
+        _errorMessage = "No se pudieron leer los registros";
         return ArchivoError::LEER;
     }
 
-    _errorMessage="";
+    _errorMessage = "";
+
     return ArchivoError::OK;
 }
 
@@ -91,28 +93,29 @@ Tema TemaArchivo::leer(int index)
     FILE *pFile;
     Tema reg;
     size_t lectura;
-    const int CANT_REG=1;
+    const int CANT_REG = 1;
 
     reg.setIdTema(-1);
-    pFile=fopen(_fileName.c_str(),"rb");
+    pFile = fopen(_fileName.c_str(),"rb");
 
-    if(pFile==nullptr)
+    if(pFile == nullptr)
     {
-        _errorMessage="No se pudo abrir el archivo..." + _fileName;
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
         return reg;
     }
 
-    fseek(pFile,index*sizeof(Tema),SEEK_SET);
-    lectura=fread(&reg,sizeof(Tema),CANT_REG,pFile);
+    fseek(pFile, index*sizeof(Tema), SEEK_SET);
+    lectura = fread(&reg, sizeof(Tema), CANT_REG,pFile);
     fclose(pFile);
 
-    if(lectura!=CANT_REG)
+    if(lectura != CANT_REG)
     {
-        _errorMessage="No se pudo leer el registro...";
+        _errorMessage = "No se pudo leer el registro...";
         return reg;
     }
 
-    _errorMessage="";
+    _errorMessage = "";
+
     return reg;
 }
 
@@ -121,16 +124,18 @@ int TemaArchivo::getCantReg()
     FILE *pFile;
     int cant;
 
-    pFile=fopen(_fileName.c_str(),"rb");
+    pFile = fopen(_fileName.c_str(),"rb");
 
-    if(pFile==nullptr)
+    if(pFile == nullptr)
     {
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
         return 0;
     }
 
-    fseek(pFile,0,SEEK_END);
-    cant=ftell(pFile)/sizeof(Tema);
+    fseek(pFile, 0, SEEK_END);
+    cant = ftell(pFile)/sizeof(Tema);
     fclose(pFile);
+
     return cant;
 }
 
@@ -143,18 +148,19 @@ int TemaArchivo::buscarById(int id)
 {
     FILE *pFile;
     Tema reg;
-    int index=0;
+    int index = 0;
 
-    pFile=fopen(_fileName.c_str(),"rb");
+    pFile = fopen(_fileName.c_str(),"rb");
 
-    if(pFile==nullptr)
+    if(pFile == nullptr)
     {
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
         return -1;
     }
 
-    while(fread(&reg,sizeof(Tema), 1,pFile))
+    while(fread(&reg, sizeof(Tema), 1, pFile))
     {
-        if(reg.getIdTema()==id)
+        if(reg.getIdTema() == id)
         {
             fclose(pFile);
             return index;
@@ -163,11 +169,17 @@ int TemaArchivo::buscarById(int id)
     }
 
     fclose(pFile);
-    _errorMessage="";
+    _errorMessage = "";
+
     return -1;
 }
 
-std::string TemaArchivo::getLastError()
+bool TemaArchivo::existeTema(int id)
+{
+    return buscarById(id) != -1;
+}
+
+std::string TemaArchivo::getLastError()const
 {
     return _errorMessage;
 }

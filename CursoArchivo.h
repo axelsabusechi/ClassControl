@@ -2,6 +2,8 @@
 #include <string>
 #include "Curso.h"
 #include "ArchivoError.h"
+#include "Grado.h"
+#include "Division.h"
 
 class CursoArchivo
 {
@@ -14,6 +16,7 @@ public:
     int getCantReg();
     int getNewID();
     int buscarByID(int id);
+    int buscarByGradoDivision(Grado grado, Division division);
     bool existeCurso(int id);
     bool existeCurso(Grado grado, Division division);
     int getCantRegActivos();

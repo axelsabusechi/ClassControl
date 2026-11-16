@@ -12,7 +12,7 @@ ListadosMenu::ListadosMenu()
 
 void ListadosMenu::runListados()
 {
-    bool salir=false;
+    bool salir = false;
 
     do
     {

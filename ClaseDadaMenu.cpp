@@ -12,17 +12,17 @@ ClaseDadaMenu::ClaseDadaMenu()
 
 void ClaseDadaMenu::runClaseDada()
 {
-    bool salir=false;
+    bool salir = false;
 
     do
     {
-        int opcion=runMenu();
+        int opcion = runMenu();
         switch(opcion)
         {
         //case 0: _claseDadaManageer.registrarClaseDada); break;
         //case 1: _claseDadaManageer.modificarClaseDada(); break;
         //case 2: _claseDadaManageer.eliminarClaseDada(); break;
-        case 3: salir=true;
+        case 3: salir = true;
         }
     }while(!salir);
 }

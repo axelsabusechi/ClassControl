@@ -172,6 +172,38 @@ int CursoArchivo::buscarByID(int id)
     return -1;
 }
 
+int CursoArchivo::buscarByGradoDivision(Grado grado, Division division)
+{
+    FILE *pFile;
+    Curso reg;
+    int index=0;
+
+    pFile = fopen(_fileName.c_str(),"rb");
+
+    if(pFile == nullptr)
+    {
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
+        return -1;
+    }
+
+    while(fread(&reg,sizeof(Curso), 1,pFile))
+    {
+        if(!reg.getEliminado() &&
+                reg.getGrado() == grado &&
+                reg.getDivision() == division)
+        {
+            fclose(pFile);
+            return index;
+        }
+        index++;
+    }
+
+    fclose(pFile);
+    _errorMessage="";
+    return -1;
+}
+
+
 bool CursoArchivo::existeCurso(int id)
 {
     return buscarByID(id) != -1;
