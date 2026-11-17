@@ -130,6 +130,8 @@
 		<Unit filename="UnidadDidactica.h" />
 		<Unit filename="UnidadDidacticaArchivo.cpp" />
 		<Unit filename="UnidadDidacticaArchivo.h" />
+		<Unit filename="UnidadDidacticaManager.cpp" />
+		<Unit filename="UnidadDidacticaManager.h" />
 		<Unit filename="UnidadDidacticaMenu.cpp" />
 		<Unit filename="UnidadDidacticaMenu.h" />
 		<Unit filename="main.cpp" />

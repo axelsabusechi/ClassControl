@@ -6,15 +6,16 @@
 class UnidadDidacticaArchivo
 {
 public:
-    UnidadDidacticaArchivo(std::string fileName="UnidadesDidacticas.dat");
-    ArchivoError guardar(UnidadDidactica reg);
-    ArchivoError guardar(int index, UnidadDidactica reg);
+    UnidadDidacticaArchivo(const std::string &fileName = "UnidadesDidacticas.dat");
+    ArchivoError guardar(const UnidadDidactica &reg);
+    ArchivoError guardar(int index, const UnidadDidactica &reg);
     ArchivoError leerTodos(UnidadDidactica reg[], int cant);
     UnidadDidactica leer(int index);
     int getCantReg();
+    int getCantRegActivos();
     int getNewID();
     int buscarByID(int id);
-    std::string getLastError();
+    std::string getLastError()const;
 
 private:
     std::string _fileName;

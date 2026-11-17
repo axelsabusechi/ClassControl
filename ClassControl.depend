@@ -117,7 +117,7 @@
 	"InformesMenu.h"
 	"MantenimientoMenu.h"
 
-1794673025 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnomanager.cpp
+1794879764 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\alumnomanager.cpp
 	<iostream>
 	"AlumnoManager.h"
 	"utils.h"
@@ -205,8 +205,9 @@
 1793100843 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\clasesdadasmenu.cpp
 	"ClasesDadasMenu.h"
 
-1792976882 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticamenu.h
+1794914452 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticamenu.h
 	"Menu.h"
+	"UnidadDidacticaManager.h"
 
 1792956431 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\temamenu.h
 	"Menu.h"
@@ -228,7 +229,7 @@
 	"Menu.h"
 	"ListadosManager.h"
 
-1793100805 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticamenu.cpp
+1794914452 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticamenu.cpp
 	"UnidadDidacticaMenu.h"
 
 1794701185 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\consultasmenu.h
@@ -360,10 +361,10 @@
 	"Tema.h"
 	"ArchivoError.h"
 
-1793640447 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticaarchivo.cpp
+1794919406 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticaarchivo.cpp
 	"UnidadDidacticaArchivo.h"
 
-1794702661 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticaarchivo.h
+1794919406 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticaarchivo.h
 	<string>
 	"UnidadDidactica.h"
 	"ArchivoError.h"
@@ -472,21 +473,23 @@
 	"rlutil.h"
 	"utils.h"
 
-1794791327 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\clasedadamanager.h
+1794879302 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\clasedadamanager.h
 	"ClaseDada.h"
 	"ClaseDadaArchivo.h"
 	"CursoArchivo.h"
 	"TemaArchivo.h"
 	"Fecha.h"
 
-1794791580 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\clasedadamanager.cpp
+1794911814 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\clasedadamanager.cpp
 	<iostream>
 	"ClaseDadaManager.h"
 	"utils.h"
 	"rlutil.h"
 
-1794844970 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\mantenimientomanager.cpp
+1794876366 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\mantenimientomanager.cpp
+	<iostream>
 	"MantenimientoManager.h"
+	"rlutil.h"
 
 1794875413 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\mantenimientomanager.h
 	<string>
@@ -513,4 +516,15 @@
 1794846126 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\bkpindividualmenu.h
 	"Menu.h"
 	"MantenimientoManager.h"
+
+1794919463 d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticamanager.h
+	"UnidadDidactica.h"
+	"UnidadDidacticaArchivo.h"
+	"CursoArchivo.h"
+
+1794919891 source:d:\documentos\utn - frgp\tec. universitaria en programacion_plan 2024\5. programacion ii\tp integrador 2026 2do cuatrimestre\classcontrol\unidaddidacticamanager.cpp
+	<iostream>
+	"UnidadDidacticaManager.h"
+	"utils.h"
+	"rlutil.h"
 

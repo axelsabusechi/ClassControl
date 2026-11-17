@@ -23,6 +23,12 @@ private:
     void listarTemas();
     void mostrarClaseDada(const ClaseDada &reg);
     void mostrarClasesDadasActivas();
+    bool seleccionarEstadoClase();
+    bool menuModificarClaseDada(ClaseDada &reg);
+    void modificarFecha(ClaseDada &reg);
+    void modificarObservaciones(ClaseDada &reg);
+    void modificarClaseDada(ClaseDada &reg);
+    void modificarTodos(ClaseDada &reg);
 
     ClaseDadaArchivo _claseDadaArchivo;
     CursoArchivo _cursoArchivo;

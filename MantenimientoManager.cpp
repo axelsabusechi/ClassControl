@@ -1,8 +1,11 @@
 #include <iostream>
 #include "MantenimientoManager.h"
+#include "rlutil.h"
 
 void MantenimientoManager::backupAlumnos()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Alumnos.dat", "Alumnos.bkp"),
                                "Alumnos", "Back Up");
     system("pause");
@@ -10,6 +13,8 @@ void MantenimientoManager::backupAlumnos()
 
 void MantenimientoManager::restoreAlumnos()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Alumnos.bkp", "Alumnos.dat"),
                                "Alumnos", "Restore");
     system("pause");
@@ -17,6 +22,8 @@ void MantenimientoManager::restoreAlumnos()
 
 void MantenimientoManager::backupDocentes()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Docentes.dat", "Docentes.bkp"),
                                "Docentes", "Back up");
     system("pause");
@@ -24,6 +31,8 @@ void MantenimientoManager::backupDocentes()
 
 void MantenimientoManager::restoreDocentes()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Docentes.bkp", "Docentes.dat"),
                                "Docentes", "Restore");
     system("pause");
@@ -31,6 +40,8 @@ void MantenimientoManager::restoreDocentes()
 
 void MantenimientoManager::backupCursos()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Cursos.dat", "Cursos.bkp"),
                                "Cursos", "Back up");
     system("pause");
@@ -38,6 +49,8 @@ void MantenimientoManager::backupCursos()
 
 void MantenimientoManager::restoreCursos()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Cursos.bkp", "Cursos.dat"),
                                "Cursos", "Restore");
     system("pause");
@@ -45,6 +58,8 @@ void MantenimientoManager::restoreCursos()
 
 void MantenimientoManager::backupInscripciones()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Inscripciones.dat", "Inscripciones.bkp"),
                                "Inscripciones", "Back up");
     system("pause");
@@ -52,6 +67,8 @@ void MantenimientoManager::backupInscripciones()
 
 void MantenimientoManager::restoreInscripciones()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Inscripciones.bkp", "Inscripciones.dat"),
                                "Inscripciones", "Restore");
     system("pause");
@@ -59,6 +76,8 @@ void MantenimientoManager::restoreInscripciones()
 
 void MantenimientoManager::backupAsignaciones()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("AsignacionesDocentes.dat", "AsignacionesDocentes.bkp"),
                                "Asignaciones Docentes", "Back up");
     system("pause");
@@ -66,6 +85,8 @@ void MantenimientoManager::backupAsignaciones()
 
 void MantenimientoManager::restoreAsignaciones()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("AsignacionesDocentes.bkp", "AsignacionesDocentes.dat"),
                                "Asignaciones Docentes", "Restore");
     system("pause");
@@ -73,6 +94,8 @@ void MantenimientoManager::restoreAsignaciones()
 
 void MantenimientoManager::backupClasesDadas()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("ClasesDadas.dat", "ClasesDadas.bkp"),
                                "Clases Dadas", "Back up");
     system("pause");
@@ -80,6 +103,8 @@ void MantenimientoManager::backupClasesDadas()
 
 void MantenimientoManager::restoreClasesDadas()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("ClasesDadas.bkp", "ClasesDadas.dat"),
                                "Clases Dadas", "Restore");
     system("pause");
@@ -87,6 +112,8 @@ void MantenimientoManager::restoreClasesDadas()
 
 void MantenimientoManager::backupUnidadesDidacticas()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("UnidadesDidacticas.dat", "UnidadesDidacticas.bkp"),
                                "Unidades Didacticas", "Back up");
     system("pause");
@@ -94,6 +121,8 @@ void MantenimientoManager::backupUnidadesDidacticas()
 
 void MantenimientoManager::restoreUnidadesDidacticas()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("UnidadesDidacticas.bkp", "UnidadesDidacticas.dat"),
                                "Unidades Didacticas", "Restore");
     system("pause");
@@ -101,6 +130,8 @@ void MantenimientoManager::restoreUnidadesDidacticas()
 
 void MantenimientoManager::backupTemas()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Temas.dat", "Temas.bkp"),
                                "Temas", "Back up");
     system("pause");
@@ -108,6 +139,8 @@ void MantenimientoManager::backupTemas()
 
 void MantenimientoManager::restoreTemas()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Temas.bkp", "Temas.dat"),
                                "Temas", "Restore");
     system("pause");
@@ -122,6 +155,8 @@ void MantenimientoManager::backupNotas()
 
 void MantenimientoManager::restoreNotas()
 {
+    rlutil::cls();
+
     mostrarResultadoIndividual(copiarArchivo("Notas.bkp", "Notas.dat"),
                                "Notas", "Restore");
     system("pause");
@@ -129,6 +164,8 @@ void MantenimientoManager::restoreNotas()
 
 void MantenimientoManager::backupGeneral()
 {
+    rlutil::cls();
+
     int errores = 0;
 
     if(!copiarArchivo("Alumnos.dat", "Alumnos.bkp"))
@@ -175,6 +212,8 @@ void MantenimientoManager::backupGeneral()
 
 void MantenimientoManager::restoreGeneral()
 {
+    rlutil::cls();
+
     int errores = 0;
 
     if(!copiarArchivo("Alumnos.bkp", "Alumnos.dat"))
