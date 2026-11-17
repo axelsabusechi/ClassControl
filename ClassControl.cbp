@@ -51,6 +51,8 @@
 		<Unit filename="AsignacionDocenteMangaer.cpp" />
 		<Unit filename="AsignacionDocenteMenu.cpp" />
 		<Unit filename="AsignacionDocenteMenu.h" />
+		<Unit filename="BkpIndividualMenu.cpp" />
+		<Unit filename="BkpIndividualMenu.h" />
 		<Unit filename="ClaseDada.cpp" />
 		<Unit filename="ClaseDada.h" />
 		<Unit filename="ClaseDadaArchivo.cpp" />
@@ -99,6 +101,10 @@
 		<Unit filename="ListadosManager.h" />
 		<Unit filename="ListadosMenu.cpp" />
 		<Unit filename="ListadosMenu.h" />
+		<Unit filename="MantenimientoManager.cpp" />
+		<Unit filename="MantenimientoManager.h" />
+		<Unit filename="MantenimientoMenu.cpp" />
+		<Unit filename="MantenimientoMenu.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
 		<Unit filename="Nota.cpp" />
@@ -112,6 +118,8 @@
 		<Unit filename="Periodo.h" />
 		<Unit filename="Persona.cpp" />
 		<Unit filename="Persona.h" />
+		<Unit filename="RestoreIndividualMenu.cpp" />
+		<Unit filename="RestoreIndividualMenu.h" />
 		<Unit filename="Tema.cpp" />
 		<Unit filename="Tema.h" />
 		<Unit filename="TemaArchivo.cpp" />

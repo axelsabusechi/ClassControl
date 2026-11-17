@@ -91,7 +91,7 @@ Alumno AlumnoArchivo::leer(int index)
     FILE *pFile;
     Alumno reg;
     size_t lectura;
-    const int CANT_REG=1;
+    const int CANT_REG = 1;
 
     reg.setLegajo(-1);
     pFile = fopen(_fileName.c_str(),"rb");
@@ -102,8 +102,8 @@ Alumno AlumnoArchivo::leer(int index)
         return reg;
     }
 
-    fseek(pFile,index*sizeof(Alumno),SEEK_SET);
-    lectura = fread(&reg,sizeof(Alumno),CANT_REG,pFile);
+    fseek(pFile, index*sizeof(Alumno), SEEK_SET);
+    lectura = fread(&reg,sizeof(Alumno), CANT_REG, pFile);
     fclose(pFile);
 
     if(lectura != CANT_REG)

@@ -1,7 +1,7 @@
 #include "AppMenu.h"
 
 AppMenu::AppMenu()
-    :Menu(12)
+    :Menu(13)
 {
     setOpciones(1, "                   Alumnos                  ");
     setOpciones(2, "                   Docentes                 ");
@@ -15,17 +15,18 @@ AppMenu::AppMenu()
     setOpciones(10, "                   Listados                 ");
     setOpciones(11, "                   Consultas                ");
     setOpciones(12, "                   Informes                 ");
+    setOpciones(13, "            Modulo de Mantenimiento         ");
     setTituloMenu("   Menu Principal  ");
     setOpCero("                    Salir                   ");
 }
 
 void AppMenu::runApp()
 {
-    bool salir=false;
+    bool salir = false;
 
     do
     {
-        int opcion=runMenu();
+        int opcion = runMenu();
         switch(opcion)
         {
         case 0: _alumnoMenu.runAlumno(); break;
@@ -40,7 +41,8 @@ void AppMenu::runApp()
         case 9: _listadosMenu.runListados(); break;
         case 10: _consultasMenu.runConsultas(); break;
         case 11: _informesMenu.runInformes(); break;
-        case 12: salir=true;
+        case 12: _mantenimientoMenu.runMantenimiento(); break;
+        case 13: salir = true;
         }
     }while(!salir);
 }

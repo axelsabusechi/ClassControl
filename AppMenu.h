@@ -12,6 +12,7 @@
 #include "ListadosMenu.h"
 #include "ConsultasMenu.h"
 #include "InformesMenu.h"
+#include "MantenimientoMenu.h"
 
 class AppMenu:public Menu
 {
@@ -31,4 +32,5 @@ private:
     ListadosMenu _listadosMenu;
     ConsultasMenu _consultasMenu;
     InformesMenu _informesMenu;
+    MantenimientoMenu _mantenimientoMenu;
 };
