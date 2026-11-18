@@ -340,7 +340,7 @@ void UnidadDidacticaManager::mostrarUnidadDidactica(const UnidadDidactica &reg)
     std::cout << "Orden: " << reg.getOrden() << std::endl;
 }
 
-bool UnidadDidacticaManager::menuModificarUnidadDidactica(const UnidadDidactica &reg)
+bool UnidadDidacticaManager::menuModificarUnidadDidactica(UnidadDidactica &reg)
 {
     int opcion;
 
@@ -395,17 +395,17 @@ bool UnidadDidacticaManager::menuModificarUnidadDidactica(const UnidadDidactica 
     return false;
 }
 
-void UnidadDidacticaManager::modificarNombre(UnidadDidactica reg)
+void UnidadDidacticaManager::modificarNombre(UnidadDidactica &reg)
 {
     reg.setNombre(pedirTexto("Nuevo nombre: "));
 }
 
-void UnidadDidacticaManager::modificarOrden(UnidadDidactica reg)
+void UnidadDidacticaManager::modificarOrden(UnidadDidactica &reg)
 {
     reg.setOrden(pedirEntero("Nuevo orden: "));
 }
 
-void UnidadDidacticaManager::modificarTodos(UnidadDidactica reg)
+void UnidadDidacticaManager::modificarTodos(UnidadDidactica &reg)
 {
     modificarNombre(reg);
     modificarOrden(reg);

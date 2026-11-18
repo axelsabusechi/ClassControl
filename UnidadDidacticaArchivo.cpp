@@ -167,6 +167,11 @@ int UnidadDidacticaArchivo::getNewID()
     return getCantReg()+1;
 }
 
+bool UnidadDidacticaArchivo::existeUnidad(int id)
+{
+    return buscarByID(id) != -1;
+}
+
 int UnidadDidacticaArchivo::buscarByID(int id)
 {
     FILE *pFile;

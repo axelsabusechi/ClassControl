@@ -16,12 +16,10 @@ private:
     void listarCursos();
     void mostrarUnidadesDidacticasActivas();
     void mostrarUnidadDidactica(const UnidadDidactica &reg);
-    bool menuModificarUnidadDidactica(const UnidadDidactica &reg);
-    void modificarNombre(UnidadDidactica reg);
-    void modificarOrden(UnidadDidactica reg);
-    void modificarTodos(UnidadDidactica reg);
-
-
+    bool menuModificarUnidadDidactica(UnidadDidactica &reg);
+    void modificarNombre(UnidadDidactica &reg);
+    void modificarOrden(UnidadDidactica &reg);
+    void modificarTodos(UnidadDidactica &reg);
 
     UnidadDidacticaArchivo _unidadDidacticaArchivo;
     CursoArchivo _cursoArchivo;

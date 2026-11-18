@@ -15,6 +15,7 @@ public:
     int getCantRegActivos();
     int getNewID();
     int buscarByID(int id);
+    bool existeUnidad(int id);
     std::string getLastError()const;
 
 private:

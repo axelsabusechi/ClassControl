@@ -124,6 +124,8 @@
 		<Unit filename="Tema.h" />
 		<Unit filename="TemaArchivo.cpp" />
 		<Unit filename="TemaArchivo.h" />
+		<Unit filename="TemaManager.cpp" />
+		<Unit filename="TemaManager.h" />
 		<Unit filename="TemaMenu.cpp" />
 		<Unit filename="TemaMenu.h" />
 		<Unit filename="UnidadDidactica.cpp" />

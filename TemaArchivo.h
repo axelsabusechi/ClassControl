@@ -12,6 +12,7 @@ public:
     ArchivoError leerTodos(Tema reg[], int cant);
     Tema leer(int index);
     int getCantReg();
+    int getCantRegActivos();
     int getNewId();
     int buscarById(int id);
     bool existeTema(int id);

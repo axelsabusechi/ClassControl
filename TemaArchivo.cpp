@@ -139,6 +139,34 @@ int TemaArchivo::getCantReg()
     return cant;
 }
 
+int TemaArchivo::getCantRegActivos()
+{
+    FILE *pFile;
+    Tema reg;
+    int cantidad = 0;
+
+    pFile = fopen(_fileName.c_str(), "rb");
+
+    if(pFile == nullptr)
+    {
+        _errorMessage = "No se pudo abrir el archivo..." + _fileName;
+        return 0;
+    }
+
+    while(fread(&reg, sizeof(Tema), 1, pFile))
+    {
+        if(!reg.getEliminado())
+        {
+            cantidad++;
+        }
+    }
+
+    fclose(pFile);
+    _errorMessage = "";
+
+    return cantidad;
+}
+
 int TemaArchivo::getNewId()
 {
     return getCantReg()+1;

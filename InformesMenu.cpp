@@ -7,7 +7,7 @@ InformesMenu::InformesMenu()
     setOpciones(2, "        Promedio de notas por alumno        ");
     setOpciones(3, "   Cantidad de clases suspendidas por curso ");
     setOpciones(4, "        Rendimiento academico por curso     ");
-    setOpciones(5, "             Avance curricular por curso    ");
+    setOpciones(5, "          Avance curricular por curso       ");
     setTituloMenu("     Informes      ");
     setOpCero("           Volver al menu principal         ");
 }

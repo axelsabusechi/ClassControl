@@ -24,7 +24,7 @@ void ConsultasMenu::runConsultas()
         case 0: _consultasManager.consultarAlumnoPorLegajo(); break;
         case 1: _consultasManager.consultarDocentePorDni(); break;
         case 2: _consultasManager.consultarNotasPorAlumno(); break;
-        case 3: _consultasManager.consultarCurricularPorDocente(); break;
+        case 3: _consultasManager.consultarCurriculaPorDocente(); break;
         case 4: _consultasManager.consultarDesempenioAcademicoPorAlumno(); break;
         case 5: salir = true;
         }
