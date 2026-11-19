@@ -11,12 +11,13 @@ void DocenteManager::registrarDocente()
 {
     if(_docenteArchivo.guardar(crearDocente()) == ArchivoError::OK)
     {
-        std::cout << "Docente registrado..." << std::endl;
+        std::cout << "\nDocente registrado con exito!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_docenteArchivo.getLastError());
     }
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
     rlutil::cls();
 }
@@ -24,6 +25,7 @@ void DocenteManager::registrarDocente()
 void DocenteManager::modificarDocente()
 {
     rlutil::cls();
+    std::cout << "===== MODIFICAR DOCENTE =====" << std::endl;
 
     int cantReg = _docenteArchivo.getCantRegActivos();
 
@@ -35,14 +37,16 @@ void DocenteManager::modificarDocente()
             return;
         }
 
-        std::cout << "No hay docentes registrados para modificar..." << std::endl;
+        std::cout << "\nNo hay docentes registrados para modificar..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarDocentesActivos();
 
-    int idDocente = pedirEntero("ID del Docente a modificar: ");
+    int idDocente = pedirEntero("\nID del Docente a modificar: ");
     int index = _docenteArchivo.buscarByID(idDocente);
 
     if(index == -1)
@@ -53,7 +57,9 @@ void DocenteManager::modificarDocente()
             return;
         }
 
-        std::cout << "El Docente con ID " << idDocente << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nEl docente con ID " << idDocente
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -69,35 +75,36 @@ void DocenteManager::modificarDocente()
 
     if(reg.getEliminado())
     {
-        std::cout << "El docente esta dado de baja..." << std::endl;
+        std::cout << "\nEl docente esta dado de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
-    mostrarDocente(reg);
-
     if(!menuModificarDocente(reg))
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
     if(_docenteArchivo.guardar(index,reg) == ArchivoError::OK)
     {
-        std::cout << "El docente se modifico exitosamente!" << std::endl;
+        std::cout << "\nEl docente se modifico exitosamente!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_docenteArchivo.getLastError());
     }
-
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
 void DocenteManager::eliminarDocente()
 {
     rlutil::cls();
+    std::cout << "===== DAR DE BAJA DOCENTE =====" << std::endl;
 
     int cantReg = _docenteArchivo.getCantRegActivos();
 
@@ -108,15 +115,16 @@ void DocenteManager::eliminarDocente()
             system("pause");
             return;
         }
-
-        std::cout << "No hay docentes registrados para dar de baja..." << std::endl;
+        std::cout << "\nNo hay docentes registrados para dar de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarDocentesActivos();
 
-    int idDocente = pedirEntero("ID del Docente a dar de baja: ");
+    int idDocente = pedirEntero("\nID del Docente a dar de baja: ");
     int index = _docenteArchivo.buscarByID(idDocente);
 
     if(index == -1)
@@ -126,7 +134,9 @@ void DocenteManager::eliminarDocente()
             system("pause");
             return;
         }
-        std::cout << "El docente con ID " << idDocente << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nEl docente con ID " << idDocente
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -142,17 +152,23 @@ void DocenteManager::eliminarDocente()
 
     if(reg.getEliminado())
     {
-        std::cout << "El docente esta dado de baja." << std::endl;
+        std::cout << "\nEl docente ya esta dado de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    rlutil::cls();
+    std::cout << "===== DAR DE BAJA DOCENTE =====" << std::endl;
+    std::cout << "\n----- DOCENTE SELECCIONADO -----" << std::endl;
     mostrarDocente(reg);
+    std::cout << "----------------------------------------" << std::endl;
+
     bool eliminar = false;
 
     do
     {
-        int opcion = pedirEntero("Ingrese 1 para dar de baja, 0 para cancelar: ");
+        int opcion = pedirEntero("\nIngrese 1 para dar de baja, 0 para cancelar: ");
 
         if(opcion == 0 || opcion == 1)
         {
@@ -171,7 +187,8 @@ void DocenteManager::eliminarDocente()
 
         if(_docenteArchivo.guardar(index,reg) == ArchivoError::OK)
         {
-            std::cout << "El docente con ID " << idDocente << " se dio de baja con exito!" << std::endl;
+            std::cout << "\nEl docente con ID " << idDocente
+                      << " se dio de baja con exito!" << std::endl;
         }
         else
         {
@@ -180,9 +197,10 @@ void DocenteManager::eliminarDocente()
     }
     else
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
     }
 
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
@@ -203,7 +221,7 @@ void DocenteManager::listarDocentes()
         Docente *vDocentes = new Docente[cantReg];
         _docenteArchivo.leerTodos(vDocentes,cantReg);
 
-        for(int i=0; i<cantReg; i++)
+        for(int i = 0; i < cantReg; i++)
         {
             if(!vDocentes[i].getEliminado())
             {
@@ -225,9 +243,9 @@ Docente DocenteManager::crearDocente()
     idDocente = _docenteArchivo.getNewID();
 
     rlutil::cls();
-
-    std::cout << "-----CARGAR DOCENTE-------" << std::endl;
-    std::cout << "ID: " << idDocente << std::endl << std::endl;
+    std::cout << "===== REGISTRAR DOCENTE =====" << std::endl;
+    std::cout << "ID: " << idDocente << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
 
     cargarDocente(nombre,
                   apellido,
@@ -248,61 +266,6 @@ void DocenteManager::cargarDocente(std::string &nombre,
     dni = cargarDniUnico("DNI: ");
 }
 
-void DocenteManager::mostrarDocente(const Docente &reg)
-{
-    std::cout << "ID: " << reg.getIdDocente() << std::endl;
-    std::cout << "Nombre: " << reg.getNombre() << std::endl;
-    std::cout << "Apellido: " << reg.getApellido() << std::endl;
-    std::cout << "DNI: " << reg.getDni() << std::endl;
-}
-
-void DocenteManager::mostrarDocentesActivos()
-{
-    Docente reg;
-    int cantReg;
-
-    cantReg = _docenteArchivo.getCantReg();
-
-    std::cout << "----- DOCENTES ACTIVOS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
-    {
-        reg = _docenteArchivo.leer(i);
-
-        if(reg.getIdDocente() == -1)
-        {
-            mostrarErrorArchivo(_docenteArchivo.getLastError());
-            system("pause");
-            return;
-        }
-
-        if(!reg.getEliminado())
-        {
-            mostrarDocente(reg);
-            std::cout << "----------------------------------" << std::endl;
-        }
-    }
-}
-
-std::string DocenteManager::cargarDniUnico(const std::string &mensaje, int idIgnorar)
-{
-    std::string dni;
-    bool existe = false;
-
-    do
-    {
-        dni = pedirDni(mensaje);
-        existe = _docenteArchivo.existeDni(dni,idIgnorar);
-
-        if(existe)
-        {
-            std::cout << "ERROR: Ya existe un docente con ese DNI..." << std::endl;
-        }
-    }
-    while(existe);
-    return dni;
-}
-
 bool DocenteManager::menuModificarDocente(Docente &reg)
 {
     int opcion;
@@ -310,17 +273,20 @@ bool DocenteManager::menuModificarDocente(Docente &reg)
     do
     {
         rlutil::cls();
-        std::cout << "----- DATOS ACTUALES DEL DOCENTE -----" << std::endl;
+        std::cout << "===== MODIFICAR DOCENTE =====" << std::endl;
+        std::cout << "\n----- DATOS ACTUALES -----" << std::endl;
         mostrarDocente(reg);
+        std::cout << "----------------------------------------" << std::endl;
 
-        std::cout << "\n----- MODIFICAR DOCENTE -----" << std::endl;
+        std::cout << "\n----- CAMPOS A MODIFICAR -----" << std::endl;
         std::cout << "1 - Nombre" << std::endl;
         std::cout << "2 - Apellido" << std::endl;
         std::cout << "3 - DNI" << std::endl;
         std::cout << "4 - Todos los campos" << std::endl;
-        std::cout << "-----------------------------" << std::endl;
-        std::cout << "5 - Cancelar y salir " << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        std::cout << "5 - Cancelar y salir" << std::endl;
         std::cout << "0 - Guardar y salir" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
 
         opcion = pedirEntero("Opcion: ");
 
@@ -350,11 +316,13 @@ bool DocenteManager::menuModificarDocente(Docente &reg)
 
         default:
             std::cout << "ERROR. Opcion invalida." << std::endl;
+            system("pause");
         }
 
         if(opcion >= 1 && opcion <= 4)
         {
-            std::cout << "Campo modificado..." << std::endl;
+            std::cout << "\nCampo modificado..." << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
             system("pause");
         }
     }
@@ -365,16 +333,19 @@ bool DocenteManager::menuModificarDocente(Docente &reg)
 
 void DocenteManager::modificarNombre(Docente &reg)
 {
+    std::cout << std::endl;
     reg.setNombre(pedirNombreApellido("Nuevo nombre: "));
 }
 
 void DocenteManager::modificarApellido(Docente &reg)
 {
+    std::cout << std::endl;
     reg.setApellido(pedirNombreApellido("Nuevo apellido: "));
 }
 
 void DocenteManager::modificarDni(Docente &reg)
 {
+    std::cout << std::endl;
     reg.setDni(cargarDniUnico(("Nuevo DNI: "),reg.getIdDocente()));
 }
 
@@ -384,3 +355,60 @@ void DocenteManager::modificarTodos(Docente &reg)
     modificarApellido(reg);
     modificarDni(reg);
 }
+
+void DocenteManager::mostrarDocente(const Docente &reg)const
+{
+    std::cout << "ID: " << reg.getIdDocente() << std::endl;
+    std::cout << "Nombre: " << reg.getNombre() << std::endl;
+    std::cout << "Apellido: " << reg.getApellido() << std::endl;
+    std::cout << "DNI: " << reg.getDni() << std::endl;
+}
+
+void DocenteManager::mostrarDocentesActivos()
+{
+    Docente reg;
+    int cantReg;
+
+    cantReg = _docenteArchivo.getCantReg();
+
+    std::cout << "----- DOCENTES ACTIVOS -----" << std::endl;
+
+    for(int i=0; i<cantReg; i++)
+    {
+        reg = _docenteArchivo.leer(i);
+
+        if(reg.getIdDocente() == -1)
+        {
+            mostrarErrorArchivo(_docenteArchivo.getLastError());
+            system("pause");
+            return;
+        }
+
+        if(!reg.getEliminado())
+        {
+            mostrarDocente(reg);
+            std::cout << "----------------------------------------" << std::endl;
+        }
+    }
+}
+
+std::string DocenteManager::cargarDniUnico(const std::string &mensaje, int idIgnorar)
+{
+    std::string dni;
+    bool existe = false;
+
+    do
+    {
+        dni = pedirDni(mensaje);
+        existe = _docenteArchivo.existeDni(dni,idIgnorar);
+
+        if(existe)
+        {
+            std::cout << "ERROR: Ya existe un docente con ese DNI..." << std::endl;
+        }
+    }
+    while(existe);
+    return dni;
+}
+
+

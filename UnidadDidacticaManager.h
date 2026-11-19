@@ -6,22 +6,27 @@
 class UnidadDidacticaManager
 {
 public:
+    UnidadDidacticaManager();
+
     void registrarUnidadDidactica();
     void modificarUnidadDidactica();
     void eliminarUnidadDidactica();
     void listarUnidadDidactica();
 private:
     UnidadDidactica crearUnidadDidactica();
+
     int seleccionarCurso();
-    void listarCursos();
-    void mostrarUnidadesDidacticasActivas();
-    void mostrarUnidadDidactica(const UnidadDidactica &reg);
+
     bool menuModificarUnidadDidactica(UnidadDidactica &reg);
     void modificarNombre(UnidadDidactica &reg);
     void modificarOrden(UnidadDidactica &reg);
     void modificarTodos(UnidadDidactica &reg);
 
+    void mostrarUnidadDidactica(const UnidadDidactica &reg);
+    void mostrarUnidadesDidacticasActivas();
+
+    void listarCursos();
+
     UnidadDidacticaArchivo _unidadDidacticaArchivo;
     CursoArchivo _cursoArchivo;
-
 };

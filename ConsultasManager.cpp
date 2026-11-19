@@ -1,17 +1,23 @@
 #include <iostream>
+#include <iomanip>
 #include "ConsultasManager.h"
 #include "rlutil.h"
 #include "utils.h"
 
+ConsultasManager::ConsultasManager()
+{
+}
 void ConsultasManager::consultarAlumnoPorLegajo()
 {
     rlutil::cls();
-
+    std::cout << "===== CONSULTAR ALUMNO POR LEGAJO =====" << std::endl;
+    std::cout << std::endl;
     int legajo = seleccionarAlumno();
 
     if(legajo == -1)
     {
-        std::cout << "No hay alumnos registrados..." << std::endl;
+        std::cout << "\nNo hay alumnos registrados..." << std::endl;
+        std::cout << "-----------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -22,7 +28,7 @@ void ConsultasManager::consultarAlumnoPorLegajo()
     rlutil::cls();
     std::cout << "===== FICHA DEL ALUMNO =====" << std::endl;
     mostrarAlumno(regAlumno);
-    std::cout << "----------------------------" << std::endl;
+    std::cout << "-----------------------------" << std::endl;
 
     system("pause");
 }
@@ -30,12 +36,15 @@ void ConsultasManager::consultarAlumnoPorLegajo()
 void ConsultasManager::consultarDocentePorDni()
 {
     rlutil::cls();
+    std::cout << "===== CONSULTAR DOCENTE POR DNI =====" << std::endl;
+    std::cout << std::endl;
 
     std::string dni = seleccionarDocente();
 
     if(dni == "")
     {
-        std::cout << "No hay docentes registrados..." << std::endl;
+        std::cout << "\nNo hay docentes registrados..." << std::endl;
+        std::cout << "-----------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -47,19 +56,21 @@ void ConsultasManager::consultarDocentePorDni()
     std::cout << "===== FICHA DEL DOCENTE =====" << std::endl;
     mostrarDocente(regDocente);
     std::cout << "-----------------------------" << std::endl;
-
     system("pause");
 }
 
 void ConsultasManager::consultarNotasPorAlumno()
 {
     rlutil::cls();
+    std::cout << "===== CONSULTAR NOTAS POR ALUMNO =====" << std::endl;
+    std::cout << std::endl;
 
     int legajo = seleccionarAlumno();
 
     if(legajo == -1)
     {
-        std::cout << "No hay alumnos registrados..." << std::endl;
+        std::cout << "\nNo hay alumnos registrados..." << std::endl;
+        std::cout << "-----------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -68,8 +79,10 @@ void ConsultasManager::consultarNotasPorAlumno()
     Alumno regAlumno = _alumnoArchivo.leer(indexAlumno);
 
     rlutil::cls();
+    std::cout << "===== NOTAS DEL ALUMNO =====" << std::endl;
+    std::cout << std::endl;
     mostrarAlumnoResumido(regAlumno);
-    std::cout << "\n===== NOTAS DEL ALUMNO =====\n" << std::endl;
+    std::cout << "\n----- DETALLE DE NOTAS -----" << std::endl;
 
     if(!mostrarNotasAlumno(legajo))
     {
@@ -83,12 +96,15 @@ void ConsultasManager::consultarNotasPorAlumno()
 void ConsultasManager::consultarCurriculaPorDocente()
 {
     rlutil::cls();
+    std::cout << "===== CONSULTAR CURRICULA POR DOCENTE =====" << std::endl;
+    std::cout << std::endl;
 
     std::string dni = seleccionarDocente();
 
     if(dni == "")
     {
-        std::cout << "No hay docentes registrados..." << std::endl;
+        std::cout << "\nNo hay docentes registrados..." << std::endl;
+        std::cout << "-----------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -97,14 +113,15 @@ void ConsultasManager::consultarCurriculaPorDocente()
     Docente regDocente = _docenteArchivo.leer(indexDocente);
 
     rlutil::cls();
+    std::cout << "===== CURRICULA POR DOCENTE =====" << std::endl;
+    std::cout << std::endl;
     mostrarDocenteResumido(regDocente);
 
     if(!mostrarCurriculaDocente(regDocente.getIdDocente()))
     {
-        std::cout << "El docente no tiene cursos asignados..." << std::endl;
+        std::cout << "\nEl docente no tiene cursos asignados..." << std::endl;
     }
-
-    std::cout << "-------------------" << std::endl;
+    std::cout << "-----------------------------" << std::endl;
 
     system("pause");
 }
@@ -112,12 +129,15 @@ void ConsultasManager::consultarCurriculaPorDocente()
 void ConsultasManager::consultarDesempenioAcademicoPorAlumno()
 {
     rlutil::cls();
+    std::cout << "===== DESEMPENIO ACADEMICO POR ALUMNO =====" << std::endl;
+    std::cout << std::endl;
 
     int legajo = seleccionarAlumno();
 
     if(legajo == -1)
     {
-        std::cout << "No hay alumnos registrados..." << std::endl;
+        std::cout << "\nNo hay alumnos registrados..." << std::endl;
+        std::cout << "-----------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -126,7 +146,8 @@ void ConsultasManager::consultarDesempenioAcademicoPorAlumno()
     Alumno regAlumno = _alumnoArchivo.leer(indexAlumno);
 
     rlutil::cls();
-    std::cout << "===== ALUMNO =====" << std::endl;
+    std::cout << "===== DESEMPENIO ACADEMICO =====" << std::endl;
+    std::cout << "\n----- ALUMNO -----" << std::endl;
     mostrarAlumno(regAlumno);
     std::cout << std::endl;
 
@@ -142,7 +163,7 @@ void ConsultasManager::consultarDesempenioAcademicoPorAlumno()
     if(cantNotas == 0)
     {
         std::cout << "El alumno no posee notas registradas..." << std::endl;
-        std::cout << "----------------------------------------" << std::endl;
+        std::cout << "---------------------------------------" << std::endl;
     }
     else
     {
@@ -151,8 +172,8 @@ void ConsultasManager::consultarDesempenioAcademicoPorAlumno()
                                    desaprobadas,
                                    aplazos,
                                    promedio);
-        std::cout << std::endl;
-        std::cout << "===== DETALLE DE NOTAS =====" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        std::cout << "----- DETALLE DE NOTAS -----" << std::endl;
         mostrarNotasAlumno(legajo);
     }
     system("pause");
@@ -202,7 +223,7 @@ std::string ConsultasManager::seleccionarDocente()
 
     do
     {
-        dni = pedirDni("DNI docente: ");
+        dni = pedirDni("\nDNI docente: ");
         existe = _docenteArchivo.existeDni(dni);
 
         if(!existe)
@@ -222,7 +243,7 @@ void ConsultasManager::listarAlumnos()
 {
     int cantReg;
 
-    std::cout << "===== ALUMNOS =====" << std::endl;
+    std::cout << "----- ALUMNOS -----" << std::endl;
     cantReg = _alumnoArchivo.getCantReg();
 
 
@@ -258,18 +279,16 @@ void ConsultasManager::mostrarAlumno(const Alumno &reg)const
 
 void ConsultasManager::mostrarAlumnoResumido(const Alumno &reg)const
 {
-    std::cout << "===== ALUMNO =====" << std::endl;
     std::cout << "Legajo: " << reg.getLegajo()
               << " - " << reg.getNombre()
               << " " << reg.getApellido() << std::endl;
-    std::cout << "------------------" << std::endl;
 }
 
 void ConsultasManager::listarDocentes()
 {
     int cantReg;
 
-    std::cout << "===== DOCENTES =====" << std::endl;
+    std::cout << "----- DOCENTES -----" << std::endl;
 
     cantReg = _docenteArchivo.getCantReg();
 
@@ -304,10 +323,9 @@ void ConsultasManager::mostrarDocente(const Docente &reg)const
 
 void ConsultasManager::mostrarDocenteResumido(const Docente &reg)const
 {
-    std::cout << "===== DOCENTE =====" << std::endl;
+    std::cout << "----- DOCENTE -----" << std::endl;
     std::cout << reg.getApellido() << ", " << reg.getNombre()
               << " (DNI: " << reg.getDni() << ")" << std::endl;
-    std::cout << "-------------------" << std::endl;
 }
 
 bool ConsultasManager::mostrarNotasAlumno(int legajo)
@@ -349,11 +367,12 @@ void ConsultasManager::mostrarDesempenioAcademico(
     int aplazos,
     float promedio)const
 {
-    std::cout << "===== DESEMPENIO ACADEMICO =====" << std::endl;
+    std::cout << "----- RESUMEN ESTADISTICO -----" << std::endl;
     std::cout << "Cantidad de notas: " << cantNotas << std::endl;
     std::cout << "Notas aprobadas: " << aprobadas << std::endl;
     std::cout << "Notas desaprobadas: " << desaprobadas << std::endl;
     std::cout << "Cantidad de aplazos: " << aplazos << std::endl;
+    std::cout << std::fixed << std::setprecision(2);
     std::cout << "Promedio general: " << promedio << std::endl;
 }
 
@@ -379,12 +398,11 @@ bool ConsultasManager::mostrarCurriculaDocente(int idDocente)
                 {
                     tieneCursos = true;
 
-                    std::cout << "\nCURSO: "
+                    std::cout << "\n----- CURSO: "
                               << gradoToString(regCurso.getGrado())
                               << " "
                               << divisionToString(regCurso.getDivision())
-                              << std::endl;
-                    std::cout << "-------------------" << std::endl;
+                              << " -----" << std::endl;
 
                     if(!mostrarUnidadesCurso(regCurso.getIdCurso()))
                     {

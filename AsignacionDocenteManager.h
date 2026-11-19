@@ -17,14 +17,16 @@ public:
 
 private:
     AsignacionDocente crearAsignacionDocente();
-    void mostrarAsignacionDocente(const AsignacionDocente &reg);
-    void mostrarAsignacionesActivas();
-    bool menuModificarAsignacion(AsignacionDocente &reg);
     void cargarAsignacionUnica(int &idDocente, int &idCurso);
-    void listarDocentes();
-    void listarCursos();
+
     int seleccionarDocente();
     int seleccionarCurso();
+
+    bool menuModificarAsignacion(AsignacionDocente &reg);
+    void mostrarAsignacionDocente(const AsignacionDocente &reg);
+    void mostrarAsignacionesActivas();
+    void listarDocentes();
+    void listarCursos();
 
     AsignacionDocenteArchivo _asignacionDocenteArchivo;
     DocenteArchivo _docenteArchivo;

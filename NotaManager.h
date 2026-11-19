@@ -17,16 +17,19 @@ public:
 
 private:
     Nota crearNota();
-    void mostrarNota(const Nota &reg);
-    void mostrarNotasActivas();
-    void listarAlumnos();
+
     int seleccionarAlumno();
+
     bool menuModificarNota(Nota &reg);
     void modificarLegajo(Nota &reg);
     void modificarPeriodo(Nota &reg);
     void modificarNota(Nota &reg);
     void modificarDescripcion(Nota &reg);
     void modificarTodos(Nota &reg);
+
+    void mostrarNota(const Nota &reg)const;
+    void mostrarNotasActivas();
+    void listarAlumnos();
 
     NotaArchivo _notaArchivo;
     AlumnoArchivo _alumnoArchivo;

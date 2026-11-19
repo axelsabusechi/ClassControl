@@ -11,12 +11,13 @@ void AlumnoManager::registrarAlumno()
 {
     if(_alumnoArchivo.guardar(crearAlumno()) == ArchivoError::OK)
     {
-        std::cout << "Alumno registrado..." << std::endl;
+        std::cout << "\nAlumno registrado con exito!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_alumnoArchivo.getLastError());
     }
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
     rlutil::cls();
 }
@@ -24,6 +25,7 @@ void AlumnoManager::registrarAlumno()
 void AlumnoManager::modificarAlumno()
 {
     rlutil::cls();
+    std::cout << "===== MODIFICAR ALUMNO =====" << std::endl;
 
     int cantReg = _alumnoArchivo.getCantRegActivos();
 
@@ -35,14 +37,15 @@ void AlumnoManager::modificarAlumno()
             return;
         }
 
-        std::cout << "No hay Alumnos registrados para modificar..." << std::endl;
+        std::cout << "\nNo hay alumnos registrados para modificar..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
     mostrarAlumnosActivos();
 
-    int legajo = pedirEntero("Legajo del alumno a modificar: ");
+    int legajo = pedirEntero("\nLegajo del alumno a modificar: ");
     int index = _alumnoArchivo.buscarByLegajo(legajo);
 
     if(index == -1)
@@ -53,7 +56,8 @@ void AlumnoManager::modificarAlumno()
             return;
         }
 
-        std::cout << "El Alumno con legajo " << legajo << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nEl alumno con legajo " << legajo << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -69,7 +73,8 @@ void AlumnoManager::modificarAlumno()
 
     if(reg.getEliminado())
     {
-        std::cout << "El alumno esta dado de baja..." << std::endl;
+        std::cout << "\nEl alumno esta dado de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -78,26 +83,28 @@ void AlumnoManager::modificarAlumno()
 
     if(!menuModificarAlumno(reg))
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
     if(_alumnoArchivo.guardar(index,reg) == ArchivoError::OK)
     {
-        std::cout << "El alumno se modifico exitosamente!" << std::endl;
+        std::cout << "\nEl alumno se modifico exitosamente!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_alumnoArchivo.getLastError());
     }
-
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
 void AlumnoManager::eliminarAlumno()
 {
     rlutil::cls();
+    std::cout << "===== DAR DE BAJA ALUMNO =====" << std::endl;
 
     int cantReg = _alumnoArchivo.getCantRegActivos();
 
@@ -109,14 +116,15 @@ void AlumnoManager::eliminarAlumno()
             return;
         }
 
-        std::cout << "No hay Alumnos registrados para dar de baja..." << std::endl;
+        std::cout << "\nNo hay alumnos registrados para dar de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
     mostrarAlumnosActivos();
 
-    int legajo = pedirEntero("Legajo del alumno a dar de baja: ");
+    int legajo = pedirEntero("\nLegajo del alumno a dar de baja: ");
     int index = _alumnoArchivo.buscarByLegajo(legajo);
 
     if(index == -1)
@@ -126,7 +134,8 @@ void AlumnoManager::eliminarAlumno()
             system("pause");
             return;
         }
-        std::cout << "El Alumno con legajo " << legajo << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nEl alumno con legajo " << legajo << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -142,17 +151,22 @@ void AlumnoManager::eliminarAlumno()
 
     if(reg.getEliminado())
     {
-        std::cout << "El alumno esta dado de baja." << std::endl;
+        std::cout << "\nEl alumno ya esta dado de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << "===== DAR DE BAJA ALUMNO =====" << std::endl;
+    std::cout << "\n----- ALUMNO SELECCIONADO -----" << std::endl;
     mostrarAlumno(reg);
+    std::cout << "----------------------------------------" << std::endl;
+
     bool eliminar = false;
 
     do
     {
-        int opcion = pedirEntero("Ingrese 1 para dar de baja, 0 para cancelar: ");
+        int opcion = pedirEntero("\nIngrese 1 para dar de baja, 0 para cancelar: ");
 
         if(opcion == 0 || opcion == 1)
         {
@@ -171,7 +185,7 @@ void AlumnoManager::eliminarAlumno()
 
         if(_alumnoArchivo.guardar(index,reg) == ArchivoError::OK)
         {
-            std::cout << "El alumno con legajo " << legajo << " se dio de baja con exito!" << std::endl;
+            std::cout << "\nEl alumno con legajo " << legajo << " se dio de baja con exito!" << std::endl;
         }
         else
         {
@@ -180,9 +194,10 @@ void AlumnoManager::eliminarAlumno()
     }
     else
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
     }
 
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
@@ -227,8 +242,9 @@ Alumno AlumnoManager::crearAlumno()
 
     rlutil::cls();
 
-    std::cout << "-----CARGAR ALUMNO-------" << std::endl;
-    std::cout << "Legajo: " << legajo << std::endl << std::endl;
+    std::cout << "===== REGISTRAR ALUMNO =====" << std::endl;
+    std::cout << "Legajo: " << legajo << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
 
     cargarAlumno(nombre,
                  apellido,
@@ -261,45 +277,6 @@ void AlumnoManager::cargarAlumno(std::string &nombre,
     adaptacion = pedirTexto("Adaptacion: ");
 }
 
-void AlumnoManager::mostrarAlumno(const Alumno &reg)
-{
-    std::cout << "Legajo: " << reg.getLegajo() << std::endl;
-    std::cout << "Nombre: " << reg.getNombre() << std::endl;
-    std::cout << "Apellido: " << reg.getApellido() << std::endl;
-    std::cout << "DNI: " << reg.getDni() << std::endl;
-    std::cout << "Fecha de nacimiento: " << reg.getFechaNacimiento().toString() << std::endl;
-    std::cout << "Email " << reg.getEmail() << std::endl;
-    std::cout << "Adaptacion " << reg.getAdaptacion() << std::endl;
-}
-
-void AlumnoManager::mostrarAlumnosActivos()
-{
-    Alumno reg;
-    int cantReg;
-
-    cantReg = _alumnoArchivo.getCantReg();
-
-    std::cout << "----- ALUMNOS ACTIVOS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
-    {
-        reg = _alumnoArchivo.leer(i);
-
-        if(reg.getLegajo() == -1)
-        {
-            mostrarErrorArchivo(_alumnoArchivo.getLastError());
-            system("pause");
-            return;
-        }
-
-        if(!reg.getEliminado())
-        {
-            mostrarAlumno(reg);
-            std::cout << "----------------------------------" << std::endl;
-        }
-    }
-}
-
 bool AlumnoManager::menuModificarAlumno(Alumno &reg)
 {
     int opcion;
@@ -307,10 +284,12 @@ bool AlumnoManager::menuModificarAlumno(Alumno &reg)
     do
     {
         rlutil::cls();
-        std::cout << "----- DATOS ACTUALES DEL ALUMNO -----" << std::endl;
+        std::cout << "===== MODIFICAR ALUMNO =====" << std::endl;
+        std::cout << "\n----- DATOS ACTUALES -----" << std::endl;
         mostrarAlumno(reg);
+        std::cout << "----------------------------------------" << std::endl;
 
-        std::cout << "\n----- MODIFICAR ALUMNO -----" << std::endl;
+        std::cout << "\n----- CAMPOS A MODIFICAR -----" << std::endl;
         std::cout << "1 - Nombre" << std::endl;
         std::cout << "2 - Apellido" << std::endl;
         std::cout << "3 - DNI" << std::endl;
@@ -318,9 +297,10 @@ bool AlumnoManager::menuModificarAlumno(Alumno &reg)
         std::cout << "5 - Email" << std::endl;
         std::cout << "6 - Adaptacion" << std::endl;
         std::cout << "7 - Todos los campos" << std::endl;
-        std::cout << "-----------------------------" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         std::cout << "8 - Cancelar y salir " << std::endl;
         std::cout << "0 - Guardar y salir" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
 
         opcion = pedirEntero("Opcion: ");
 
@@ -362,11 +342,13 @@ bool AlumnoManager::menuModificarAlumno(Alumno &reg)
 
         default:
             std::cout << "ERROR. Opcion invalida." << std::endl;
+            system("pause");
         }
 
         if(opcion >= 1 && opcion <= 7)
         {
-            std::cout << "Campo modificado..." << std::endl;
+            std::cout << "\nCampo modificado..." << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
             system("pause");
         }
     }
@@ -377,30 +359,36 @@ bool AlumnoManager::menuModificarAlumno(Alumno &reg)
 
 void AlumnoManager::modificarNombre(Alumno &reg)
 {
+    std::cout << std::endl;
     reg.setNombre(pedirNombreApellido("Nuevo nombre: "));
 }
 
 void AlumnoManager::modificarApellido(Alumno &reg)
 {
+    std::cout << std::endl;
     reg.setApellido(pedirNombreApellido("Nuevo apellido: "));
 }
 
 void AlumnoManager::modificarDni(Alumno &reg)
 {
+    std::cout << std::endl;
     reg.setDni(cargarDniUnico(("Nuevo DNI: "),reg.getLegajo()));
 }
 void AlumnoManager::modificarFechaNacimiento(Alumno &reg)
 {
+    std::cout << std::endl;
     reg.setFechaNacimiento(pedirFecha("Nueva fecha de nacimiento: "));
 }
 
 void AlumnoManager::modificarEmail(Alumno &reg)
 {
+    std::cout << std::endl;
     reg.setEmail(pedirEmail("Nuevo Email: "));
 }
 
 void AlumnoManager::modificarAdaptacion(Alumno &reg)
 {
+    std::cout << std::endl;
     reg.setAdaptacion(pedirTexto("Nueva adaptacion: "));
 }
 
@@ -412,6 +400,45 @@ void AlumnoManager::modificarTodos(Alumno &reg)
     modificarFechaNacimiento(reg);
     modificarEmail(reg);
     modificarAdaptacion(reg);
+}
+
+void AlumnoManager::mostrarAlumno(const Alumno &reg)const
+{
+    std::cout << "Legajo: " << reg.getLegajo() << std::endl;
+    std::cout << "Nombre: " << reg.getNombre() << std::endl;
+    std::cout << "Apellido: " << reg.getApellido() << std::endl;
+    std::cout << "DNI: " << reg.getDni() << std::endl;
+    std::cout << "Fecha de nacimiento: " << reg.getFechaNacimiento().toString() << std::endl;
+    std::cout << "Email " << reg.getEmail() << std::endl;
+    std::cout << "Adaptacion " << reg.getAdaptacion() << std::endl;
+}
+
+void AlumnoManager::mostrarAlumnosActivos()
+{
+    Alumno reg;
+    int cantReg;
+
+    cantReg = _alumnoArchivo.getCantReg();
+
+    std::cout << "----- ALUMNOS ACTIVOS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
+    {
+        reg = _alumnoArchivo.leer(i);
+
+        if(reg.getLegajo() == -1)
+        {
+            mostrarErrorArchivo(_alumnoArchivo.getLastError());
+            system("pause");
+            return;
+        }
+
+        if(!reg.getEliminado())
+        {
+            mostrarAlumno(reg);
+            std::cout << "----------------------------------" << std::endl;
+        }
+    }
 }
 
 std::string AlumnoManager::cargarDniUnico(const std::string &mensaje, int legajoIgnorar)

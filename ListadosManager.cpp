@@ -26,14 +26,14 @@ void ListadosManager::listarAlumnosPorCurso()
             {
                 std::cout << "  No hay alumnos inscriptos en el curso..." << std::endl;
             }
-            std::cout << "----------------------------------------" << std::endl;
+            std::cout << "-----------------------------" << std::endl;
         }
     }
 
     if(!hayCursos)
     {
         std::cout << "\nNo hay cursos registrados..." << std::endl;
-        std::cout << "----------------------------------------" << std::endl;
+            std::cout << "-----------------------------" << std::endl;
     }
 
     system("pause");
@@ -62,14 +62,14 @@ void ListadosManager::listarDocentesPorCurso()
             {
                 std::cout << "  No hay docentes asignados en el curso..." << std::endl;
             }
-            std::cout << "-----------------------------------------" << std::endl;
+            std::cout << "-----------------------------" << std::endl;
         }
     }
 
     if(!hayCursos)
     {
         std::cout << "\nNo hay cursos registrados..." << std::endl;
-        std::cout << "-----------------------------------------" << std::endl;
+            std::cout << "-----------------------------" << std::endl;
     }
 
     system("pause");
@@ -86,7 +86,7 @@ void ListadosManager::listarTemasPorEstado()
     if(!mostrarTemasPorEstado(true))
     {
         std::cout << "No hay temas vistos registrados..." << std::endl;
-        std::cout << "-----------------------------" << std::endl;
+            std::cout << "-----------------------------" << std::endl;
     }
 
     std::cout << std::endl;
@@ -246,8 +246,8 @@ bool ListadosManager::temaVisto(int idTema)
         ClaseDada reg = _claseDadaArchivo.leer(i);
 
         if(!reg.getEliminado() &&
-           reg.getIdTema() == idTema &&
-           reg.getClaseDada())
+                reg.getIdTema() == idTema &&
+                reg.getClaseDada())
         {
             return true;
         }

@@ -11,13 +11,13 @@ void CursoManager::registrarCurso()
 {
     if(_cursoArchivo.guardar(crearCurso()) == ArchivoError::OK)
     {
-        std::cout << "Curso registrado..." << std::endl;
+        std::cout << "\nCurso registrado con exito!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_cursoArchivo.getLastError());
     }
-    std::cout << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
     rlutil::cls();
 }
@@ -25,6 +25,7 @@ void CursoManager::registrarCurso()
 void CursoManager::modificarCurso()
 {
     rlutil::cls();
+    std::cout << "===== MODIFICAR CURSO =====" << std::endl;
 
     int cantReg = _cursoArchivo.getCantRegActivos();
 
@@ -36,12 +37,13 @@ void CursoManager::modificarCurso()
             return;
         }
 
-        std::cout << "No hay cursos registrados para modificar..." << std::endl;
-        std::cout << std::endl;
+        std::cout << "\nNo hay cursos registrados para modificar..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarCursosActivos();
 
     int id = pedirEntero("ID del curso a modificar: ");
@@ -55,8 +57,9 @@ void CursoManager::modificarCurso()
             return;
         }
 
-        std::cout << "El curso con Id " << id  << " no se encuentra en el sistema..." << std::endl;
-        std::cout << std::endl;
+        std::cout << "\nEl curso con ID " << id
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -72,13 +75,15 @@ void CursoManager::modificarCurso()
 
     if(reg.getEliminado())
     {
-        std::cout << "El curso esta dado de baja..." << std::endl;
+        std::cout << "\nEl curso esta dado de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         std::cout << std::endl;
         system("pause");
         return;
     }
 
-    mostrarCurso(reg);
+    Grado gradoOriginal = reg.getGrado();
+    Division divisionOriginal = reg.getDivision();
 
     if(!menuModificarCurso(reg))
     {
@@ -88,22 +93,34 @@ void CursoManager::modificarCurso()
         return;
     }
 
+    bool cambioCurso = (reg.getGrado() != gradoOriginal ||
+                        reg.getDivision() != divisionOriginal);
+
+    if(cambioCurso && _cursoArchivo.existeCurso(reg.getGrado(), reg.getDivision()))
+    {
+        std::cout << "\nERROR: Ya existe un curso activo con ese grado y division..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        system("pause");
+        return;
+    }
+
     if(_cursoArchivo.guardar(index,reg) == ArchivoError::OK)
     {
-        std::cout << "El curso se modifico exitosamente!" << std::endl;
+        std::cout << "\nEl curso se modifico exitosamente!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_cursoArchivo.getLastError());
     }
 
-    std::cout << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
 void CursoManager::eliminarCurso()
 {
     rlutil::cls();
+    std::cout << "===== DAR DE BAJA CURSO =====" << std::endl;
 
     int cantReg = _cursoArchivo.getCantRegActivos();
 
@@ -115,15 +132,17 @@ void CursoManager::eliminarCurso()
             return;
         }
 
-        std::cout << "No hay cursos registrados para dar de baja..." << std::endl;
+        std::cout << "\nNo hay cursos registrados para dar de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         std::cout << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarCursosActivos();
 
-    int id = pedirEntero("ID del curso a dar de baja: ");
+    int id = pedirEntero("\nID del curso a dar de baja: ");
     int index = _cursoArchivo.buscarByID(id);
 
     if(index == -1)
@@ -134,7 +153,9 @@ void CursoManager::eliminarCurso()
             return;
         }
 
-        std::cout << "El curso con Id " << id  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nEl curso con ID " << id
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -151,18 +172,17 @@ void CursoManager::eliminarCurso()
 
     if(reg.getEliminado())
     {
-        std::cout << "El curso esta dado de baja." << std::endl;
-        std::cout << std::endl;
+        std::cout << "\nEl curso ya esta dado de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
-    mostrarCurso(reg);
     bool eliminar = false;
 
     do
     {
-        int opcion = pedirEntero("Ingrese 1 para dar de baja, 0 para cancelar: ");
+        int opcion = pedirEntero("\nIngrese 1 para dar de baja, 0 para cancelar: ");
 
         if(opcion == 0 || opcion == 1)
         {
@@ -171,10 +191,8 @@ void CursoManager::eliminarCurso()
         }
 
         std::cout << "ERROR. Ingrese 0 o 1." << std::endl;
-        std::cout << std::endl;
     }
     while(true);
-
 
     if(eliminar)
     {
@@ -182,7 +200,7 @@ void CursoManager::eliminarCurso()
 
         if(_cursoArchivo.guardar(index,reg) == ArchivoError::OK)
         {
-            std::cout << "El curso " << gradoToString(reg.getGrado())
+            std::cout << "\nEl curso " << gradoToString(reg.getGrado())
                       << " " << divisionToString(reg.getDivision())
                       << " se dio de baja con exito!" << std::endl;
         }
@@ -193,10 +211,10 @@ void CursoManager::eliminarCurso()
     }
     else
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
     }
 
-    std::cout << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 
 }
@@ -245,47 +263,34 @@ Curso CursoManager::crearCurso()
 
     rlutil::cls();
 
-    std::cout << "-----CARGAR CURSO-------" << std::endl;
+    std::cout << "===== REGISTRAR CURSO =====" << std::endl;
     std::cout << "ID " << idCurso << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
 
     cargarCursoUnico(grado, division);
 
     return Curso(idCurso, grado, division);
 }
 
-void CursoManager::mostrarCurso(const Curso &reg)
+void CursoManager::cargarCursoUnico(Grado &grado, Division &division)
 {
-    std::cout << "ID: " << reg.getIdCurso() << std::endl;
-    std::cout << "Grado: " << gradoToString(reg.getGrado()) << std::endl;
-    std::cout << "Division: " << divisionToString(reg.getDivision()) << std::endl;
-}
+    bool existe;
 
-void CursoManager::mostrarCursosActivos()
-{
-    Curso reg;
-
-    int cantReg = _cursoArchivo.getCantReg();
-
-    std::cout << "----- CURSOS ACTIVOS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
+    do
     {
-        reg = _cursoArchivo.leer(i);
+        std::cout << std::endl;
+        grado = pedirGrado();
+        division = pedirDivision();
 
-        if(reg.getIdCurso() == -1)
+        existe = _cursoArchivo.existeCurso(grado, division);
+
+        if(existe)
         {
-            mostrarErrorArchivo(_cursoArchivo.getLastError());
-            std::cout << std::endl;
-            system("pause");
-            return;
+            std::cout << "\nERROR: El curso ya existe..." << std::endl;
         }
 
-        if(!reg.getEliminado())
-        {
-            mostrarCurso(reg);
-            std::cout << "----------------------------------" << std::endl;
-        }
     }
+    while(existe);
 }
 
 bool CursoManager::menuModificarCurso(Curso &reg)
@@ -295,17 +300,19 @@ bool CursoManager::menuModificarCurso(Curso &reg)
     do
     {
         rlutil::cls();
-        std::cout << "----- DATOS ACTUALES DEL CURSO -----" << std::endl;
+        std::cout << "===== MODIFICAR CURSO =====" << std::endl;
+        std::cout << "\n----- DATOS ACTUALES -----" << std::endl;
         mostrarCurso(reg);
+        std::cout << "----------------------------------------" << std::endl;
 
-        std::cout << "\n----- MODIFICAR CURSO -----" << std::endl;
+        std::cout << "\n----- CAMPOS A MODIFICAR -----" << std::endl;
         std::cout << "1 - Grado" << std::endl;
         std::cout << "2 - Division" << std::endl;
         std::cout << "3 - Todos los campos" << std::endl;
-        std::cout << "-----------------------------" << std::endl;
-        std::cout << "4 - Cancelar y salir " << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        std::cout << "4 - Cancelar y salir" << std::endl;
         std::cout << "0 - Guardar y salir" << std::endl;
-        std::cout << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
 
         opcion = pedirEntero("Opcion: ");
 
@@ -331,14 +338,13 @@ bool CursoManager::menuModificarCurso(Curso &reg)
 
         default:
             std::cout << "ERROR. Opcion invalida." << std::endl;
-            std::cout << std::endl;
             system("pause");
         }
 
         if(opcion >= 1 && opcion <= 3)
         {
-            std::cout << "Campo modificado..." << std::endl;
-            std::cout << std::endl;
+            std::cout << "\nCampo modificado..." << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
             system("pause");
         }
     }
@@ -349,11 +355,13 @@ bool CursoManager::menuModificarCurso(Curso &reg)
 
 void CursoManager::modificarGrado(Curso &reg)
 {
+    std::cout << std::endl;
     reg.setGrado(pedirGrado());
 }
 
 void CursoManager::modificarDivision(Curso &reg)
 {
+    std::cout << std::endl;
     reg.setDivision(pedirDivision());
 }
 
@@ -363,26 +371,45 @@ void CursoManager::modificarTodos(Curso &reg)
     modificarDivision(reg);
 }
 
-void CursoManager::cargarCursoUnico(Grado &grado, Division &division)
+void CursoManager::mostrarCurso(const Curso &reg)const
 {
-    bool existe;
+    std::cout << "ID: " << reg.getIdCurso() << std::endl;
+    std::cout << "Grado: " << gradoToString(reg.getGrado()) << std::endl;
+    std::cout << "Division: " << divisionToString(reg.getDivision()) << std::endl;
+}
 
-    do
+void CursoManager::mostrarCursosActivos()
+{
+    Curso reg;
+
+    int cantReg = _cursoArchivo.getCantReg();
+
+    std::cout << "----- CURSOS ACTIVOS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
     {
-        grado = pedirGrado();
-        division = pedirDivision();
+        reg = _cursoArchivo.leer(i);
 
-        existe = _cursoArchivo.existeCurso(grado, division);
-
-        if(existe)
+        if(reg.getIdCurso() == -1)
         {
-            std::cout << "ERROR: El curso ya existe..." << std::endl;
-            std::cout << std::endl;
+            mostrarErrorArchivo(_cursoArchivo.getLastError());
+            system("pause");
+            return;
         }
 
+        if(!reg.getEliminado())
+        {
+            mostrarCurso(reg);
+            std::cout << "----------------------------------------" << std::endl;
+        }
     }
-    while(existe);
 }
+
+
+
+
+
+
 
 
 

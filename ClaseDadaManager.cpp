@@ -9,21 +9,55 @@ ClaseDadaManager::ClaseDadaManager()
 
 void ClaseDadaManager::registrarClaseDada()
 {
+    rlutil::cls();
+    std::cout << "===== REGISTRAR CLASE DADA =====" << std::endl;
+
+    if(_cursoArchivo.getCantRegActivos() == 0)
+    {
+        if(mostrarErrorArchivo(_cursoArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+        std::cout << "\nNo hay cursos registrados..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        system("pause");
+        rlutil::cls();
+        return;
+    }
+
+    if(_temaArchivo.getCantRegActivos() == 0)
+    {
+        if(mostrarErrorArchivo(_temaArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+        std::cout << "\nNo hay temas registrados..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        system("pause");
+        rlutil::cls();
+        return;
+    }
+
     if(_claseDadaArchivo.guardar(crearClaseDada()) == ArchivoError::OK)
     {
-        std::cout << "Clase dada registrado..." << std::endl;
+        std::cout << "\nClase dada registrada con exito!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_claseDadaArchivo.getLastError());
     }
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
     rlutil::cls();
 }
 
 void ClaseDadaManager::modificarClaseDada()
 {
+
     rlutil::cls();
+    std::cout << "===== MODIFICAR CLASE DADA =====" << std::endl;
 
     int cantReg = _claseDadaArchivo.getCantRegActivos();
 
@@ -35,14 +69,16 @@ void ClaseDadaManager::modificarClaseDada()
             return;
         }
 
-        std::cout << "No se registran clases dadas para modificar..." << std::endl;
+        std::cout << "\nNo se registran clases dadas para modificar..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarClasesDadasActivas();
 
-    int id = pedirEntero("Id de la clase dada a modificar: ");
+    int id = pedirEntero("\nID de la clase dada a modificar: ");
     int index = _claseDadaArchivo.buscarByID(id);
 
     if(index == -1)
@@ -53,7 +89,8 @@ void ClaseDadaManager::modificarClaseDada()
             return;
         }
 
-        std::cout << "La clase dada con " << id << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nLa clase dada con ID " << id << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -69,29 +106,30 @@ void ClaseDadaManager::modificarClaseDada()
 
     if(reg.getEliminado())
     {
-        std::cout << "La clase esta dada de baja..." << std::endl;
+        std::cout << "\nLa clase dada esta dada de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
-    mostrarClaseDada(reg);
-
     if(!menuModificarClaseDada(reg))
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
     if(_claseDadaArchivo.guardar(index,reg) == ArchivoError::OK)
     {
-        std::cout << "La clase dada se modifico exitosamente!" << std::endl;
+        std::cout << "\nLa clase dada se modifico exitosamente!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_claseDadaArchivo.getLastError());
     }
 
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 
 }
@@ -99,6 +137,7 @@ void ClaseDadaManager::modificarClaseDada()
 void ClaseDadaManager::eliminarClaseDada()
 {
     rlutil::cls();
+    std::cout << "===== DAR DE BAJA CLASE DADA =====" << std::endl;
 
     int cantReg = _claseDadaArchivo.getCantRegActivos();
 
@@ -110,14 +149,16 @@ void ClaseDadaManager::eliminarClaseDada()
             return;
         }
 
-        std::cout << "No hay clases dadas registrados para dar de baja..." << std::endl;
+        std::cout << "\nNo hay clases dadas registradas para dar de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarClasesDadasActivas();
 
-    int id = pedirEntero("Id de las clases a dar de baja: ");
+    int id = pedirEntero("\nID de las clases a dar de baja: ");
     int index = _claseDadaArchivo.buscarByID(id);
 
     if(index == -1)
@@ -127,7 +168,9 @@ void ClaseDadaManager::eliminarClaseDada()
             system("pause");
             return;
         }
-        std::cout << "La clase dada con id " << id << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nLa clase dada con ID " << id
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -143,17 +186,23 @@ void ClaseDadaManager::eliminarClaseDada()
 
     if(reg.getEliminado())
     {
-        std::cout << "La clase esta dada de baja." << std::endl;
+        std::cout << "\nLa clase dada ya esta dada de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    rlutil::cls();
+    std::cout << "===== DAR DE BAJA CLASE DADA =====" << std::endl;
+    std::cout << "\n----- CLASE DADA SELECCIONADA -----" << std::endl;
     mostrarClaseDada(reg);
+    std::cout << "----------------------------------------" << std::endl;
+
     bool eliminar = false;
 
     do
     {
-        int opcion = pedirEntero("Ingrese 1 para dar de baja, 0 para cancelar: ");
+        int opcion = pedirEntero("\nIngrese 1 para dar de baja, 0 para cancelar: ");
 
         if(opcion == 0 || opcion == 1)
         {
@@ -172,7 +221,7 @@ void ClaseDadaManager::eliminarClaseDada()
 
         if(_claseDadaArchivo.guardar(index,reg) == ArchivoError::OK)
         {
-            std::cout << "La clase con id " << id << " se dio de baja con exito!" << std::endl;
+            std::cout << "\nLa clase con id " << id << " se dio de baja con exito!" << std::endl;
         }
         else
         {
@@ -181,9 +230,9 @@ void ClaseDadaManager::eliminarClaseDada()
     }
     else
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
     }
-
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
@@ -220,16 +269,21 @@ void ClaseDadaManager::listarClaseDada()
 
 ClaseDada ClaseDadaManager::crearClaseDada()
 {
-    rlutil::cls();
-
     int idClase, idCurso, idTema;
     Fecha fecha;
     std::string observaciones;
     bool claseDada;
 
     idClase = _claseDadaArchivo.getNewID();
+
+    rlutil::cls();
+    std::cout << "===== REGISTRAR CLASE DADA =====" << std::endl;
+    std::cout << "ID Clase: " << idClase << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+
     idCurso = seleccionarCurso();
     idTema = seleccionarTema();
+    std::cout << std::endl;
     observaciones = pedirTexto("Observaciones: ");
     fecha = pedirFecha("Fecha de clase dada: ");
     claseDada = seleccionarEstadoClase();
@@ -251,7 +305,7 @@ int ClaseDadaManager::seleccionarCurso()
 
     do
     {
-        idCurso = pedirEntero("Id curso: ");
+        idCurso = pedirEntero("\nID curso: ");
         existe = _cursoArchivo.existeCurso(idCurso);
 
         if(!existe)
@@ -273,7 +327,7 @@ int ClaseDadaManager::seleccionarTema()
 
     do
     {
-        idTema = pedirEntero("Id tema: ");
+        idTema = pedirEntero("\nID tema: ");
         existe = _temaArchivo.existeTema(idTema);
 
         if(!existe)
@@ -305,68 +359,94 @@ bool ClaseDadaManager::seleccionarEstadoClase()
     return opcion == 1;
 }
 
-void ClaseDadaManager::listarCursos()
+bool ClaseDadaManager::menuModificarClaseDada(ClaseDada &reg)
 {
-    int cantReg;
-    cantReg = _cursoArchivo.getCantReg();
+    int opcion;
 
-    if(cantReg == 0)
+    do
     {
-        std::cout << "No hay cursos registrados..." << std::endl;
-        return;
-    }
+        rlutil::cls();
+        std::cout << "===== MODIFICAR CLASE DADA =====" << std::endl;
+        std::cout << "\n----- DATOS ACTUALES -----" << std::endl;
+        mostrarClaseDada(reg);
+        std::cout << "----------------------------------------" << std::endl;
 
-    Curso *vCursos;
+        std::cout << "\n----- CAMPOS A MODIFICAR -----" << std::endl;
+        std::cout << "1 - Fecha" << std::endl;
+        std::cout << "2 - Observaciones" << std::endl;
+        std::cout << "3 - Clase dada" << std::endl;
+        std::cout << "4 - Todos los campos" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        std::cout << "5 - Cancelar y salir" << std::endl;
+        std::cout << "0 - Guardar y salir" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
 
-    vCursos = new Curso[cantReg];
-    _cursoArchivo.leerTodos(vCursos, cantReg);
+        opcion = pedirEntero("Opcion: ");
 
-    std::cout << "----- CURSOS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
-    {
-        if(!vCursos[i].getEliminado())
+        switch(opcion)
         {
-            std::cout << "Id: "<< vCursos[i].getIdCurso() << std::endl;
-            std::cout << "Grado: " << gradoToString(vCursos[i].getGrado()) << std::endl;
-            std::cout << "Division: " << divisionToString(vCursos[i].getDivision()) << std::endl;
-            std::cout << "--------------------------------------------" << std::endl;
+        case 1:
+            modificarFecha(reg);
+            break;
+
+        case 2:
+            modificarObservaciones(reg);
+            break;
+
+        case 3:
+            modificarClaseDada(reg);
+            break;
+
+        case 4:
+            modificarTodos(reg);
+            break;
+
+        case 5:
+            return false;
+
+        case 0:
+            return true;
+
+        default:
+            std::cout << "ERROR. Opcion invalida." << std::endl;
+            system("pause");
+        }
+
+        if(opcion >= 1 && opcion <= 5)
+        {
+            std::cout << "\nCampo modificado..." << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
+            system("pause");
         }
     }
+    while(true);
 
-    delete[] vCursos;
+    return false;
 }
 
-void ClaseDadaManager::listarTemas()
+void ClaseDadaManager::modificarFecha(ClaseDada &reg)
 {
-    int cantReg;
-    cantReg = _temaArchivo.getCantReg();
+    std::cout << std::endl;
+    reg.setFecha(pedirFecha("Nueva fecha de clase dada: "));
+}
 
-    if(cantReg == 0)
-    {
-        std::cout << "No hay temas registrados..." << std::endl;
-        return;
-    }
+void ClaseDadaManager::modificarObservaciones(ClaseDada &reg)
+{
+    std::cout << std::endl;
+    reg.setObservaciones(pedirTexto("nuevas observaciones: "));
+}
 
-    Tema *vTemas;
+void ClaseDadaManager::modificarClaseDada(ClaseDada &reg)
+{
+    std::cout << std::endl;
+    reg.setClaseDada(seleccionarEstadoClase());
+}
 
-    vTemas = new Tema[cantReg];
-    _temaArchivo.leerTodos(vTemas, cantReg);
-
-    std::cout << "----- TEMAS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
-    {
-        if(!vTemas[i].getEliminado())
-        {
-            std::cout << "Id: "<< vTemas[i].getIdTema() << std::endl;
-            std::cout << "Nombre: " << vTemas[i].getNombre() << std::endl;
-            std::cout << "Orden: " << vTemas[i].getOrden() << std::endl;
-            std::cout << "--------------------------------------------" << std::endl;
-        }
-    }
-
-    delete[] vTemas;
+void ClaseDadaManager::modificarTodos(ClaseDada &reg)
+{
+    modificarFecha(reg);
+    modificarObservaciones(reg);
+    modificarClaseDada(reg);
 }
 
 void ClaseDadaManager::mostrarClaseDada(const ClaseDada &reg)
@@ -377,17 +457,17 @@ void ClaseDadaManager::mostrarClaseDada(const ClaseDada &reg)
     Curso regCurso;
     Tema regTema;
 
-     if(indexCurso != -1)
+    if(indexCurso != -1)
     {
         regCurso = _cursoArchivo.leer(indexCurso);
     }
 
-     if(indexTema != -1)
+    if(indexTema != -1)
     {
         regTema = _temaArchivo.leer(indexTema);
     }
 
-    std::cout << "Id: " << reg.getIdClase() << std::endl;
+    std::cout << "ID: " << reg.getIdClase() << std::endl;
 
     if(indexCurso != -1)
     {
@@ -433,90 +513,73 @@ void ClaseDadaManager::mostrarClasesDadasActivas()
         if(!reg.getEliminado())
         {
             mostrarClaseDada(reg);
-            std::cout << "----------------------------------" << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
         }
     }
 }
 
-bool ClaseDadaManager::menuModificarClaseDada(ClaseDada &reg)
+void ClaseDadaManager::listarCursos()
 {
-    int opcion;
+    int cantReg;
+    cantReg = _cursoArchivo.getCantReg();
 
-    do
+    if(cantReg == 0)
     {
-        rlutil::cls();
-        std::cout << "----- DATOS ACTUALES DE LA CLASE DADA -----" << std::endl;
-        mostrarClaseDada(reg);
+        std::cout << "\nNo hay cursos registrados..." << std::endl;
+        return;
+    }
 
-        std::cout << "\n----- MODIFICAR CLASE DADA -----" << std::endl;
-        std::cout << "1 - Fecha" << std::endl;
-        std::cout << "2 - Observaciones" << std::endl;
-        std::cout << "3 - Clase dada" << std::endl;
-        std::cout << "4 - Todos los campos" << std::endl;
-        std::cout << "-----------------------------" << std::endl;
-        std::cout << "5 - Cancelar y salir " << std::endl;
-        std::cout << "0 - Guardar y salir" << std::endl;
+    Curso *vCursos;
 
-        opcion = pedirEntero("Opcion: ");
+    vCursos = new Curso[cantReg];
+    _cursoArchivo.leerTodos(vCursos, cantReg);
 
-        switch(opcion)
+    std::cout << "\n----- CURSOS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
+    {
+        if(!vCursos[i].getEliminado())
         {
-        case 1:
-            modificarFecha(reg);
-            break;
-
-        case 2:
-            modificarObservaciones(reg);
-            break;
-
-        case 3:
-            modificarClaseDada(reg);
-            break;
-
-        case 4:
-            modificarTodos(reg);
-            break;
-
-        case 5:
-            return false;
-
-        case 0:
-            return true;
-
-        default:
-            std::cout << "ERROR. Opcion invalida." << std::endl;
-        }
-
-        if(opcion >= 1 && opcion <= 5)
-        {
-            std::cout << "Campo modificado..." << std::endl;
-            system("pause");
+            std::cout << "Id: "<< vCursos[i].getIdCurso() << std::endl;
+            std::cout << "Grado: " << gradoToString(vCursos[i].getGrado()) << std::endl;
+            std::cout << "Division: " << divisionToString(vCursos[i].getDivision()) << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
         }
     }
-    while(true);
 
-    return false;
+    delete[] vCursos;
 }
 
-void ClaseDadaManager::modificarFecha(ClaseDada &reg)
+void ClaseDadaManager::listarTemas()
 {
-    reg.setFecha(pedirFecha("Nueva fecha de clase dada: "));
+    int cantReg;
+    cantReg = _temaArchivo.getCantReg();
+
+    if(cantReg == 0)
+    {
+        std::cout << "\nNo hay temas registrados..." << std::endl;
+        return;
+    }
+
+    Tema *vTemas;
+
+    vTemas = new Tema[cantReg];
+    _temaArchivo.leerTodos(vTemas, cantReg);
+
+    std::cout << "\n----- TEMAS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
+    {
+        if(!vTemas[i].getEliminado())
+        {
+            std::cout << "Id: "<< vTemas[i].getIdTema() << std::endl;
+            std::cout << "Nombre: " << vTemas[i].getNombre() << std::endl;
+            std::cout << "Orden: " << vTemas[i].getOrden() << std::endl;
+            std::cout << "--------------------------------------------" << std::endl;
+        }
+    }
+
+    delete[] vTemas;
 }
 
-void ClaseDadaManager::modificarObservaciones(ClaseDada &reg)
-{
-    reg.setObservaciones(pedirTexto("nuevas observaciones: "));
-}
-
-void ClaseDadaManager::modificarClaseDada(ClaseDada &reg)
-{
-    reg.setClaseDada(seleccionarEstadoClase());
-}
-
-void ClaseDadaManager::modificarTodos(ClaseDada &reg)
-{
-    modificarFecha(reg);
-    modificarObservaciones(reg);
-    modificarClaseDada(reg);
-}
 

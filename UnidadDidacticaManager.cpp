@@ -3,16 +3,39 @@
 #include "utils.h"
 #include "rlutil.h"
 
+UnidadDidacticaManager::UnidadDidacticaManager()
+{
+}
+
 void UnidadDidacticaManager::registrarUnidadDidactica()
 {
+    rlutil::cls();
+    std::cout << "===== REGISTRAR UNIDAD DIDACTICA =====" << std::endl;
+
+    if(_cursoArchivo.getCantRegActivos() == 0)
+    {
+        if(mostrarErrorArchivo(_cursoArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+
+        std::cout << "\nNo hay cursos registrados para asociar unidades didacticas..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        system("pause");
+        rlutil::cls();
+        return;
+    }
+
     if(_unidadDidacticaArchivo.guardar(crearUnidadDidactica()) == ArchivoError::OK)
     {
-        std::cout << "Unidad didactica registrada..." << std::endl;
+        std::cout << "\nUnidad didactica registrada con exito!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_unidadDidacticaArchivo.getLastError());
     }
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
     rlutil::cls();
 }
@@ -20,6 +43,7 @@ void UnidadDidacticaManager::registrarUnidadDidactica()
 void UnidadDidacticaManager::modificarUnidadDidactica()
 {
     rlutil::cls();
+    std::cout << "===== MODIFICAR UNIDAD DIDACTICA =====" << std::endl;
 
     int cantReg = _unidadDidacticaArchivo.getCantRegActivos();
 
@@ -31,14 +55,16 @@ void UnidadDidacticaManager::modificarUnidadDidactica()
             return;
         }
 
-        std::cout << "No se registran unidades didacticas para modificar..." << std::endl;
+        std::cout << "\nNo se registran unidades didacticas para modificar..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarUnidadesDidacticasActivas();
 
-    int id = pedirEntero("Id de la unidad didactica a modificar: ");
+    int id = pedirEntero("\nID de la unidad didactica a modificar: ");
     int index = _unidadDidacticaArchivo.buscarByID(id);
 
     if(index == -1)
@@ -49,7 +75,9 @@ void UnidadDidacticaManager::modificarUnidadDidactica()
             return;
         }
 
-        std::cout << "La unidad didactica con " << id << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nLa unidad didactica con ID " << id
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -65,35 +93,37 @@ void UnidadDidacticaManager::modificarUnidadDidactica()
 
     if(reg.getEliminado())
     {
-        std::cout << "La unidad didactica esta dada de baja..." << std::endl;
+        std::cout << "\nLa unidad didactica esta dada de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
-    mostrarUnidadDidactica(reg);
-
     if(!menuModificarUnidadDidactica(reg))
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
     if(_unidadDidacticaArchivo.guardar(index,reg) == ArchivoError::OK)
     {
-        std::cout << "La unidad didactica se modifico exitosamente!" << std::endl;
+        std::cout << "\nLa unidad didactica se modifico exitosamente!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_unidadDidacticaArchivo.getLastError());
     }
 
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
 void UnidadDidacticaManager::eliminarUnidadDidactica()
 {
     rlutil::cls();
+    std::cout << "===== DAR DE BAJA UNIDAD DIDACTICA =====" << std::endl;
 
     int cantReg = _unidadDidacticaArchivo.getCantRegActivos();
 
@@ -105,14 +135,16 @@ void UnidadDidacticaManager::eliminarUnidadDidactica()
             return;
         }
 
-        std::cout << "No hay unidades didacticas registrados para dar de baja..." << std::endl;
+        std::cout << "\nNo hay unidades didacticas registradas para dar de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarUnidadesDidacticasActivas();
 
-    int id = pedirEntero("Id de la unidad didactica a dar de baja: ");
+    int id = pedirEntero("\nId de la unidad didactica a dar de baja: ");
     int index = _unidadDidacticaArchivo.buscarByID(id);
 
     if(index == -1)
@@ -122,7 +154,9 @@ void UnidadDidacticaManager::eliminarUnidadDidactica()
             system("pause");
             return;
         }
-        std::cout << "La unidad didactica con id " << id << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nLa unidad didactica con ID " << id
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -138,18 +172,23 @@ void UnidadDidacticaManager::eliminarUnidadDidactica()
 
     if(reg.getEliminado())
     {
-        std::cout << "La unidad didactica esta dada de baja." << std::endl;
+        std::cout << "\nLa unidad didactica ya esta dada de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    rlutil::cls();
+    std::cout << "===== DAR DE BAJA UNIDAD DIDACTICA =====" << std::endl;
+    std::cout << "\n----- UNIDAD DIDACTICA SELECCIONADA -----" << std::endl;
     mostrarUnidadDidactica(reg);
+    std::cout << "----------------------------------------" << std::endl;
 
     bool eliminar = false;
 
     do
     {
-        int opcion = pedirEntero("Ingrese 1 para dar de baja, 0 para cancelar: ");
+        int opcion = pedirEntero("\nIngrese 1 para dar de baja, 0 para cancelar: ");
 
         if(opcion == 0 || opcion == 1)
         {
@@ -168,7 +207,8 @@ void UnidadDidacticaManager::eliminarUnidadDidactica()
 
         if(_unidadDidacticaArchivo.guardar(index,reg) == ArchivoError::OK)
         {
-            std::cout << "La unidad didactica con id " << id << " se dio de baja con exito!" << std::endl;
+            std::cout << "\nLa unidad didactica con ID " << id
+                      << " se dio de baja con exito!" << std::endl;
         }
         else
         {
@@ -177,9 +217,10 @@ void UnidadDidacticaManager::eliminarUnidadDidactica()
     }
     else
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
     }
 
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
@@ -216,14 +257,20 @@ void UnidadDidacticaManager::listarUnidadDidactica()
 
 UnidadDidactica UnidadDidacticaManager::crearUnidadDidactica()
 {
-    rlutil::cls();
-
     int idUnidad, idCurso, orden;
     std::string nombre;
 
     idUnidad = _unidadDidacticaArchivo.getNewID();
+
+    rlutil::cls();
+    std::cout << "===== REGISTRAR UNIDAD DIDACTICA =====" << std::endl;
+    std::cout << "ID Unidad: " << idUnidad << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+
     idCurso = seleccionarCurso();
+    std::cout << std::endl;
     nombre = pedirTexto("Nombre: ");
+    std::cout << std::endl;
     orden = pedirEntero("Orden: ");
 
     return UnidadDidactica(idUnidad,
@@ -241,7 +288,7 @@ int UnidadDidacticaManager::seleccionarCurso()
 
     do
     {
-        idCurso = pedirEntero("Id curso: ");
+        idCurso = pedirEntero("\nID curso: ");
         existe = _cursoArchivo.existeCurso(idCurso);
 
         if(!existe)
@@ -254,64 +301,82 @@ int UnidadDidacticaManager::seleccionarCurso()
     return idCurso;
 }
 
-void UnidadDidacticaManager::listarCursos()
+bool UnidadDidacticaManager::menuModificarUnidadDidactica(UnidadDidactica &reg)
 {
-    int cantReg;
-    cantReg = _cursoArchivo.getCantReg();
+    int opcion;
 
-    if(cantReg == 0)
+    do
     {
-        std::cout << "No hay cursos registrados..." << std::endl;
-        return;
-    }
+        rlutil::cls();
+        std::cout << "===== MODIFICAR UNIDAD DIDACTICA =====" << std::endl;
+        std::cout << "\n----- DATOS ACTUALES -----" << std::endl;
+        mostrarUnidadDidactica(reg);
+        std::cout << "----------------------------------------" << std::endl;
 
-    Curso *vCursos;
+        std::cout << "\n----- CAMPOS A MODIFICAR -----" << std::endl;
+        std::cout << "1 - Nombre" << std::endl;
+        std::cout << "2 - Orden" << std::endl;
+        std::cout << "3 - Todos los campos" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        std::cout << "4 - Cancelar y salir" << std::endl;
+        std::cout << "0 - Guardar y salir" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
 
-    vCursos = new Curso[cantReg];
-    _cursoArchivo.leerTodos(vCursos, cantReg);
+        opcion = pedirEntero("Opcion: ");
 
-    std::cout << "----- CURSOS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
-    {
-        if(!vCursos[i].getEliminado())
+        switch(opcion)
         {
-            std::cout << "Id: "<< vCursos[i].getIdCurso() << std::endl;
-            std::cout << "Grado: " << gradoToString(vCursos[i].getGrado()) << std::endl;
-            std::cout << "Division: " << divisionToString(vCursos[i].getDivision()) << std::endl;
-            std::cout << "--------------------------------------------" << std::endl;
+        case 1:
+            modificarNombre(reg);
+            break;
+
+        case 2:
+            modificarOrden(reg);
+            break;
+
+        case 3:
+            modificarTodos(reg);
+            break;
+
+        case 4:
+            return false;
+
+        case 0:
+            return true;
+
+        default:
+            std::cout << "ERROR. Opcion invalida." << std::endl;
+            system("pause");
+        }
+
+        if(opcion >= 1 && opcion <= 3)
+        {
+            std::cout << "\nCampo modificado..." << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
+            system("pause");
         }
     }
+    while(true);
 
-    delete[] vCursos;
+    return false;
 }
 
-void UnidadDidacticaManager::mostrarUnidadesDidacticasActivas()
+void UnidadDidacticaManager::modificarNombre(UnidadDidactica &reg)
 {
-    UnidadDidactica reg;
-    int cantReg;
+    std::cout << std::endl;
+    reg.setNombre(pedirTexto("Nuevo nombre: "));
+}
 
-    cantReg = _unidadDidacticaArchivo.getCantReg();
+void UnidadDidacticaManager::modificarOrden(UnidadDidactica &reg)
+{
+    std::cout << std::endl;
+    reg.setOrden(pedirEntero("Nuevo orden: "));
+}
 
-    std::cout << "----- UNIDADES DIDACTICAS ACTIVAS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
-    {
-        reg = _unidadDidacticaArchivo.leer(i);
-
-        if(reg.getIdUnidad() == -1)
-        {
-            mostrarErrorArchivo(_unidadDidacticaArchivo.getLastError());
-            system("pause");
-            return;
-        }
-
-        if(!reg.getEliminado())
-        {
-            mostrarUnidadDidactica(reg);
-            std::cout << "----------------------------------" << std::endl;
-        }
-    }
+void UnidadDidacticaManager::modificarTodos(UnidadDidactica &reg)
+{
+    modificarNombre(reg);
+    modificarOrden(reg);
 }
 
 void UnidadDidacticaManager::mostrarUnidadDidactica(const UnidadDidactica &reg)
@@ -340,76 +405,65 @@ void UnidadDidacticaManager::mostrarUnidadDidactica(const UnidadDidactica &reg)
     std::cout << "Orden: " << reg.getOrden() << std::endl;
 }
 
-bool UnidadDidacticaManager::menuModificarUnidadDidactica(UnidadDidactica &reg)
+void UnidadDidacticaManager::mostrarUnidadesDidacticasActivas()
 {
-    int opcion;
+    UnidadDidactica reg;
+    int cantReg;
 
-    do
+    cantReg = _unidadDidacticaArchivo.getCantReg();
+
+    std::cout << "----- UNIDADES DIDACTICAS ACTIVAS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
     {
-        rlutil::cls();
-        std::cout << "----- DATOS ACTUALES DE LA UNIDAD DIDACTICA -----" << std::endl;
-        mostrarUnidadDidactica(reg);
+        reg = _unidadDidacticaArchivo.leer(i);
 
-        std::cout << "\n----- MODIFICAR UNIDAD DIDACTICA -----" << std::endl;
-        std::cout << "1 - Nombre" << std::endl;
-        std::cout << "2 - Orden" << std::endl;
-        std::cout << "3 - Todos los campos" << std::endl;
-        std::cout << "-----------------------------" << std::endl;
-        std::cout << "4 - Cancelar y salir " << std::endl;
-        std::cout << "0 - Guardar y salir" << std::endl;
-
-        opcion = pedirEntero("Opcion: ");
-
-        switch(opcion)
+        if(reg.getIdUnidad() == -1)
         {
-        case 1:
-            modificarNombre(reg);
-            break;
-
-        case 2:
-            modificarOrden(reg);
-            break;
-
-        case 3:
-            modificarTodos(reg);
-            break;
-
-        case 4:
-            return false;
-
-        case 0:
-            return true;
-
-        default:
-            std::cout << "ERROR. Opcion invalida." << std::endl;
+            mostrarErrorArchivo(_unidadDidacticaArchivo.getLastError());
+            system("pause");
+            return;
         }
 
-        if(opcion >= 1 && opcion <= 4)
+        if(!reg.getEliminado())
         {
-            std::cout << "Campo modificado..." << std::endl;
-            system("pause");
+            mostrarUnidadDidactica(reg);
+            std::cout << "---------------------------------------" << std::endl;
         }
     }
-    while(true);
-
-    return false;
 }
 
-void UnidadDidacticaManager::modificarNombre(UnidadDidactica &reg)
+void UnidadDidacticaManager::listarCursos()
 {
-    reg.setNombre(pedirTexto("Nuevo nombre: "));
+    int cantReg = _cursoArchivo.getCantReg();
+
+    if(cantReg == 0)
+    {
+        std::cout << "\nNo hay cursos registrados..." << std::endl;
+        return;
+    }
+
+    Curso *vCursos = new Curso[cantReg];
+    _cursoArchivo.leerTodos(vCursos, cantReg);
+
+    std::cout << "\n----- CURSOS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
+    {
+        if(!vCursos[i].getEliminado())
+        {
+            std::cout << "Id: "<< vCursos[i].getIdCurso() << std::endl;
+            std::cout << "Grado: " << gradoToString(vCursos[i].getGrado()) << std::endl;
+            std::cout << "Division: " << divisionToString(vCursos[i].getDivision()) << std::endl;
+            std::cout << "------------------" << std::endl;
+
+        }
+    }
+
+    delete[] vCursos;
 }
 
-void UnidadDidacticaManager::modificarOrden(UnidadDidactica &reg)
-{
-    reg.setOrden(pedirEntero("Nuevo orden: "));
-}
 
-void UnidadDidacticaManager::modificarTodos(UnidadDidactica &reg)
-{
-    modificarNombre(reg);
-    modificarOrden(reg);
-}
 
 
 

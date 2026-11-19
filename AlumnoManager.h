@@ -21,8 +21,7 @@ private:
                       Fecha &fechaNacimiento,
                       std::string &email,
                       std::string &adaptacion);
-    void mostrarAlumno(const Alumno &reg);
-    void mostrarAlumnosActivos();
+
     bool menuModificarAlumno(Alumno &reg);
     void modificarNombre(Alumno &reg);
     void modificarApellido(Alumno &reg);
@@ -31,6 +30,10 @@ private:
     void modificarEmail(Alumno &reg);
     void modificarAdaptacion(Alumno &reg);
     void modificarTodos(Alumno &reg);
+
+    void mostrarAlumno(const Alumno &reg)const;
+    void mostrarAlumnosActivos();
+
     std::string cargarDniUnico(const std::string &mensaje, int legajoIgnorar = -1);
 
     AlumnoArchivo _alumnoArchivo;

@@ -6,20 +6,25 @@
 class TemaManager
 {
 public:
+    TemaManager();
+
     void registrarTema();
     void modificarTema();
     void eliminarTema();
     void listarTema();
 private:
     Tema crearTema();
+
     int seleccionarUnidadDidactica();
-    void listarUnidadesDidacticas();
-    void mostrarTemasActivos();
-    void mostrarTema(const Tema &reg);
+
     bool menuModificarTema(Tema &reg);
     void modificarNombre(Tema &reg);
     void modificarOrden(Tema &reg);
     void modificarTodos(Tema &reg);
+
+    void mostrarTema(const Tema &reg);
+    void mostrarTemasActivos();
+    void listarUnidadesDidacticas();
 
     TemaArchivo _temaArchivo;
     UnidadDidacticaArchivo _unidadDidacticaArchivo;

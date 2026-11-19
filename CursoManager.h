@@ -16,13 +16,15 @@ public:
 
 private:
     Curso crearCurso();
-    void mostrarCurso(const Curso &reg);
-    void mostrarCursosActivos();
+    void cargarCursoUnico(Grado &grado, Division &division);
+
     bool menuModificarCurso(Curso &reg);
     void modificarGrado(Curso &reg);
     void modificarDivision(Curso &reg);
     void modificarTodos(Curso &reg);
-    void cargarCursoUnico(Grado &grado, Division &division);
+
+    void mostrarCurso(const Curso &reg)const;
+    void mostrarCursosActivos();
 
     CursoArchivo _cursoArchivo;
 };

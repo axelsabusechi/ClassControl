@@ -16,17 +16,19 @@ public:
     void listarInscripcion();
 private:
     Inscripcion crearInscripcion();
-    void mostrarInscripcion(const Inscripcion &reg);
-    void mostrarInscripcionesActivas();
-    bool menuModificarInscripcion(Inscripcion &reg);
     void cargarInscripcionUnica(int &legajo, int &idCurso);
-    void listarAlumnos();
-    void listarCursos();
+
     int seleccionarAlumno();
     int seleccionarCurso();
+
+    bool menuModificarInscripcion(Inscripcion &reg);
+
+    void mostrarInscripcion(const Inscripcion &reg);
+    void mostrarInscripcionesActivas();
+    void listarAlumnos();
+    void listarCursos();
 
     InscripcionArchivo _inscripcionArchivo;
     AlumnoArchivo _alumnoArchivo;
     CursoArchivo _cursoArchivo;
-
 };

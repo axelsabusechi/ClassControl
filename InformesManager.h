@@ -10,6 +10,8 @@
 class InformesManager
 {
 public:
+    InformesManager();
+
     void cantidadAlumnosPorGrado();
     void promedioNotasPorAlumno();
     void cantidadClasesSuspendidasPorCurso();

@@ -10,6 +10,7 @@ InscripcionManager::InscripcionManager()
 void InscripcionManager::registrarInscripcion()
 {
     rlutil::cls();
+    std::cout << "===== REGISTRAR INSCRIPCION =====" << std::endl;
 
     if(_alumnoArchivo.getCantRegActivos() == 0)
     {
@@ -18,7 +19,9 @@ void InscripcionManager::registrarInscripcion()
             system("pause");
             return;
         }
-        std::cout << "No hay alumnos registrados para inscribir..." << std::endl;
+
+        std::cout << "\nNo hay alumnos registrados para inscribir..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         rlutil::cls();
         return;
@@ -31,7 +34,8 @@ void InscripcionManager::registrarInscripcion()
             system("pause");
             return;
         }
-        std::cout << "No hay cursos registrados al cual inscribir alumnos..." << std::endl;
+        std::cout << "\nNo hay cursos registrados al cual inscribir alumnos..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         rlutil::cls();
         return;
@@ -39,12 +43,13 @@ void InscripcionManager::registrarInscripcion()
 
     if(_inscripcionArchivo.guardar(crearInscripcion()) == ArchivoError::OK)
     {
-        std::cout << "Inscripcion del alumno registrada..." << std::endl;
+        std::cout << "\nInscripcion del alumno registrada con exito!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_inscripcionArchivo.getLastError());
     }
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
     rlutil::cls();
 }
@@ -52,6 +57,7 @@ void InscripcionManager::registrarInscripcion()
 void InscripcionManager::modificarInscripcion()
 {
     rlutil::cls();
+    std::cout << "===== MODIFICAR INSCRIPCION =====" << std::endl;
 
     int cantRegInscripcion = _inscripcionArchivo.getCantRegActivos();
 
@@ -62,15 +68,16 @@ void InscripcionManager::modificarInscripcion()
             system("pause");
             return;
         }
-
-        std::cout << "No hay inscripciones de alumnos para modificar..." << std::endl;
+        std::cout << "\nNo hay inscripciones de alumnos para modificar..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarInscripcionesActivas();
 
-    int idInscripcion = pedirEntero("Id de la inscripcion del alumno a modificar: ");
+    int idInscripcion = pedirEntero("\nId de la inscripcion del alumno a modificar: ");
     int indexInscripcion = _inscripcionArchivo.buscarByID(idInscripcion);
 
     if(indexInscripcion == -1)
@@ -81,7 +88,8 @@ void InscripcionManager::modificarInscripcion()
             return;
         }
 
-        std::cout << "La inscripcion del alumno no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nLa inscripcion no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -97,7 +105,8 @@ void InscripcionManager::modificarInscripcion()
 
     if(regInscripcion.getEliminado() || !regInscripcion.getActivo())
     {
-        std::cout << "La inscripcion no se encuentra activa..." << std::endl;
+        std::cout << "\nLa inscripcion no se encuentra activa..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -112,7 +121,9 @@ void InscripcionManager::modificarInscripcion()
             return;
         }
 
-        std::cout << "El alumno con legajo " << regInscripcion.getLegajo() << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nEl alumno con legajo " << regInscripcion.getLegajo()
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -128,34 +139,35 @@ void InscripcionManager::modificarInscripcion()
 
     if(regAlumno.getEliminado())
     {
-        std::cout << "El alumno esta dado de baja..." << std::endl;
+        std::cout << "\nEl alumno esta dado de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
-    mostrarInscripcion(regInscripcion);
-
     if(!menuModificarInscripcion(regInscripcion))
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
     rlutil::cls();
+    std::cout << "===== MODIFICAR INSCRIPCION =====" << std::endl;
 
     int idNuevoCurso = seleccionarCurso();
 
     if(idNuevoCurso == regInscripcion.getIdCurso())
     {
-        std::cout << "Debe seleccionar un curso distinto al actualmente asignado..." << std::endl;
+        std::cout << "\nDebe seleccionar un curso distinto al actualmente asignado..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
     int nuevoIdInscripcion = _inscripcionArchivo.getNewID();
     Fecha fechaAlta;
-
     fechaAlta.cargarFechaActual();
 
     Inscripcion nuevaInscripcion(nuevoIdInscripcion,
@@ -185,7 +197,8 @@ void InscripcionManager::modificarInscripcion()
         return;
     }
 
-    std::cout << "La inscripcion del alumno al nuevo curso se actualizo con exito!" << std::endl;
+    std::cout << "\nLa inscripcion del alumno al nuevo curso se actualizo con exito!" << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
@@ -193,6 +206,7 @@ void InscripcionManager::modificarInscripcion()
 void InscripcionManager::eliminarInscripcion()
 {
     rlutil::cls();
+    std::cout << "===== DAR DE BAJA INSCRIPCION =====" << std::endl;
 
     int cantReg = _inscripcionArchivo.getCantRegActivos();
 
@@ -203,15 +217,16 @@ void InscripcionManager::eliminarInscripcion()
             system("pause");
             return;
         }
-
-        std::cout << "No hay inscripciones registradas para dar de baja..." << std::endl;
+        std::cout << "\nNo hay inscripciones registradas para dar de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarInscripcionesActivas();
 
-    int id = pedirEntero("Id de la inscripcion a dar de baja: ");
+    int id = pedirEntero("\nID de la inscripcion a dar de baja: ");
     int index = _inscripcionArchivo.buscarByID(id);
 
     if(index == -1)
@@ -222,7 +237,9 @@ void InscripcionManager::eliminarInscripcion()
             return;
         }
 
-        std::cout << "La inscripcion con Id " << id << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nLa inscripcion con ID " << id
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -238,19 +255,22 @@ void InscripcionManager::eliminarInscripcion()
 
     if(reg.getEliminado())
     {
-        std::cout << "La inscripcion esta dada de baja..." << std::endl;
+        std::cout << "\nLa inscripcion ya esta dada de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
-    mostrarInscripcion(reg);
     rlutil::cls();
+    std::cout << "===== DAR DE BAJA INSCRIPCION =====" << std::endl;
+    std::cout << "\n----- INSCRIPCION SELECCIONADA -----" << std::endl;
+    mostrarInscripcion(reg);
 
     bool eliminar = false;
 
     do
     {
-        int opcion = pedirEntero("Ingrese 1 para dar de baja, 0 para cancelar: ");
+        int opcion = pedirEntero("\nIngrese 1 para dar de baja, 0 para cancelar: ");
 
         if(opcion == 0 || opcion == 1)
         {
@@ -272,7 +292,7 @@ void InscripcionManager::eliminarInscripcion()
 
         if(_inscripcionArchivo.guardar(index,reg) == ArchivoError::OK)
         {
-            std::cout << "La inscripcion se dio de baja con exito!" << std::endl;
+            std::cout << "\nLa inscripcion se dio de baja con exito!" << std::endl;
         }
         else
         {
@@ -281,9 +301,9 @@ void InscripcionManager::eliminarInscripcion()
     }
     else
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
     }
-
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
@@ -321,12 +341,16 @@ void InscripcionManager::listarInscripcion()
 
 Inscripcion InscripcionManager::crearInscripcion()
 {
-    rlutil::cls();
-
     int idInscripcion, legajo, idCurso;
     Fecha fechaAlta, fechaBaja;
 
     idInscripcion = _inscripcionArchivo.getNewID();
+
+    rlutil::cls();
+    std::cout << "===== REGISTRAR INSCRIPCION =====" << std::endl;
+    std::cout << "ID Inscripcion: " << idInscripcion << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+
     cargarInscripcionUnica(legajo, idCurso);
     fechaAlta.cargarFechaActual();
     fechaBaja = Fecha();
@@ -339,27 +363,124 @@ Inscripcion InscripcionManager::crearInscripcion()
                        true);
 }
 
+void InscripcionManager::cargarInscripcionUnica(int &legajo, int &idCurso)
+{
+    bool existe = false;
+
+    do
+    {
+        legajo = seleccionarAlumno();
+        idCurso = seleccionarCurso();
+
+        existe = _inscripcionArchivo.tieneInscripcionActiva(legajo);
+
+        if(existe)
+        {
+            std::cout << "\nERROR: El alumno ya se encuentra inscripto en un curso..." << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
+            system("pause");
+            rlutil::cls();
+            std::cout << "===== REGISTRAR INSCRIPCION =====" << std::endl;
+        }
+    }
+    while(existe);
+}
+
+int InscripcionManager::seleccionarAlumno()
+{
+    listarAlumnos();
+
+    int legajo;
+    bool existe = false;
+
+    do
+    {
+        legajo = pedirEntero("\nLegajo alumno: ");
+        existe = _alumnoArchivo.existeAlumno(legajo);
+
+        if(!existe)
+        {
+            std::cout << "ERROR: El alumno no existe..." << std::endl;
+        }
+    }
+    while(!existe);
+
+    return legajo;
+}
+
+int InscripcionManager::seleccionarCurso()
+{
+    listarCursos();
+
+    int idCurso;
+    bool existe = false;
+
+    do
+    {
+        idCurso = pedirEntero("\nID curso: ");
+        existe = _cursoArchivo.existeCurso(idCurso);
+
+        if(!existe)
+        {
+            std::cout << "ERROR: El curso no existe..." << std::endl;
+        }
+    }
+    while(!existe);
+
+    return idCurso;
+}
+
+bool InscripcionManager::menuModificarInscripcion(Inscripcion &reg)
+{
+    int opcion;
+
+    do
+    {
+        rlutil::cls();
+        std::cout << "===== MODIFICAR INSCRIPCION =====" << std::endl;
+        std::cout << "\n----- DATOS ACTUALES -----" << std::endl;
+        mostrarInscripcion(reg);
+
+        std::cout << "\n----- OPCIONES -----" << std::endl;
+        std::cout << "1 - Modificar el curso del alumno inscripto" << std::endl;
+        std::cout << "0 - Cancelar y salir" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+
+        opcion = pedirEntero("Opcion: ");
+
+        switch(opcion)
+        {
+        case 1:
+            return true;
+
+        case 0:
+            return false;
+
+        default:
+            std::cout << "ERROR. Opcion invalida." << std::endl;
+            system("pause");
+        }
+
+    }
+    while(true);
+
+    return false;
+}
+
 void InscripcionManager::mostrarInscripcion(const Inscripcion &reg)
 {
-    int indexAlumno;
-    int indexCurso;
-    Alumno alumno;
-    Curso curso;
+    int indexAlumno = _alumnoArchivo.buscarByLegajo(reg.getLegajo());
+    int indexCurso = _cursoArchivo.buscarByID(reg.getIdCurso());
 
-    indexAlumno = _alumnoArchivo.buscarByLegajo(reg.getLegajo());
-    indexCurso = _cursoArchivo.buscarByID(reg.getIdCurso());
-
-    alumno = _alumnoArchivo.leer(indexAlumno);
-    curso = _cursoArchivo.leer(indexCurso);
+    Alumno alumno = _alumnoArchivo.leer(indexAlumno);
+    Curso curso = _cursoArchivo.leer(indexCurso);
 
     std::cout << "Id Inscripcion: " << reg.getIdInscripcion() << std::endl;
     std::cout << "Alumno: " << alumno.getNombre() << " " << alumno.getApellido() <<std::endl;
-    //std::cout << "Legajo: " << reg.getLegajo() << std::endl;
     std::cout << "Curso: " << gradoToString(curso.getGrado()) << " " << divisionToString(curso.getDivision()) << std::endl;
-    //std::cout << "Id Curso: " << reg.getIdCurso() << std::endl;
     std::cout << "Fecha de alta: " << reg.getFechaAlta().toString() << std::endl;
     std::cout << "Fecha de baja: " << reg.getFechaBaja().toString() << std::endl;
-    std::cout << "----------------------------------------------" << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
 }
 
 void InscripcionManager::mostrarInscripcionesActivas()
@@ -389,62 +510,6 @@ void InscripcionManager::mostrarInscripcionesActivas()
     }
 }
 
-bool InscripcionManager::menuModificarInscripcion(Inscripcion &reg)
-{
-    int opcion;
-
-    do
-    {
-        rlutil::cls();
-
-        std::cout << "----- DATOS ACTUALES DE LA INSCRIPCION -----" << std::endl;
-
-        mostrarInscripcion(reg);
-
-        std::cout << "1 - Modificar el curso del alumno inscripto" << std::endl;
-        std::cout << "0 - Cancelar y salir" << std::endl;
-
-
-        opcion = pedirEntero("Opcion: ");
-
-        switch(opcion)
-        {
-        case 1:
-            return true;
-
-        case 0:
-            return false;
-
-        default:
-            std::cout << "ERROR. Opcion invalida." << std::endl;
-            system("pause");
-        }
-
-    }
-    while(true);
-
-    return false;
-}
-
-void InscripcionManager::cargarInscripcionUnica(int &legajo, int &idCurso)
-{
-    bool existe = false;
-
-    do
-    {
-        legajo = seleccionarAlumno();
-        idCurso = seleccionarCurso();
-
-        existe = _inscripcionArchivo.tieneInscripcionActiva(legajo);
-
-        if(existe)
-        {
-            std::cout << "ERROR: El alumno ya se encuentra inscripto en otro curso..." << std::endl;
-        }
-    }
-    while(existe);
-}
-
 void InscripcionManager::listarAlumnos()
 {
     int cantReg;
@@ -453,26 +518,27 @@ void InscripcionManager::listarAlumnos()
 
     if(cantReg == 0)
     {
-        std::cout << "No hay alumnos registrados..." << std::endl;
+        std::cout << "\nNo hay alumnos registrados..." << std::endl;
         system("pause");
         return;
     }
 
-    Alumno *vAlumnos;
-
-    vAlumnos = new Alumno[cantReg];
-
+    Alumno *vAlumnos = new Alumno[cantReg];
     _alumnoArchivo.leerTodos(vAlumnos, cantReg);
 
-    std::cout << "----- ALUMNOS -----" << std::endl;
+    std::cout << "\n----- ALUMNOS -----" << std::endl;
 
     for(int i = 0; i < cantReg; i++)
     {
         if(!vAlumnos[i].getEliminado())
         {
-            std::cout << "Legajo: " << vAlumnos[i].getLegajo() << " - " << vAlumnos[i].getNombre() << " " << vAlumnos[i].getApellido() << std::endl;
+            std::cout << "Legajo: " << vAlumnos[i].getLegajo()
+                      << " - " << vAlumnos[i].getNombre()
+                      << " " << vAlumnos[i].getApellido() << std::endl;
         }
     }
+
+    std::cout << "----------------------------------------" << std::endl;
 
     delete[] vAlumnos;
 }
@@ -485,23 +551,20 @@ void InscripcionManager::listarCursos()
 
     if(cantReg == 0)
     {
-        std::cout << "No hay cursos registrados..." << std::endl;
+        std::cout << "\nNo hay cursos registrados..." << std::endl;
         return;
     }
 
-    Curso *vCursos;
-
-    vCursos = new Curso[cantReg];
-
+    Curso *vCursos = new Curso[cantReg];
     _cursoArchivo.leerTodos(vCursos, cantReg);
 
-    std::cout << "----- CURSOS -----" << std::endl;
+    std::cout << "\n----- CURSOS -----" << std::endl;
 
     for(int i = 0; i < cantReg; i++)
     {
         if(!vCursos[i].getEliminado())
         {
-            std::cout << "Id: "<< vCursos[i].getIdCurso() << std::endl;
+            std::cout << "ID: "<< vCursos[i].getIdCurso() << std::endl;
             std::cout << "Grado: " << gradoToString(vCursos[i].getGrado()) << std::endl;
             std::cout << "Division: " << divisionToString(vCursos[i].getDivision()) << std::endl;
             std::cout << "--------------------------------------------" << std::endl;
@@ -511,46 +574,4 @@ void InscripcionManager::listarCursos()
     delete[] vCursos;
 }
 
-int InscripcionManager::seleccionarAlumno()
-{
-    listarAlumnos();
 
-    int legajo;
-    bool existe = false;
-
-    do
-    {
-        legajo = pedirEntero("Legajo alumno: ");
-        existe = _alumnoArchivo.existeAlumno(legajo);
-
-        if(!existe)
-        {
-            std::cout << "ERROR: El alumno no existe..." << std::endl;
-        }
-    }
-    while(!existe);
-
-    return legajo;
-}
-
-int InscripcionManager::seleccionarCurso()
-{
-    listarCursos();
-
-    int idCurso;
-    bool existe = false;
-
-    do
-    {
-        idCurso = pedirEntero("Id curso: ");
-        existe = _cursoArchivo.existeCurso(idCurso);
-
-        if(!existe)
-        {
-            std::cout << "ERROR: El curso no existe..." << std::endl;
-        }
-    }
-    while(!existe);
-
-    return idCurso;
-}

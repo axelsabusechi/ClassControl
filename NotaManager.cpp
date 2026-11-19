@@ -9,14 +9,34 @@ NotaManager::NotaManager()
 
 void NotaManager::registrarNota()
 {
+    rlutil::cls();
+    std::cout << "===== REGISTRAR NOTA =====" << std::endl;
+
+    if(_alumnoArchivo.getCantRegActivos() == 0)
+    {
+        if(mostrarErrorArchivo(_alumnoArchivo.getLastError()))
+        {
+            system("pause");
+            return;
+        }
+
+        std::cout << "\nNo hay alumnos registrados para cargar notas..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        system("pause");
+        rlutil::cls();
+        return;
+    }
+
     if(_notaArchivo.guardar(crearNota()) == ArchivoError::OK)
     {
-        std::cout << "Nota registrada..." << std::endl;
+        std::cout << "\nNota registrada con exito!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_notaArchivo.getLastError());
     }
+
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
     rlutil::cls();
 }
@@ -24,6 +44,7 @@ void NotaManager::registrarNota()
 void NotaManager::modificarNota()
 {
     rlutil::cls();
+    std::cout << "===== MODIFICAR NOTA =====" << std::endl;
 
     int cantReg = _notaArchivo.getCantRegActivos();
 
@@ -35,14 +56,16 @@ void NotaManager::modificarNota()
             return;
         }
 
-        std::cout << "No hay notas registradas para modificar..." << std::endl;
+        std::cout << "\nNo hay notas registradas para modificar..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarNotasActivas();
 
-    int id = pedirEntero("Id de la nota a modificar: ");
+    int id = pedirEntero("\nId de la nota a modificar: ");
     int index = _notaArchivo.buscarById(id);
 
     if(index == -1)
@@ -53,7 +76,9 @@ void NotaManager::modificarNota()
             return;
         }
 
-        std::cout << "La nota con Id " << id << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nLa nota con ID " << id
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -69,35 +94,37 @@ void NotaManager::modificarNota()
 
     if(reg.getEliminado())
     {
-        std::cout << "La nota esta dada de baja..." << std::endl;
+        std::cout << "\nLa nota esta dada de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
-    mostrarNota(reg);
-
     if(!menuModificarNota(reg))
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
     if(_notaArchivo.guardar(index,reg) == ArchivoError::OK)
     {
-        std::cout << "La nota se modifico exitosamente!" << std::endl;
+        std::cout << "\nLa nota se modifico exitosamente!" << std::endl;
     }
     else
     {
         mostrarErrorArchivo(_notaArchivo.getLastError());
     }
 
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
 void NotaManager::eliminarNota()
 {
     rlutil::cls();
+    std::cout << "===== DAR DE BAJA NOTA =====" << std::endl;
 
     int cantReg = _notaArchivo.getCantRegActivos();
 
@@ -109,15 +136,16 @@ void NotaManager::eliminarNota()
             return;
         }
 
-        std::cout << "No hay notas registradas para dar de baja..." << std::endl;
-        std::cout << std::endl;
+        std::cout << "\nNo hay notas registradas para dar de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    std::cout << std::endl;
     mostrarNotasActivas();
 
-    int id = pedirEntero("Id de la nota a dar de baja: ");
+    int id = pedirEntero("\nId de la nota a dar de baja: ");
     int index = _notaArchivo.buscarById(id);
 
     if(index == -1)
@@ -128,7 +156,9 @@ void NotaManager::eliminarNota()
             return;
         }
 
-        std::cout << "La nota con Id " << id  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "\nLa nota con ID " << id
+                  << " no se encuentra en el sistema..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -138,25 +168,29 @@ void NotaManager::eliminarNota()
     if(reg.getIdNota() == -1)
     {
         mostrarErrorArchivo(_notaArchivo.getLastError());
-        std::cout << std::endl;
         system("pause");
         return;
     }
 
     if(reg.getEliminado())
     {
-        std::cout << "La nota esta dada de baja." << std::endl;
-        std::cout << std::endl;
+        std::cout << "\nLa nota ya esta dada de baja..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
 
+    rlutil::cls();
+    std::cout << "===== DAR DE BAJA NOTA =====" << std::endl;
+    std::cout << "\n----- NOTA SELECCIONADA -----" << std::endl;
     mostrarNota(reg);
+    std::cout << "----------------------------------------" << std::endl;
+
     bool eliminar = false;
 
     do
     {
-        int opcion = pedirEntero("Ingrese 1 para dar de baja, 0 para cancelar: ");
+        int opcion = pedirEntero("\nIngrese 1 para dar de baja, 0 para cancelar: ");
 
         if(opcion == 0 || opcion == 1)
         {
@@ -165,7 +199,6 @@ void NotaManager::eliminarNota()
         }
 
         std::cout << "ERROR. Ingrese 0 o 1." << std::endl;
-        std::cout << std::endl;
     }
     while(true);
 
@@ -176,7 +209,7 @@ void NotaManager::eliminarNota()
 
         if(_notaArchivo.guardar(index,reg) == ArchivoError::OK)
         {
-            std::cout << "La nota se dio de baja con exito!" << std::endl;
+            std::cout << "\nLa nota se dio de baja con exito!" << std::endl;
         }
         else
         {
@@ -185,10 +218,10 @@ void NotaManager::eliminarNota()
     }
     else
     {
-        std::cout << "Operacion cancelada..." << std::endl;
+        std::cout << "\nOperacion cancelada..." << std::endl;
     }
 
-    std::cout << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 
 }
@@ -241,14 +274,17 @@ Nota NotaManager::crearNota()
     idNota = _notaArchivo.getNewId();
 
     rlutil::cls();
-
-    std::cout << "------CARGAR NOTA-------" << std::endl;
-    std::cout << "Id " << idNota << std::endl;
+    std::cout << "===== REGISTRAR NOTA =====" << std::endl;
+    std::cout << "ID Nota: " << idNota << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
 
     legajo = seleccionarAlumno();
+    std::cout << std::endl;
     periodo = pedirPeriodo();
     fechaCarga.cargarFechaActual();
+    std::cout << std::endl;
     descripcion = pedirTexto("Descripcion: ");
+    std::cout << std::endl;
     nota = pedirNota();
 
     return Nota(idNota,
@@ -257,78 +293,6 @@ Nota NotaManager::crearNota()
                 nota,
                 fechaCarga,
                 descripcion);
-}
-
-
-void NotaManager::mostrarNota(const Nota &reg)
-{
-    std::cout << "ID: " << reg.getIdNota() << std::endl;
-    std::cout << "Legajo: " << reg.getLegajo() << std::endl;
-    std::cout << "Periodo: " << periodoToString(reg.getPeriodo()) << std::endl;
-    std::cout << "Nota: " << reg.getNota() << std::endl;
-    std::cout << "Fecha de carga: " << reg.getFechaCarga().toString() << std::endl;
-    std::cout << "Descripcion: " << reg.getDescripcion() << std::endl;
-}
-
-void NotaManager::mostrarNotasActivas()
-{
-    Nota reg;
-
-    int cantReg = _notaArchivo.getCantReg();
-
-    std::cout << "----- NOTAS ACTIVAS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
-    {
-        reg = _notaArchivo.leer(i);
-
-        if(reg.getIdNota() == -1)
-        {
-            mostrarErrorArchivo(_notaArchivo.getLastError());
-            std::cout << std::endl;
-            system("pause");
-            return;
-        }
-
-        if(!reg.getEliminado())
-        {
-            mostrarNota(reg);
-            std::cout << "----------------------------------" << std::endl;
-        }
-    }
-
-}
-
-void NotaManager::listarAlumnos()
-{
-    int cantReg;
-
-    cantReg = _alumnoArchivo.getCantReg();
-
-    if(cantReg == 0)
-    {
-        std::cout << "No hay alumnos registrados..." << std::endl;
-        system("pause");
-        return;
-    }
-
-    Alumno *vAlumnos;
-
-    vAlumnos = new Alumno[cantReg];
-
-    _alumnoArchivo.leerTodos(vAlumnos, cantReg);
-
-    std::cout << "----- ALUMNOS -----" << std::endl;
-
-    for(int i = 0; i < cantReg; i++)
-    {
-        if(!vAlumnos[i].getEliminado())
-        {
-            std::cout << "Legajo: " << vAlumnos[i].getLegajo() << " - " << vAlumnos[i].getNombre() << " " << vAlumnos[i].getApellido() << std::endl;
-        }
-    }
-
-    delete[] vAlumnos;
 }
 
 int NotaManager::seleccionarAlumno()
@@ -340,7 +304,7 @@ int NotaManager::seleccionarAlumno()
 
     do
     {
-        legajo = pedirEntero("Legajo alumno: ");
+        legajo = pedirEntero("\nLegajo alumno: ");
         existe = _alumnoArchivo.existeAlumno(legajo);
 
         if(!existe)
@@ -360,18 +324,21 @@ bool NotaManager::menuModificarNota(Nota &reg)
     do
     {
         rlutil::cls();
-        std::cout << "----- DATOS ACTUALES DE LA NOTA -----" << std::endl;
+        std::cout << "===== MODIFICAR NOTA =====" << std::endl;
+        std::cout << "\n----- DATOS ACTUALES -----" << std::endl;
         mostrarNota(reg);
+        std::cout << "----------------------------------------" << std::endl;
 
-        std::cout << "\n----- MODIFICAR NOTA -----" << std::endl;
+        std::cout << "\n----- CAMPOS A MODIFICAR -----" << std::endl;
         std::cout << "1 - Legajo" << std::endl;
         std::cout << "2 - Periodo" << std::endl;
         std::cout << "3 - Nota" << std::endl;
         std::cout << "4 - Descripcion" << std::endl;
         std::cout << "5 - Todos los campos" << std::endl;
-        std::cout << "-----------------------------" << std::endl;
-        std::cout << "6 - Cancelar y salir " << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
+        std::cout << "6 - Cancelar y salir" << std::endl;
         std::cout << "0 - Guardar y salir" << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
 
         opcion = pedirEntero("Opcion: ");
 
@@ -405,11 +372,12 @@ bool NotaManager::menuModificarNota(Nota &reg)
 
         default:
             std::cout << "ERROR. Opcion invalida." << std::endl;
+            system("pause");
         }
 
         if(opcion >= 1 && opcion <= 5)
         {
-            std::cout << "Campo modificado..." << std::endl;
+            std::cout << "\nCampo modificado..." << std::endl;
             system("pause");
         }
     }
@@ -420,63 +388,25 @@ bool NotaManager::menuModificarNota(Nota &reg)
 
 void NotaManager::modificarLegajo(Nota &reg)
 {
-    int nuevoLegajo;
-
-    nuevoLegajo = seleccionarAlumno();
-
-    if(nuevoLegajo == reg.getLegajo())
-    {
-        std::cout << "Debe seleccionar un alumno distinto al actual..." << std::endl;
-        return;
-    }
-
-    reg.setLegajo(nuevoLegajo);
+    reg.setLegajo(seleccionarAlumno());
 }
 
 void NotaManager::modificarPeriodo(Nota &reg)
 {
-    Periodo nuevoPeriodo;
-
-    nuevoPeriodo = pedirPeriodo();
-
-    if(nuevoPeriodo == reg.getPeriodo())
-    {
-        std::cout << "Debe seleccionar un periodo distinto al actual..." << std::endl;
-        return;
-    }
-
-    reg.setPeriodo(nuevoPeriodo);
+    std::cout << std::endl;
+    reg.setPeriodo(pedirPeriodo());
 }
 
 void NotaManager::modificarNota(Nota &reg)
 {
-    int nuevaNota;
-
-    nuevaNota = pedirNota();
-
-    if(nuevaNota == reg.getNota())
-    {
-        std::cout << "Debe ingresar una nota distinta a la actual..." << std::endl;
-        return;
-    }
-
-    reg.setNota(nuevaNota);
-
+    std::cout << std::endl;
+    reg.setNota(pedirNota());
 }
 
 void NotaManager::modificarDescripcion(Nota &reg)
 {
-    std::string descripcion;
-
-    descripcion = pedirTexto("Descripcion: ");
-
-    if(descripcion == reg.getDescripcion())
-    {
-        std::cout << "Debe ingresar una descripcion distinta a la actual..." << std::endl;
-        return;
-    }
-
-    reg.setDescripcion(descripcion);
+    std::cout << std::endl;
+    reg.setDescripcion(pedirTexto("Nueva descripcion: "));
 }
 
 void NotaManager::modificarTodos(Nota &reg)
@@ -486,6 +416,76 @@ void NotaManager::modificarTodos(Nota &reg)
     modificarDescripcion(reg);
     modificarNota(reg);
 }
+
+void NotaManager::mostrarNota(const Nota &reg)const
+{
+    std::cout << "ID: " << reg.getIdNota() << std::endl;
+    std::cout << "Legajo: " << reg.getLegajo() << std::endl;
+    std::cout << "Periodo: " << periodoToString(reg.getPeriodo()) << std::endl;
+    std::cout << "Nota: " << reg.getNota() << std::endl;
+    std::cout << "Fecha de carga: " << reg.getFechaCarga().toString() << std::endl;
+    std::cout << "Descripcion: " << reg.getDescripcion() << std::endl;
+}
+
+void NotaManager::mostrarNotasActivas()
+{
+    Nota reg;
+    int cantReg = _notaArchivo.getCantReg();
+
+    std::cout << "----- NOTAS ACTIVAS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
+    {
+        reg = _notaArchivo.leer(i);
+
+        if(reg.getIdNota() == -1)
+        {
+            mostrarErrorArchivo(_notaArchivo.getLastError());
+            system("pause");
+            return;
+        }
+
+        if(!reg.getEliminado())
+        {
+            mostrarNota(reg);
+            std::cout << "----------------------------------------" << std::endl;
+        }
+    }
+
+}
+
+void NotaManager::listarAlumnos()
+{
+    int cantReg = _alumnoArchivo.getCantReg();
+
+    if(cantReg == 0)
+    {
+        std::cout << "\nNo hay alumnos registrados..." << std::endl;
+        system("pause");
+        return;
+    }
+
+    Alumno *vAlumnos = new Alumno[cantReg];
+    _alumnoArchivo.leerTodos(vAlumnos, cantReg);
+
+    std::cout << "\n----- ALUMNOS -----" << std::endl;
+
+    for(int i = 0; i < cantReg; i++)
+    {
+        if(!vAlumnos[i].getEliminado())
+        {
+            std::cout << "Legajo: " << vAlumnos[i].getLegajo()
+                      << " - " << vAlumnos[i].getNombre()
+                      << " " << vAlumnos[i].getApellido() << std::endl;
+        }
+    }
+
+    std::cout << "----------------------------------------" << std::endl;
+
+    delete[] vAlumnos;
+}
+
+
 
 
 

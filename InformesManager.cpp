@@ -1,11 +1,18 @@
 #include <iostream>
+#include <iomanip>
 #include "InformesManager.h"
 #include "rlutil.h"
 #include "utils.h"
 
+InformesManager::InformesManager()
+{
+}
+
 void InformesManager::cantidadAlumnosPorGrado()
 {
     rlutil::cls();
+    std::cout << "===== CANTIDAD DE ALUMNOS POR GRADO =====" << std::endl;
+    std::cout << std::endl;
 
     int primero, segundo, tercero, cuarto, quinto, sexto;
 
@@ -16,7 +23,6 @@ void InformesManager::cantidadAlumnosPorGrado()
                             quinto,
                             sexto);
 
-    std::cout << "===== CANTIDAD DE ALUMNOS POR GRADO =====" << std::endl;
 
     mostrarCantAlumnosGrado(primero,
                             segundo,
@@ -25,21 +31,22 @@ void InformesManager::cantidadAlumnosPorGrado()
                             quinto,
                             sexto);
 
-    std::cout << "-----------------------------------------" << std::endl;
-
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
 void InformesManager::promedioNotasPorAlumno()
 {
     rlutil::cls();
+    std::cout << "===== PROMEDIO DE NOTAS POR ALUMNO =====" << std::endl;
+    std::cout << std::endl;
 
     int cantReg = _alumnoArchivo.getCantReg();
 
     if(cantReg == 0)
     {
-        std::cout << "No hay alumnos registrados..." << std::endl;
-
+        std::cout << "\nNo hay alumnos registrados..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
         system("pause");
         return;
     }
@@ -47,12 +54,13 @@ void InformesManager::promedioNotasPorAlumno()
     Alumno *vAlumnos = new Alumno[cantReg];
     _alumnoArchivo.leerTodos(vAlumnos,cantReg);
 
-    std::cout << "===== PROMEDIO DE NOTAS POR ALUMNO =====" << std::endl;
+    bool hayAlumnos = false;
 
     for(int i = 0; i < cantReg; i++)
     {
         if(!vAlumnos[i].getEliminado())
         {
+            hayAlumnos = true;
             float promedio = calcularPromedioAlumno(vAlumnos[i].getLegajo());
             mostrarPromedioAlumno(vAlumnos[i],promedio);
         }
@@ -60,22 +68,25 @@ void InformesManager::promedioNotasPorAlumno()
 
     delete[] vAlumnos;
 
-    std::cout << "----------------------------------------" << std::endl;
+    if(!hayAlumnos)
+    {
+        std::cout << "No hay alumnos activos registrados..." << std::endl;
+    }
 
+    std::cout << "----------------------------------------" << std::endl;
     system("pause");
 }
 
 void InformesManager::cantidadClasesSuspendidasPorCurso()
 {
     rlutil::cls();
+    std::cout << "===== CLASES SUSPENDIDAS POR CURSO =====" << std::endl;
+    std::cout << std::endl;
 
     int cantCursos = _cursoArchivo.getCantReg();
-
     bool hayCursos = false;
 
-    std::cout << "===== CLASES SUSPENDIDAS POR CURSO =====" << std::endl;
-
-    for(int i=0; i<cantCursos; i++)
+    for(int i = 0; i < cantCursos; i++)
     {
         Curso regCurso = _cursoArchivo.leer(i);
 
@@ -100,20 +111,19 @@ void InformesManager::cantidadClasesSuspendidasPorCurso()
     }
 
     std::cout << "----------------------------------------" << std::endl;
-
     system("pause");
 }
 
 void InformesManager::historialRendimientoPorCurso()
 {
     rlutil::cls();
+    std::cout << "===== RENDIMIENTO ACADEMICO POR CURSO =====" << std::endl;
+    std::cout << std::endl;
 
     int cantCursos = _cursoArchivo.getCantReg();
     bool hayCursos = false;
 
-    std::cout << "===== RENDIMIENTO ACADEMICO POR CURSO =====" << std::endl;
-
-    for(int i=0; i<cantCursos; i++)
+    for(int i = 0; i < cantCursos; i++)
     {
         Curso regCurso = _cursoArchivo.leer(i);
 
@@ -132,14 +142,14 @@ void InformesManager::historialRendimientoPorCurso()
                 std::cout << "  No existen alumnos inscriptos..." << std::endl;
             }
 
-            std::cout << "-------------------------------------------" << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
         }
     }
 
     if(!hayCursos)
     {
-        std::cout << "No hay cursos registrados..." << std::endl;
-        std::cout << "-------------------------------------------" << std::endl;
+        std::cout << "\nNo hay cursos registrados..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
     }
 
     system("pause");
@@ -148,11 +158,12 @@ void InformesManager::historialRendimientoPorCurso()
 void InformesManager::avanceCurricularPorCurso()
 {
     rlutil::cls();
+    std::cout << "===== AVANCE CURRICULAR POR CURSO =====" << std::endl;
+    std::cout << std::endl;
 
     int cantCursos = _cursoArchivo.getCantReg();
     bool hayCursos = false;
 
-    std::cout << "===== AVANCE CURRICULAR POR CURSO =====" << std::endl;
 
     for(int i = 0; i < cantCursos; i++)
     {
@@ -181,6 +192,7 @@ void InformesManager::avanceCurricularPorCurso()
                 float porcentaje = ((float)temasVistos/totalTemas)*100;
 
                 std::cout << " Temas vistos: " << temasVistos << " / " << totalTemas << std::endl;
+                std::cout << std::fixed << std::setprecision(2);
                 std::cout << " Avance: " << porcentaje << "%" << std::endl;
             }
             std::cout << "---------------------------------------" << std::endl;
@@ -189,7 +201,8 @@ void InformesManager::avanceCurricularPorCurso()
 
     if(!hayCursos)
     {
-        std::cout << "No hay cursos registrados..." << std::endl;
+        std::cout << "\nNo hay cursos registrados..." << std::endl;
+        std::cout << "----------------------------------------" << std::endl;
     }
 
     system("pause");
@@ -228,7 +241,7 @@ bool InformesManager::mostrarHistorialRendimientoPorCurso(int idCurso)
     bool encontrado = false;
     int cantReg = _inscripcionArchivo.getCantReg();
 
-    for(int i=0; i<cantReg; i++)
+    for(int i = 0; i < cantReg; i++)
     {
         Inscripcion regIns = _inscripcionArchivo.leer(i);
 
@@ -370,13 +383,13 @@ void InformesManager::calcularAvanceCurso(int idCurso, int &totalTemas, int &tem
     int cantUnidades = _unidadDidacticaArchivo.getCantReg();
     int cantTemas = _temaArchivo.getCantReg();
 
-    for(int i=0; i<cantUnidades; i++)
+    for(int i = 0; i < cantUnidades; i++)
     {
         UnidadDidactica regUnidad = _unidadDidacticaArchivo.leer(i);
 
         if(!regUnidad.getEliminado() && regUnidad.getIdCurso() == idCurso)
         {
-            for(int j=0; j<cantTemas; j++)
+            for(int j = 0; j < cantTemas; j++)
             {
                 Tema regTema = _temaArchivo.leer(j);
 

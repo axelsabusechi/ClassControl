@@ -12,6 +12,8 @@
 class ConsultasManager
 {
 public:
+    ConsultasManager();
+
     void consultarAlumnoPorLegajo();
     void consultarDocentePorDni();
     void consultarNotasPorAlumno();
